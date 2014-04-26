@@ -151,14 +151,17 @@ class System_AvatarHandler extends EntityProcessingSystem {
   ComponentMapper<Transform> _transformMapper;
   ComponentMapper<AvatarNumbers> _avatarNumbersMapper;
 //  ComponentMapper<EntityStateComponent> _statesMapper;
+  Game _game;
+  GroupManager _gm;
 
-  System_AvatarHandler() : super(Aspect.getAspectForAllOf([AvatarControl, AvatarNumbers, Transform]));
+  System_AvatarHandler(this._game) : super(Aspect.getAspectForAllOf([AvatarControl, AvatarNumbers, Transform]));
 
   void initialize(){
     _avatarControlMapper = new ComponentMapper<AvatarControl>(AvatarControl, world);
     _avatarNumbersMapper = new ComponentMapper<AvatarNumbers>(AvatarNumbers, world);
 //    _statesMapper = new ComponentMapper<EntityStateComponent>(EntityStateComponent, world);
     _transformMapper = new ComponentMapper<Transform>(Transform, world);
+    _gm = world.getManager(GroupManager) as GroupManager;
   }
 
   void processEntity(Entity entity) {
@@ -170,6 +173,16 @@ class System_AvatarHandler extends EntityProcessingSystem {
     p.x = math2.clamp(p.x + ctrl.x, 1.0, -1.0);
     p.z = math2.clamp(ctrl.z, 1.0, -1.0);
     p.y += 0.006 * world.delta;
+    //TODO test if exitpoint
+    var exiting = _gm.getEntities(GROUP_EXITZONE).fold(false, (acc, e2){
+      var t2 = _transformMapper.get(e2);
+      return (t2 != null && p.y > t2.position3d.y);
+    });
+    if (exiting) {
+      _exiting();
+      return;
+    }
+    //TODO test if collision
     var avatarMask = avatarMaskFrom(p.x, p.z);
     if (ctrl.x != 0.0 || ctrl.z != 0.0) print(p.toString() + " -- " + avatarMask.toString());
   }
@@ -182,5 +195,9 @@ class System_AvatarHandler extends EntityProcessingSystem {
     // dash
     else if (z == -1.0) avatarMask = avatarMask >> 3;
     return avatarMask;
+  }
+
+  void _exiting() {
+    _game._stop(true);
   }
 }

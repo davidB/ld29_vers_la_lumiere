@@ -79,7 +79,7 @@ class Game {
         _pause();
         break;
       case IGAction.STOP:
-        _stop(false, 0);
+        _stop(false);
         break;
     }
   }
@@ -118,7 +118,7 @@ class Game {
     _resume();
   }
 
-  void _stop(bool viaExit, int cubesGrabbed) {
+  void _stop(bool viaExit) {
     if (_status == IGStatus.PLAYING) {
       _updateStatus(IGStatus.STOPPING);
       _gameLoop.stop();
@@ -170,14 +170,14 @@ class Game {
 
     //var collSpace = new collisions.Space_QuadtreeXY(new collisions.Checker_MvtAsPoly4(), new _EntityContactListener(new ComponentMapper<Collisions>(Collisions,_world)), grid : new collisions.QuadTreeXYAabb(-10.0, -10.0, 220.0, 220.0, 5));
     //_world.addManager(new PlayerManager());
-    //_world.addManager(new GroupManager());
-    _world.addSystem(new System_EntityState());
-    _world.addSystem(new System_Animator());
+    _world.addManager(new GroupManager());
+    //_world.addSystem(new System_EntityState());
+    //_world.addSystem(new System_Animator());
 
     // Audio + Video display
     _world.addSystem(new System_CameraFollower());
     _world.addSystem(new System_AvatarController());
-    _world.addSystem(new System_AvatarHandler());
+    _world.addSystem(new System_AvatarHandler(this));
     _world.addSystem(_renderSystem, passive: true);
     //if (audioManager != null) _world.addSystem(new System_Audio(audioManager, clipProvider : (x) => _assetManager[x], handleError: _handleError), passive : false);
     _world.addSystem(_hudSystem, passive: true);

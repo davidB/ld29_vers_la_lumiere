@@ -1,5 +1,7 @@
 part of game;
 
+const GROUP_EXITZONE = "GROUP_EXITZONE";
+
 class Factory_Entities {
   static final _random = new math.Random();
 
@@ -14,6 +16,7 @@ class Factory_Entities {
   );
 
   List<Entity> newFullArea(AssetPack assetpack) {
+     var gm = (_world.getManager(GroupManager) as GroupManager);
      var areadef = assetpack['area'];
      renderFact.reset();
      var es = new List<Entity>();
@@ -31,6 +34,9 @@ class Factory_Entities {
 
      es.add(newAvatar(cameraInfo));
      es.add(newCorridor());
+     var exitZone = newExitZone();
+     es.add(exitZone);
+     gm.add(exitZone, GROUP_EXITZONE);
      return es;
    }
 
@@ -70,6 +76,14 @@ class Factory_Entities {
   Entity newCorridor() => _world.createEntity([
     renderFact.newCorridor(500.0)
   ]);
+
+  Entity newExitZone(){
+    var t = new Transform.w3d(new Vector3(0.0, 100.0, 0.0));
+    return _world.createEntity([
+      t
+      ,renderFact.newExitZone(t.position3d)
+    ]);
+  }
 }
 
 class Factory_Renderables {
@@ -175,10 +189,11 @@ class Factory_Renderables {
         vec3 n = $n;
         vec3 nf = faceforward(n, rd, n);
 //        return myshade($c, p, nf, t, rd);
-        //return shade1($c, p, nf, t, rd);
+//        return shade1($c, p, nf, t, rd);
         //return shade0($c, p, nf);
         //return shadeOutdoor($c, p, nf);
-        //return aoToColor(p, nf);
+        //return vec4(vec3(1.0) - aoToColor(p, nf).rgb, 1.0);
+        //return vec4(aoToColor(p, nf).rgb, 1.0);
 //        return normalToColor(nf);
         //return $c * ao_de(p, nf);
 return $c;
@@ -195,13 +210,24 @@ return $c;
   }
 
   RenderableDef newCorridor(length) {
+    /// glsl: float sd_corridor(in vec3 p)
+    sd_corridor() {
+    return (l) => l.add('''
+    float sd_corridor(in vec3 p) {
+    float z = abs(p.z) - 1.5;/* + mod(0.2 * (ceil(p.y / 0.8) + 1.0), 0.72)), ;*/
+    float x = abs(p.x) - 1.6;
+    return max(x, z); 
+    }
+    ''');
+    }
+
     return new RenderableDef()
     ..onInsert = (gl, Entity entity) {
       return new Renderable()
       ..obj = (new r.ObjectInfo()
 //        ..uniforms = 'uniform vec3 scroll;'
-        ..de = "sd_box(p, vec3(1.5,${length},1.5))"
-        ..sds = [r.sd_box]
+        ..de = "sd_corridor(p)"
+        ..sds = [sd_corridor()]
         ..mats = [r.mat_chessboardXY0(1.0, new Vector4(0.9,0.0,0.5,1.0), new Vector4(0.2,0.2,0.8,1.0)), _defaultShadeMats]
         ..sh = _defaultShade(c: "mat_chessboardXY0(p)")
         //..sh = _defaultShade(c: "vec4(1.0)")
@@ -228,9 +254,11 @@ return $c;
       var transform = new Matrix4.identity();
       var obj = new r.ObjectInfo()
         ..uniforms = 'uniform vec3 ${utx};'
-        ..de = "sd_box(p - ${utx}, vec3(2.0, 10.0, 2.0))"
+        ..de = "sd_box(p - ${utx}, vec3(1.4, 1.5, 1.4))"
+        ..sds = [r.sd_box]
         ..mats = [_defaultShadeMats]
-        ..sh = _defaultShade(c : _vec4(new Vector4(1.0,1.0,1.0,1.0)))
+        //..sh = _defaultShade(c : _vec4(new Vector4(1.0,1.0,1.0,1.0)))
+        ..sh = "return vec4(1.0,1.0,1.0,1.0);"
         ..at = (ctx) {
           ctx.gl.uniform3fv(ctx.getUniformLocation(utx), position.storage);
         }
