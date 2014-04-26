@@ -62,6 +62,7 @@ class System_Render extends EntitySystem {
     _renderer.lightSegment = r.lightSegment_spotAt(new Vector3(50.0, 50.0, 50.0));
     _renderer.stepmax = 200;
     //_renderer.epsilon_de = 0.001;
+    _renderer.bgcolor = "return vec3(0.0,0.0,0.0);";
     _renderer.updateShader();
   }
 

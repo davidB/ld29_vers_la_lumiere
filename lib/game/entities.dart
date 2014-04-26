@@ -105,11 +105,9 @@ class Factory_Renderables {
     r.shade1(l);
     r.shade0(l);
 //    r.shadeOutdoor(l);
-//    _myshade(l);
+    _myshade(l);
   }
   _myshade(l) {
-    r.softshadow(l);
-    r.ao_de(l);
     l.add('''
 #define HIGH
   // see http://www.altdevblogaday.com/2011/08/23/shader-code-for-physically-based-lighting/
@@ -119,8 +117,36 @@ class Factory_Renderables {
   const float PI_OVER_FOUR = PI / 4.0;
   const float PI_OVER_TWO = PI / 2.0;
 
+float myao(in vec3 p, in vec3 n, float sca0){
+  float totao = 0.0;
+  float sca = sca0;
+  for (int aoi=0; aoi<5; aoi++ ) {
+    float hr = 0.01 + 0.05*float(aoi);
+    vec3 aopos =  n * hr + p;
+    float dd = de( aopos ).x;
+    totao += -(dd-hr)*sca;
+    sca *= 0.75;
+  }
+  return clamp( 1.0 - 4.0*totao, 0.0, 1.0 );
+}
+
+float myshadow( in vec3 ro, in vec3 rd)
+{
+  float res = 1.0;
+    float t = 0.1;
+  float h;
+  
+    for (int i = 0; i < 7; i++)
+  {
+    h = de( ro + rd*t ).x;
+    res = min(7.0*h / t, res);
+    t += h+.04;
+  }
+    return max(res, 0.0);
+}
+
   color myshade(color c, vec3 p, vec3 n, float t, vec3 rd) {
-    vec3 light_direction = normalize( lightSegment(p) );
+    vec3 light_direction = normalize( -rd );
     float n_dot_l = clamp( dot( n, light_direction ), 0.0, 1.0 ); 
     //vec3 diffuse = light_colour * n_dot_l;
     float diffuse = n_dot_l;
@@ -150,12 +176,16 @@ class Factory_Renderables {
     specularCoeff = specularCoeff * visibility_term;
 #endif
     vec3 albedo = c.rgb;
-    float ao = ao_de(p, n);
-    float ambient = 0.5;
-    diffuse = clamp(diffuse, ambient, 1.0);
+    float ao = 1.0 - myao(p, n, 0.5);
+    float ambient = 0.0;
+    diffuse = fract(1.0 / t);
+    //diffuse = clamp(diffuse, ambient, 1.0);
     float sh = softshadow( p, light_direction, 0.02, 10.0, 7.0 );
-    // sh = min(sh, ao);
+    //float sh = myshadow(p, light_direction);
+    sh = max(sh, ao);
+    //float sh = ao;
     c.rgb = albedo * diffuse * sh + light_colour * specularCoeff;
+    //c.rgb = vec3(ao);
     return c;
 //
 //    float ao = ao_de(p, n);
@@ -186,9 +216,11 @@ class Factory_Renderables {
   }
   _defaultShade({String c : "normalToColor(n)", String n : "n_de(o, p)"}) {
     return """
-        vec3 n = $n;
+        vec3 p2 = p + o.x * rd;
+        float t2 = t + o.x;
+        vec3 n = n_de(o, p2);
         vec3 nf = faceforward(n, rd, n);
-//        return myshade($c, p, nf, t, rd);
+        return myshade($c, p2, nf, t2, rd);
 //        return shade1($c, p, nf, t, rd);
         //return shade0($c, p, nf);
         //return shadeOutdoor($c, p, nf);
@@ -196,7 +228,7 @@ class Factory_Renderables {
         //return vec4(aoToColor(p, nf).rgb, 1.0);
 //        return normalToColor(nf);
         //return $c * ao_de(p, nf);
-return $c;
+//return $c;
         """;
   }
 
