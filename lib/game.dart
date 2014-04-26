@@ -89,6 +89,7 @@ class Game {
     bus.fire(eventInGameStatus, new IGStatus()
     ..kind = v
     );
+    print("status :" + _status.toString());
   }
 
   bool _play() {
@@ -174,6 +175,8 @@ class Game {
 
     // Audio + Video display
     _world.addSystem(new System_CameraFollower());
+    _world.addSystem(new System_AvatarController());
+    _world.addSystem(new System_AvatarHandler());
     _world.addSystem(_renderSystem, passive: true);
     //if (audioManager != null) _world.addSystem(new System_Audio(audioManager, clipProvider : (x) => _assetManager[x], handleError: _handleError), passive : false);
     _world.addSystem(_hudSystem, passive: true);
