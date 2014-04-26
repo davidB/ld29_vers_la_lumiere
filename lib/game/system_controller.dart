@@ -26,6 +26,7 @@ class CameraFollower extends Component {
   glf.CameraInfo info;
   Aabb3 focusAabb;
   final Vector3 targetTranslation = new Vector3.zero();
+  final Vector3 focusTranslation = new Vector3.zero();
   int _mode;
   get mode => _mode;
   set mode(int v) {
@@ -41,6 +42,7 @@ class CameraFollower extends Component {
       case FPS :
         _mode = 2;
         targetTranslation.setValues(-0.01, 0.0, 0.0);
+        focusTranslation.setValues(0.0, 5.0, -1.0);
         break;
     }
   }
@@ -76,7 +78,7 @@ class System_CameraFollower extends EntityProcessingSystem {
       position.y = approachMulti(next.y, position.y, 0.2);
       position.z = approachMulti(next.z, position.z, 0.3);
       camera.upDirection.setFrom(math2.VZ_AXIS);
-      camera.focusPosition.setFrom(_targetPosition);
+      camera.focusPosition.setFrom(_targetPosition).add(follower.focusTranslation);
     }
     //follower.info.updateProjectionMatrix();
     //camera.adjustNearFar(follower.focusAabb, 0.001, 0.1);
@@ -154,6 +156,7 @@ class System_AvatarHandler extends EntityProcessingSystem {
     var p = transform.position3d;
     p.x = math2.clamp(p.x + ctrl.x, 1.0, -1.0);
     p.z = math2.clamp(p.z + ctrl.z, 1.0, -1.0);
+    p.y += 0.006 * world.delta;
     var avatarMask = avatarMaskFrom(p.x, p.z);
     if (ctrl.x != 0.0 || ctrl.z != 0.0) print(p.toString() + " -- " + avatarMask.toString());
   }
