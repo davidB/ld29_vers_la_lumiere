@@ -1,0 +1,37 @@
+name: ld29_vers_la_lumiere
+version: 0.1.0-dev
+author: david bernard
+description: "My game for Ludum Dare 29: a runner in first person view."
+homepage: https://davidB.github.io/ld29_vers_la_lumiere
+environment:
+  sdk: '>=0.8.10+6 <2.0.0'
+documentation: https://github.com/davidB/ld29_vers_la_lumiere
+dependencies:
+  asset_pack:
+    git: https://github.com/johnmccutchan/asset_pack.git
+  browser: any
+  crypto: any
+  dartemis: '>=0.6.0'
+  dartemis_toolbox:
+    path: ../dartemis_toolbox
+  event_bus: '>=0.2.4'
+  game_loop:
+    git:
+      ref: davidB
+      url: https://github.com/davidB/game_loop.git
+  glf:
+    path: ../glf
+  html_toolbox: '>=0.2.0'
+  intl: any
+  js: any
+  logging: any
+  simple_audio:
+    git: https://github.com/johnmccutchan/simpleaudio.git
+    version: '>=0.9.0'
+  vector_math: '>=1.3.0'
+dev_dependencies:
+  unittest: any
+
+dependency_overrides:
+  html_toolbox:
+    path: ../html_toolbox

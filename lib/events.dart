@@ -1,0 +1,39 @@
+import 'package:event_bus/event_bus.dart';
+
+//see https://github.com/marcojakob/dart-event-bus
+
+makeBus() => new EventBus();
+//final EventBus bus = new EventBus();
+final EventType<RunResult> eventRunResult = new EventType<RunResult>();
+final EventType<IGStatus> eventInGameStatus = new EventType<IGStatus>();
+final EventType<int> eventInGameReqAction = new EventType<int>();
+final EventType<Err> eventErr = new EventType<Err>();
+
+class Err {
+  var category;
+  var exc;
+  var stacktrace;
+}
+
+class IGStatus {
+  static const NONE = 0;
+  static const INITIALIZING = 1;
+  static const INITIALIZED = 2;
+  static const PLAYING = 3;
+  static const PAUSED = 4;
+  static const STOPPING = 5;
+  static const STOPPED = 6;
+  int kind;
+  String area;
+}
+
+class IGAction {
+  static const INITIALIZE = 1;
+  static const PLAY = 2;
+  static const PAUSE = 3;
+  static const STOP = 4;
+}
+
+class RunResult {
+  int score = 0;
+}
