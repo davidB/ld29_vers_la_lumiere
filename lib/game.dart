@@ -10,6 +10,7 @@ import 'package:dartemis_toolbox/system_animator.dart';
 import 'package:dartemis_toolbox/system_transform.dart';
 import 'package:dartemis_toolbox/utils_math.dart' as math2;
 import 'package:dartemis_toolbox/progress_controler.dart' as pc;
+import 'package:dartemis_toolbox/ease.dart' as ease;
 import 'package:vector_math/vector_math.dart';
 import 'package:asset_pack/asset_pack.dart';
 import 'package:simple_audio/simple_audio_asset_pack.dart';

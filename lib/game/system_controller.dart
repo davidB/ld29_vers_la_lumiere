@@ -1,6 +1,6 @@
 part of game;
 
-var _keysUp = [ KeyCode.UP, KeyCode.W, KeyCode.Z ];
+var _keysUp = [ KeyCode.UP, KeyCode.W, KeyCode.Z, KeyCode.SPACE ];
 var _keysDown = [ KeyCode.DOWN, KeyCode.S];
 var _keysLeft = [ KeyCode.LEFT, KeyCode.A, KeyCode.Q ];
 var _keysRight = [KeyCode.RIGHT, KeyCode.D];
@@ -100,6 +100,12 @@ class System_AvatarController extends EntityProcessingSystem {
   ComponentMapper<AvatarControl> _avatarControlMapper;
   AvatarControl _state;
   var _subUp, _subDown;
+  var _jumpEnd = 0.0, _dashEnd = 0.0;
+  final _jumpDuration = 1.5 * 1000.0;
+  final _dashDuration = 1.2 * 1000.0;
+  final _dashF = ease.outCubic;
+  final _jumpF = ease.goback(ease.inQuartic);
+  var time = 0.0;
 
   System_AvatarController() : super(Aspect.getAspectForAllOf([AvatarControl]));
 
@@ -110,26 +116,33 @@ class System_AvatarController extends EntityProcessingSystem {
   }
 
   void processEntity(Entity entity) {
+    time = world.time;
     var dest = _avatarControlMapper.get(entity);
-    dest.z = _state.z;
     dest.x = _state.x;
-    _state.z = 0.0;
     _state.x = 0.0;
+    var jumpR = _jumpF(math.max(0.0, _jumpEnd - time) / _jumpDuration, 1.0, 0.0);
+    var dashR = _dashF(math.max(0.0, _dashEnd - time) / _dashDuration, 1.0, 0.0);
+    dest.z = jumpR - dashR;
   }
 
   void _bindKeyboardControl(){
-   _subDown = document.onKeyDown.listen((KeyboardEvent e) {
-      if (_keysUp.contains(e.keyCode)) _state.z = 1.0;
-      else if (_keysDown.contains(e.keyCode)) _state.z = -1.0;
+    _subDown = document.onKeyDown.listen((KeyboardEvent e) {
+      var isJumpingOrDashing =  (_jumpEnd > time || _dashEnd > time);
+      if (_keysUp.contains(e.keyCode) && !isJumpingOrDashing) {
+        _jumpEnd = time + _jumpDuration;
+      }
+      else if (_keysDown.contains(e.keyCode) && !isJumpingOrDashing){
+        _dashEnd = time + _dashDuration;
+      }
       else if (_keysLeft.contains(e.keyCode)) _state.x = -1.0;
       else if (_keysRight.contains(e.keyCode)) _state.x = 1.0;
     });
-    _subUp = document.onKeyUp.listen((KeyboardEvent e) {
-      if (_keysUp.contains(e.keyCode)) _state.z = 0.0;
-      else if (_keysDown.contains(e.keyCode)) _state.z = 0.0;
-      else if (_keysLeft.contains(e.keyCode)) _state.x = 0.0;
-      else if (_keysRight.contains(e.keyCode)) _state.x = 0.0;
-    });
+//    _subUp = document.onKeyUp.listen((KeyboardEvent e) {
+//      if (_keysUp.contains(e.keyCode)) _state.z = 0.0;
+//      else if (_keysDown.contains(e.keyCode)) _state.z = 0.0;
+//      else if (_keysLeft.contains(e.keyCode)) _state.x = 0.0;
+//      else if (_keysRight.contains(e.keyCode)) _state.x = 0.0;
+//    });
   }
 }
 
@@ -155,7 +168,7 @@ class System_AvatarHandler extends EntityProcessingSystem {
     var transform = _transformMapper.get(entity);
     var p = transform.position3d;
     p.x = math2.clamp(p.x + ctrl.x, 1.0, -1.0);
-    p.z = math2.clamp(p.z + ctrl.z, 1.0, -1.0);
+    p.z = math2.clamp(ctrl.z, 1.0, -1.0);
     p.y += 0.006 * world.delta;
     var avatarMask = avatarMaskFrom(p.x, p.z);
     if (ctrl.x != 0.0 || ctrl.z != 0.0) print(p.toString() + " -- " + avatarMask.toString());
