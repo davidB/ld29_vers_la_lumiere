@@ -1,16 +1,14 @@
 part of game;
 
-var _keysForward = [ KeyCode.UP, KeyCode.W, KeyCode.Z ];
-var _keysBackward = [ KeyCode.DOWN, KeyCode.S];
-var _keysTurnLeft = [ KeyCode.LEFT, KeyCode.A, KeyCode.Q ];
-var _keysTurnRight = [KeyCode.RIGHT, KeyCode.D];
-var _keysCameraMode = [KeyCode.M];
+var _keysUp = [ KeyCode.UP, KeyCode.W, KeyCode.Z ];
+var _keysDown = [ KeyCode.DOWN, KeyCode.S];
+var _keysLeft = [ KeyCode.LEFT, KeyCode.A, KeyCode.Q ];
+var _keysRight = [KeyCode.RIGHT, KeyCode.D];
 
 class AvatarControl extends Component {
   static final CT = ComponentTypeManager.getTypeFor(AvatarControl);
-  double forward = 0.0;
-  double turn = 0.0;
-
+  double z = 0.0;
+  double x = 0.0;
   AvatarControl();
 }
 
@@ -71,13 +69,13 @@ class System_CameraFollower extends EntityProcessingSystem {
     if (follower.info == null) return;
     var _targetPosition = transform.position3d;
     var camera = follower.info;
-    if (follower.mode == CameraFollower.TOP) {
+    if (follower.mode == CameraFollower.FPS) {
       var next = new Vector3.copy(_targetPosition).add(follower.targetTranslation);
       var position = camera.position;
       position.x = approachMulti(next.x, position.x, 0.2);
       position.y = approachMulti(next.y, position.y, 0.2);
       position.z = approachMulti(next.z, position.z, 0.3);
-      camera.upDirection.setFrom(math2.VY_AXIS);
+      camera.upDirection.setFrom(math2.VZ_AXIS);
       camera.focusPosition.setFrom(_targetPosition);
     }
     //follower.info.updateProjectionMatrix();
@@ -111,46 +109,62 @@ class System_AvatarController extends EntityProcessingSystem {
 
   void processEntity(Entity entity) {
     var dest = _avatarControlMapper.get(entity);
-    dest.forward = _state.forward;
-    dest.turn = _state.turn;
+    dest.z = _state.z;
+    dest.x = _state.x;
+    _state.z = 0.0;
+    _state.x = 0.0;
   }
 
   void _bindKeyboardControl(){
    _subDown = document.onKeyDown.listen((KeyboardEvent e) {
-      if (_keysForward.contains(e.keyCode)) _state.forward = 1.0;
-      else if (_keysBackward.contains(e.keyCode)) _state.forward = -0.3;
-      else if (_keysTurnLeft.contains(e.keyCode)) _state.turn = 1.0;
-      else if (_keysTurnRight.contains(e.keyCode)) _state.turn = -1.0;
+      if (_keysUp.contains(e.keyCode)) _state.z = 1.0;
+      else if (_keysDown.contains(e.keyCode)) _state.z = -1.0;
+      else if (_keysLeft.contains(e.keyCode)) _state.x = -1.0;
+      else if (_keysRight.contains(e.keyCode)) _state.x = 1.0;
     });
     _subUp = document.onKeyUp.listen((KeyboardEvent e) {
-      if (_keysForward.contains(e.keyCode)) _state.forward = 0.0;
-      else if (_keysBackward.contains(e.keyCode)) _state.forward = 0.0;
-      else if (_keysTurnLeft.contains(e.keyCode)) _state.turn = 0.0;
-      else if (_keysTurnRight.contains(e.keyCode)) _state.turn = 0.0;
+      if (_keysUp.contains(e.keyCode)) _state.z = 0.0;
+      else if (_keysDown.contains(e.keyCode)) _state.z = 0.0;
+      else if (_keysLeft.contains(e.keyCode)) _state.x = 0.0;
+      else if (_keysRight.contains(e.keyCode)) _state.x = 0.0;
     });
   }
 }
 
 class System_AvatarHandler extends EntityProcessingSystem {
   ComponentMapper<AvatarControl> _avatarControlMapper;
+  ComponentMapper<Transform> _transformMapper;
   ComponentMapper<AvatarNumbers> _avatarNumbersMapper;
-  ComponentMapper<EntityStateComponent> _statesMapper;
-  Game _game;
-  var _printDebug = false;
+//  ComponentMapper<EntityStateComponent> _statesMapper;
 
-  System_AvatarHandler(this._game) : super(Aspect.getAspectForAllOf([AvatarControl, AvatarNumbers, EntityStateComponent]));
+  System_AvatarHandler() : super(Aspect.getAspectForAllOf([AvatarControl, AvatarNumbers, Transform]));
 
   void initialize(){
     _avatarControlMapper = new ComponentMapper<AvatarControl>(AvatarControl, world);
     _avatarNumbersMapper = new ComponentMapper<AvatarNumbers>(AvatarNumbers, world);
-    _statesMapper = new ComponentMapper<EntityStateComponent>(EntityStateComponent, world);
+//    _statesMapper = new ComponentMapper<EntityStateComponent>(EntityStateComponent, world);
+    _transformMapper = new ComponentMapper<Transform>(Transform, world);
   }
 
   void processEntity(Entity entity) {
-    var esc = _statesMapper.getSafe(entity);
-    var numbers = _avatarNumbersMapper.get(entity);
-//    collisions.colliders.iterateAndUpdate((collider){
-//      return null;
-//    });
+    //var esc = _statesMapper.getSafe(entity);
+    //var numbers = _avatarNumbersMapper.get(entity);
+    var ctrl = _avatarControlMapper.get(entity);
+    var transform = _transformMapper.get(entity);
+    var p = transform.position3d;
+    p.x = math2.clamp(p.x + ctrl.x, 1.0, -1.0);
+    p.z = math2.clamp(p.z + ctrl.z, 1.0, -1.0);
+    var avatarMask = avatarMaskFrom(p.x, p.z);
+    if (ctrl.x != 0.0 || ctrl.z != 0.0) print(p.toString() + " -- " + avatarMask.toString());
+  }
+
+  int avatarMaskFrom(x, z) {
+    var avatarMask = 1 << (x.toInt() + 1);
+    avatarMask = avatarMask | avatarMask << 3;
+    // jump
+    if (z == 1.0) avatarMask = avatarMask << 3;
+    // dash
+    else if (z == -1.0) avatarMask = avatarMask >> 3;
+    return avatarMask;
   }
 }

@@ -26,8 +26,18 @@ class Factory_Entities {
 //     es.addAll(areadef.staticWalls.map((x) => newStaticWalls(x, assetpack)));
 //     es.addAll(areadef.mobileWalls.map((x) => newMobileWall(x, assetpack)));
 //     es.addAll(areadef.cubeGenerators.map((x) => newCube(x)));
+
+     es.add(newAvatar());
      return es;
    }
+
+  Entity newAvatar() {
+    return _world.createEntity([
+      new AvatarControl()
+      , new AvatarNumbers()
+      , new Transform.w3d(new Vector3(0.0,0.0,0.0))
+    ]);
+  }
 }
 
 class Factory_Renderables {
