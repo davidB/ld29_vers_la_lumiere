@@ -374,7 +374,7 @@ if(isFinite(a)){z=a<0?Math.ceil(a):Math.floor(a)
 return z+0}throw H.b(P.f(''+a))},"$0","gDi",0,0,449,"toInt"],
 HG:[function(a){return this.yu(this.UD(a))},"$0","gD5",0,0,449,"round"],
 UD:[function(a){if(a<0)return-Math.round(-a)
-else return Math.round(a)},"$0","gvs",0,0,581,"roundToDouble"],
+else return Math.round(a)},"$0","gW0",0,0,581,"roundToDouble"],
 Hp:[function(a){return a},"$0","gfp",0,0,16,"toDouble"],
 WZ:[function(a,b){if(b<2||b>36)throw H.b(P.KP(b))
 return a.toString(b)},"$1","gEI",2,0,250,45,"toRadixString"],
@@ -649,7 +649,7 @@ JO:{
 "^":"Tp:16;a-,c-",
 $0:[function(){this.c.$2(this.a.a,null)},"$0",null,0,0,16,"call"]},
 FU:{
-"^":"a;Hg-,Y6-,hJ-,N0-,yc-,Xz-,va-,EF-,ji-,iR-,rj-,he-,zz-",
+"^":"a;Hg-,Y6-,hJ-,N0-,yc-,Xz-,vu-,EF-,ji-,iR-,rj-,he-,zz-",
 qi:[function(a){var z,y,x,w
 z=$.Qm()==null
 y=$.vy()
@@ -658,7 +658,7 @@ this.EF=x
 if(!x)y=y!=null&&$.iG()!=null
 else y=!0
 this.ji=y
-this.va=z&&!x
+this.vu=z&&!x
 y=H.IY
 x=H.VM(new P.Sw(null,0,0,0),[y])
 x.Eo(null,y)
@@ -736,7 +736,7 @@ z.av=(y+1&w-1)>>>0
 return v},"$0","ghZ",0,0,611,"dequeue"],
 xB:[function(){var z,y,x
 z=this.Jc()
-if(z==null){if(init.globalState.yc!=null&&init.globalState.iR.x4(0,init.globalState.yc.jO)&&init.globalState.va===!0&&init.globalState.yc.Gx.X5===0)H.vh(P.FM("Program exited with open ReceivePorts."))
+if(z==null){if(init.globalState.yc!=null&&init.globalState.iR.x4(0,init.globalState.yc.jO)&&init.globalState.vu===!0&&init.globalState.yc.Gx.X5===0)H.vh(P.FM("Program exited with open ReceivePorts."))
 y=init.globalState
 if(y.EF===!0&&y.iR.X5===0&&y.Xz.GL===0){y=y.rj
 x=H.t0(P.EF(["command","close"],null,null))
@@ -1219,7 +1219,7 @@ z=b[0]
 z.$stubName
 y=z.$callName
 z.$reflectionInfo=c
-x=H.zh(z).lx
+x=H.zh(z).AM
 w=d?Object.create(new H.UA().constructor.prototype):Object.create(new H.v(null,null,null,null).constructor.prototype)
 w.$initialize=w.constructor
 if(d)v=function(){this.$initialize()}
@@ -1559,7 +1559,7 @@ XR:{
 "^":"mW;Nt-",
 gA:[function(a){return J.GP(this.Nt.qu)},null,null,1,0,function(){return H.IG(function(a){return{func:"nV",ret:[P.Dk,a]}},this.$receiver,"XR")},"iterator"]},
 FD:{
-"^":"a;Qj-,c4-,xm-,Rv-,J5-,Mo-,lx-,Nk-",
+"^":"a;Qj-,c4-,xm-,Rv-,J5-,Mo-,AM-,Nk-",
 static:{"^":"t4-,FV-,Oc-,yM-",zh:[function(a){var z,y,x,w
 z=a.$reflectionInfo
 if(z==null)return
@@ -2049,7 +2049,7 @@ y=this.b.mS(P.hK(z.gO3(a))).bu(0)
 x=z.goc(a)
 w=z.gt5(a)
 if(J.xC(w,""))return
-v=this.c.mA(x,w,y,a.gex(),a.AM)
+v=this.c.mA(x,w,y,a.gex(),a.tB)
 this.d.push(this.a.OA.f4(v).ml(0,new F.AX(v)))},"$1",null,2,0,0,647,"call"]},
 AX:{
 "^":"Tp:0;e-",
@@ -2135,7 +2135,7 @@ h3:{
 $1:[function(a){return a.responseText},"$1",null,2,0,0,31,"call"]}}],["asset_pack_file","package:asset_pack/asset_pack_file.dart",,Z,{
 "^":"",
 Rq:{
-"^":"a;oc>-,O3>-,t5>-,ex<-,AM-",
+"^":"a;oc>-,O3>-,t5>-,ex<-,tB-",
 $isRq:true},
 Aw:{
 "^":"a;jm-",
@@ -3254,7 +3254,7 @@ y=P.ot(this.gQC())
 if(y!=null)y=y.Qy(z)
 else z.$0()
 return y},"$1","goz",2,0,function(){return H.IG(function(a){return{func:"uk",ret:P.b8,args:[[P.MO,a]]}},this.$receiver,"ms")},218,"_recordCancel"],
-mO:[function(a){if((this.Gv&8)!==0)this.iP.zd(0)
+mO:[function(a){if((this.Gv&8)!==0)this.iP.yy(0)
 P.ot(this.gj9())},"$1","gcI",2,0,function(){return H.IG(function(a){return{func:"V9e",void:true,args:[[P.MO,a]]}},this.$receiver,"ms")},218,"_recordPause"],
 m4:[function(a){if((this.Gv&8)!==0)this.iP.QE(0)
 P.ot(this.gZ9())},"$1","gyb",2,0,function(){return H.IG(function(a){return{func:"V9e",void:true,args:[[P.MO,a]]}},this.$receiver,"ms")},218,"_recordResume"],
@@ -3321,7 +3321,7 @@ a.t2(this)}},"$1","gNl",2,0,682,683,"_setPendingEvents"],
 fe:[function(a){this.Lj.toString
 this.dB=a},"$1","gpN",2,0,function(){return H.IG(function(a){return{func:"HI",void:true,args:[{func:"Gde",void:true,args:[a]}]}},this.$receiver,"KA")},684,"onData"],
 fm:[function(a,b){if(b==null)b=P.AY()
-this.o7=P.VH(b,this.Lj)},"$1","gGV",2,0,685,46,"onError"],
+this.o7=P.VH(b,this.Lj)},"$1","geO",2,0,685,46,"onError"],
 y5:[function(a){if(a==null)a=P.v3()
 this.Lj.toString
 this.Bd=a},"$1","gNSN",2,0,204,686,"onDone"],
@@ -3331,7 +3331,7 @@ if((z&8)!==0)return
 y=(z+128|4)>>>0
 this.Gv=y
 if(z<128&&this.Ri!=null){x=this.Ri
-if(x.Gv===1)x.Gv=3}if((z&4)===0&&(y&32)===0)this.tr(this.gj9())},function(a){return this.Yp(a,null)},"zd","$1",null,"gX0",0,2,687,110,688,"pause"],
+if(x.Gv===1)x.Gv=3}if((z&4)===0&&(y&32)===0)this.tr(this.gj9())},function(a){return this.Yp(a,null)},"yy","$1",null,"gX0",0,2,687,110,688,"pause"],
 QE:[function(a){var z=this.Gv
 if((z&8)!==0)return
 if(z>=128){z-=128
@@ -3635,7 +3635,7 @@ delete z["<non-identifier-key>"]
 return z},"$0","Xe",0,0,16,"_newHashTable"],
 Ou:[function(a,b){return J.xC(a,b)},"$2","iv",4,0,35,181,234,"_defaultEquals"],
 T9:[function(a){return J.v1(a)},"$1","py",2,0,41,181,"_defaultHashCode"],
-Py:[function(a,b,c,d,e){return H.VM(new P.bA(0,null,null,null,null),[d,e])},"$3$equals$hashCode$isValidKey",null,0,7,function(){return H.IG(function(a,b){return{func:"aQ",ret:[P.c1,a,b],named:{equals:{func:"by",ret:J.kn,args:[a,a]},hashCode:{func:"RJ",ret:J.im,args:[a]},isValidKey:{func:"yJ",ret:J.kn,args:[null]}}}},this.$receiver,"c1")},110,110,110,235,236,237,"new HashMap"],
+Py:[function(a,b,c,d,e){return H.VM(new P.bA(0,null,null,null,null),[d,e])},"$3$equals$hashCode$isValidKey",null,0,7,function(){return H.IG(function(a,b){return{func:"aQ",ret:[P.c1,a,b],named:{equals:{func:"by",ret:J.kn,args:[a,a]},hashCode:{func:"RJ",ret:J.im,args:[a]},isValidKey:{func:"ra",ret:J.kn,args:[null]}}}},this.$receiver,"c1")},110,110,110,235,236,237,"new HashMap"],
 yv:[function(a){return H.VM(new P.YO(0,null,null,null,null),[a])},"$0",null,0,0,function(){return H.IG(function(a){return{func:"em",ret:[P.mk,a]}},this.$receiver,"mk")},"new HashSet$identity"],
 FO:[function(a){var z,y
 if($.xb().tg(0,a))return"(...)"
@@ -3678,8 +3678,8 @@ if(q==null){y+=5
 q="..."}}if(q!=null)b.push(q)
 b.push(u)
 b.push(v)},"$2","wB",4,0,239,160,240,"_iterablePartsToStrings"],
-L5:[function(a,b,c,d,e){return H.VM(new P.YB(0,null,null,null,null,null,0),[d,e])},"$3$equals$hashCode$isValidKey",null,0,7,function(){return H.IG(function(a,b){return{func:"Vg",ret:[P.Xk,a,b],named:{equals:{func:"D4",ret:J.kn,args:[a,a]},hashCode:{func:"vX",ret:J.im,args:[a]},isValidKey:{func:"yJ",ret:J.kn,args:[null]}}}},this.$receiver,"Xk")},110,110,110,235,236,237,"new LinkedHashMap"],
-Ls:[function(a,b,c,d){return H.VM(new P.b6(0,null,null,null,null,null,0),[d])},"$3$equals$hashCode$isValidKey",null,0,7,function(){return H.IG(function(a){return{func:"VN",ret:[P.n0,a],named:{equals:{func:"Mt",ret:J.kn,args:[a,a]},hashCode:{func:"aJ",ret:J.im,args:[a]},isValidKey:{func:"yJ",ret:J.kn,args:[null]}}}},this.$receiver,"n0")},110,110,110,235,236,237,"new LinkedHashSet"],
+L5:[function(a,b,c,d,e){return H.VM(new P.YB(0,null,null,null,null,null,0),[d,e])},"$3$equals$hashCode$isValidKey",null,0,7,function(){return H.IG(function(a,b){return{func:"Vg",ret:[P.Xk,a,b],named:{equals:{func:"D4",ret:J.kn,args:[a,a]},hashCode:{func:"vX",ret:J.im,args:[a]},isValidKey:{func:"ra",ret:J.kn,args:[null]}}}},this.$receiver,"Xk")},110,110,110,235,236,237,"new LinkedHashMap"],
+Ls:[function(a,b,c,d){return H.VM(new P.b6(0,null,null,null,null,null,0),[d])},"$3$equals$hashCode$isValidKey",null,0,7,function(){return H.IG(function(a){return{func:"VN",ret:[P.n0,a],named:{equals:{func:"Mt",ret:J.kn,args:[a,a]},hashCode:{func:"aJ",ret:J.im,args:[a]},isValidKey:{func:"ra",ret:J.kn,args:[null]}}}},this.$receiver,"n0")},110,110,110,235,236,237,"new LinkedHashSet"],
 vW:[function(a){var z,y,x,w
 z={}
 for(x=0;w=$.tw(),x<w.length;++x)if(w[x]===a)return"{...}"
@@ -6285,7 +6285,6 @@ guL:[function(a){return this.T2(a,"display")},null,null,1,0,20,"display"],
 suL:[function(a,b){this.hV(a,"display",b,"")},null,null,3,0,93,38,"display"],
 sfg:[function(a,b){this.hV(a,"height",b,"")},null,null,3,0,93,38,"height"],
 sFK:[function(a,b){this.hV(a,"opacity",b,"")},null,null,3,0,93,38,"opacity"],
-sNm:[function(a,b){this.hV(a,H.d(P.O2())+"transition",b,"")},null,null,3,0,93,38,"transition"],
 sOf:[function(a,b){this.hV(a,H.d(P.O2())+"transition-duration",b,"")},null,null,3,0,93,38,"transitionDuration"],
 sDc:[function(a,b){this.hV(a,H.d(P.O2())+"transition-property",b,"")},null,null,3,0,93,38,"transitionProperty"],
 siy:[function(a,b){this.hV(a,H.d(P.O2())+"transition-timing-function",b,"")},null,null,3,0,93,38,"transitionTimingFunction"],
@@ -7089,7 +7088,7 @@ hy:{
 Kf:{
 "^":"tp;",
 "%":"SVGTextPathElement;SVGTextContentElement"},
-RJ:{
+Pt:{
 "^":"Kf;x=-,y=-",
 "%":"SVGAltGlyphElement|SVGTSpanElement|SVGTextElement|SVGTextPositioningElement"},
 KQ:{
@@ -7630,11 +7629,11 @@ $1:[function(a){var z=this.a
 z.a=(z.a|S.Kk(a).ax)>>>0},"$1",null,2,0,0,326,"call"]},
 jR:{
 "^":"a;",
-D3:[function(){},"$0","ghs",0,0,132,"_removed"],
+D3:[function(){},"$0","gZc",0,0,132,"_removed"],
 $isjR:true},
 au:{
 "^":"P66;",
-D3:[function(){this.c6()},"$0","ghs",0,0,132,"_removed"],
+D3:[function(){this.c6()},"$0","gZc",0,0,132,"_removed"],
 hj:[function(){},"$0","gPM",0,0,132,"cleanUp"]},
 P66:{
 "^":"jR+LU;"},
@@ -7655,7 +7654,7 @@ x.fixed$length=init
 w=H.VM(new S.EP(x,0),[S.jR])
 y.u(0,z,w)}J.kW(w,a.jO,c)
 y=b.ax
-a.kF=(a.kF|y)>>>0},"$3","gNut",6,0,775,22,111,286,"_addComponent"],
+a.kF=(a.kF|y)>>>0},"$3","ghs",6,0,775,22,111,286,"_addComponent"],
 dK:[function(a,b){var z,y,x,w
 if((a.kF&b.ax)>>>0!==0){z=b.W1
 y=this.UT
@@ -7690,13 +7689,12 @@ $1:[function(a){return this.a.zM(a)},"$1",null,2,0,0,780,"call"]},
 vG:{
 "^":"a;q2-,pR-",
 nx:[function(a){var z,y,x
-z=this.pR
-y=J.F8(a)
-z=z.hu
-x=z.length
-if(typeof y!=="number")return y.C()
-if(y<x){if(y<0)return H.e(z,y)
-return z[y]}return},"$1","gCj",2,0,function(){return H.IG(function(a){return{func:"Uc",ret:a,args:[S.qn]}},this.$receiver,"vG")},780,"getSafe"],
+z=a.jO
+y=this.pR.hu
+x=y.length
+if(typeof z!=="number")return z.C()
+if(z<x){if(z<0)return H.e(y,z)
+return y[z]}return},"$1","gCj",2,0,function(){return H.IG(function(a){return{func:"Uc",ret:a,args:[S.qn]}},this.$receiver,"vG")},780,"getSafe"],
 n9:[function(a,b,c){var z,y,x,w
 z=S.Kk(a)
 this.q2=z
@@ -7751,9 +7749,7 @@ return this.rO++},"$0","ga0",0,0,449,"checkOut"]},
 ME:{
 "^":"a;",
 gWY:[function(){return this.NS},null,null,1,0,404,"passive"],
-VU:[function(){if(this.IY()){this.xU(this.F2)
-this.vu(0)}},"$0","gbF",0,0,132,"process"],
-vu:[function(a){},"$0","geX",0,0,132,"end"],
+VU:[function(){if(this.IY())this.xU(this.F2)},"$0","gbF",0,0,132,"process"],
 eQ:[function(a){},"$0","gu5",0,0,132,"initialize"],
 Y1:[function(a){},"$1","geh",2,0,774,780,"inserted"],
 f3:[function(a){},"$1","gRt",2,0,774,780,"removed"],
@@ -7768,7 +7764,7 @@ y=a.kF
 w=(z&y)>>>0===z
 z=this.z8
 if(typeof z!=="number")return z.D()
-if(z>0&&w)w=(z&y)>>>0>0
+if(z>0&&w)w=(z&y)>0
 z=this.cd
 if(z>0&&w)w=(z&y)===0
 if(w&&!x){this.F2.h(0,a)
@@ -7857,18 +7853,6 @@ IY:[function(){return!0},"$0","gFW",0,0,404,"checkProcessing"]},
 Gu:{
 "^":"Tp:0;a-",
 $1:[function(a){return this.a.Oz(a)},"$1",null,2,0,0,780,"call"]},
-xE:{
-"^":"ME;",
-IY:[function(){var z,y
-z=this.fS
-y=this.BW.F3
-z+=y
-this.fS=z
-this.tB+=y
-y=this.ra
-if(z>=y){this.fS=z-y
-return!0}return!1},"$0","gFW",0,0,404,"checkProcessing"],
-vu:[function(a){this.tB=0},"$0","geX",0,0,132,"end"]},
 EP:{
 "^":"Fm;hu-,Im-",
 t:[function(a,b){var z=this.hu
@@ -8382,8 +8366,8 @@ Lt:{
 $isLt:true}}],["game","package:ld29_vers_la_lumiere/game.dart",,Q,{
 "^":"",
 fq:{
-"^":"a;IS-,Gy-,S1-,Hq-,wk-,Hw-,GI-,bX-,fa-,CX-,jY-,uT-,eO-",
-kI:[function(){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k
+"^":"a;IS-,Gy-,S1-,Hq-,wk-,Hw-,GI-,bX-,fa-,CX-,jY-,uT-",
+kI:[function(){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l
 z=Array(16)
 z.fixed$length=init
 z=H.VM(new S.EP(z,0),[S.qn])
@@ -8462,65 +8446,55 @@ z.u(0,"filter2d",new G.QC(y))
 z.u(0,"shaderProgram",new G.wX(y,new L.Ec(P.L5(null,null,null,J.O,L.CT))))}if(x!=null){z.u(0,"audioclip",new F.cJ())
 v.u(0,"audioclip",new O.TP(x))}this.fa=l
 this.jY=new Q.x9(new Q.Jf(0),this.wk,l)
-z=this.IS
-y=this.GI
-if(y==null)H.vh(P.FM("webgl not supported"))
-x=S.Eg([C.Af])
-w=Array(16)
-w.fixed$length=init
-w=H.VM(new S.EP(w,0),[S.qn])
-v=x.Hv
-u=x.z8
-t=new T.In(y,null,null,"// based on\n// http://geeks3d.developpez.com/GLSL/raymarching/\n// http://9bitscience.blogspot.fr/2013/07/raymarching-distance-fields_14.html\n// http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm\n// https://www.shadertoy.com/view/MsXGWr\nprecision mediump float;\n\nconst float PI = 3.14159265358979323846264;\nconst float surface = 0.001;\nconst vec3 eps = vec3(surface*0.5,0.0,0.0);\n\n${obj_uniforms}\n\nvarying vec2 vTexCoord0;\nuniform vec3 _PixelSize;\nuniform vec3 _ViewPosition, _ViewUp, _FocusPosition;\nuniform float _Near, _Far, _TanHalfFov;\n\n// ro  : the ray origin position (eg: the camera position)\n// rd  : the ray direction for the current pixel\n// rd0 : the camera direction (that is the ray direction at the center of the screen) \n// t   : distance traveled\n// p   : a position 3D\n// de(): distance estimator function (~ map() or f())\n// sd_xxxx() : a signed distance function\n// ud_xxxx() : a unisigned distance function\n// o   : an object\n// obj.x : distance of the object\n// obj.y : id of the object 's material\n\n// type alias\n#define obj vec2\n#define color vec4\n\n#define MAXSTEP ${stepmax}\n//------------------------------------------------------------------------------\n// primitive shape (distance functions)\n\n\n//------------------------------------------------------------------------------\n// Domain operations\n\n// rotation/translation\nvec3 opTx( vec3 p, mat4 m) {\n    return (m * vec4(p, 1.0)).xyz;\n    //return (inverse(m) * vec4(p, 1.0)).xyz;\n}\n//------------------------------------------------------------------------------\n// Objects definitions (distance functions)\n\n${obj_sds}\n\n//------------------------------------------------------------------------------\n// Distance estimator\nfloat matIdIgnored = -1.0;\nobj obj_union(obj o, float d, float matId) {\n  //if (matIdIgnored != matId && abs(o.x) > abs(d)) { obj(d, matId);}\n  float update = step(abs(d), abs(o.x)) * (step(matId, matIdIgnored) + step(matIdIgnored, matId));\n  return mix(o, vec2(d, matId), update);\n}\n\nobj de(in vec3 p) {\n  obj o = vec2(_Far, 0.0);\n  ${obj_des}\n  return o;\n}\n\n\n//------------------------------------------------------------------------------\n// Shading\n\n${obj_mats}\n\n\ncolor shade(obj o, vec3 p, float t, vec3 rd) {\n  ${obj_shs}\n  return color(0.0, 0.0, 0.0, 0.0);\n}\n\nvec3 bgcolor(vec3 ro, vec3 rd) {\n  ${bgcolor}\n  return 3.*mix(vec3(0.025,0.1,0.05)+rd*0.025,vec3(0.1,0.2,0.3)+rd*0.2,smoothstep(-0.1,0.1,rd.z));\n}\n// front to back\n// GL_ONE_MINUS_DST_ALPHA, GL_ONE\ncolor blend2(color front, color back) {\n  vec4 c;\n  //if (back.a < 0.2) return front;\n  //c.rgb = mix(front.rgb, back.rgb, front.a);\n  c.rgb = (1.0 - front.a) * back.a * (back.rgb) + front.rgb * front.a;\n  c.a = front.a + (1.0 - front.a) * back.a;//(1.0 - src.a) * dst.a;\n  //c.a = max(front.a, back.a);\n  //c.a = 1.0;\n  return c;\n}\n// try http://en.wikipedia.org/wiki/Alpha_compositing\ncolor blend(color front, color back) {\n  vec4 c;\n  c.a = front.a + (1.0 - front.a) * back.a;\n  c.rgb = ((1.0 - front.a) * back.a * back.rgb + front.rgb * front.a) * (1.0/c.a);\n  return c;\n}\n\nfloat random(vec2 n) {\n  return fract(sin(dot(n.xy, vec2(12.9898, 78.233)))* 43758.5453);\n}\n\nvoid main(void) {\n  float far = _Far;\n  float near = _Near;\n  vec3 ro= _ViewPosition;\n\n  // Configuration de la camera.\n  vec3 vz = normalize(ro - _FocusPosition);\n  vec3 vup = _ViewUp;\n  vec3 vx = normalize(cross(vup,vz));\n  vec3 vy = -cross(vx,vz);\n  vec2 vPos = -1.0 + 2.0 * vTexCoord0.xy; //([-1.0, 1.0], [-1.0, 1.0])\n  float coeff = _TanHalfFov;\n  //vec3 scrCoord=vcv+vPos.x*u*_PixelSize.x+vPos.y*v*_PixelSize.y;\n  //vec3 scrCoord = vcv+vPos.x*u* _PixelSize.z + vPos.y*v;\n  //vec3 scrCoord = ro + vz * -1.0 + vPos.x* vx * _PixelSize.z + vPos.y* vy;\n  vec3 scrCoord = ro + vz * -1.0 + vx * vPos.x * coeff * _PixelSize.z + vy * vPos.y * coeff;\n  vec3 rd=normalize(scrCoord-ro);\n  //float epsilonPixel = sin(atan(coeff)) * _PixelSize.x;\n\n  // Raymarching.\n  vec2 o = obj(0.0, 0.0);\n  float t = near;\n  vec3 p;\n  float epsilon_de = 0.005;\n  vec4 col = vec4(0.0,0.0,0.0,0.0);\n  for(int i=0;i< MAXSTEP;i++) {\n    if (col.a >= 0.85 || t > far) break;\n    p = ro + rd * t;\n    o = de(p);\n    //epsilon_de = epsilonPixel * t;\n    if (abs(o.x) < epsilon_de) {\n      matIdIgnored = -1.0;\n      \n      col = blend(col, shade(o, p, t, rd));\n      o.x = 0.0;\n      matIdIgnored = o.y;\n    }\n    t += abs(o.x);\n  }\n  //c.a = 1.0;\n  //gl_FragColor= vec4((t - near)/(far - near), 0.0, 0.0, 1.0);  //check last distance\n  //gl_FragColor= vec4(rd, 1.0); // check ray direction\n  vec3 bg=bgcolor(ro, rd);\n  col.rgb+=bg*(1.0-clamp(col.a,0.0,1.0));\n  gl_FragColor = col + vec4(random(0.1 * vTexCoord0.xy) / 255.0);\n  //gl_FragColor = vec4(clamp(col.rgb,0.0,1.0),1.0);\n}\n",256,!1,T.vI(),"",H.VM([],[T.uc]),!0,null,null,[])
-t.Ti(y,null,T.Fo())
-u=new Q.UM(null,null,null,t,l,null,0,null,w,v,x.cd,u,null,null)
-u.l7(x)
-this.uT=u
-k=new S.Yl(0,0,0)
-k.z8=k.YI(0,[C.DS])
-u=Array(16)
-u.fixed$length=init
-u=new Q.Pt(null,z,null,null,!1,0,0,66.66666666666667,0,null,H.VM(new S.EP(u,0),[S.qn]),k.Hv,0,k.z8,null,null)
-u.l7(k)
-this.eO=u
-this.wk.Vw(new S.yx(P.L5(null,null,null,J.O,[S.EP,S.qn]),P.L5(null,null,null,S.qn,[S.EP,J.O]),null))
-u=this.wk
-z=S.Eg([C.G7,C.n8])
+z=this.GI
+if(z==null)H.vh(P.FM("webgl not supported"))
+y=S.Eg([C.Af])
 x=Array(16)
 x.fixed$length=init
-x=new Q.Kq(null,null,0,null,H.VM(new S.EP(x,0),[S.qn]),z.Hv,z.cd,z.z8,null,null)
-x.l7(z)
-u.jV(x)
+x=H.VM(new S.EP(x,0),[S.qn])
+w=y.Hv
+v=new T.In(z,null,null,"// based on\n// http://geeks3d.developpez.com/GLSL/raymarching/\n// http://9bitscience.blogspot.fr/2013/07/raymarching-distance-fields_14.html\n// http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm\n// https://www.shadertoy.com/view/MsXGWr\nprecision mediump float;\n\nconst float PI = 3.14159265358979323846264;\nconst float surface = 0.001;\nconst vec3 eps = vec3(surface*0.5,0.0,0.0);\n\n${obj_uniforms}\n\nvarying vec2 vTexCoord0;\nuniform vec3 _PixelSize;\nuniform vec3 _ViewPosition, _ViewUp, _FocusPosition;\nuniform float _Near, _Far, _TanHalfFov;\n\n// ro  : the ray origin position (eg: the camera position)\n// rd  : the ray direction for the current pixel\n// rd0 : the camera direction (that is the ray direction at the center of the screen) \n// t   : distance traveled\n// p   : a position 3D\n// de(): distance estimator function (~ map() or f())\n// sd_xxxx() : a signed distance function\n// ud_xxxx() : a unisigned distance function\n// o   : an object\n// obj.x : distance of the object\n// obj.y : id of the object 's material\n\n// type alias\n#define obj vec2\n#define color vec4\n\n#define MAXSTEP ${stepmax}\n//------------------------------------------------------------------------------\n// primitive shape (distance functions)\n\n\n//------------------------------------------------------------------------------\n// Domain operations\n\n// rotation/translation\nvec3 opTx( vec3 p, mat4 m) {\n    return (m * vec4(p, 1.0)).xyz;\n    //return (inverse(m) * vec4(p, 1.0)).xyz;\n}\n//------------------------------------------------------------------------------\n// Objects definitions (distance functions)\n\n${obj_sds}\n\n//------------------------------------------------------------------------------\n// Distance estimator\nfloat matIdIgnored = -1.0;\nobj obj_union(obj o, float d, float matId) {\n  //if (matIdIgnored != matId && abs(o.x) > abs(d)) { obj(d, matId);}\n  float update = step(abs(d), abs(o.x)) * (step(matId, matIdIgnored) + step(matIdIgnored, matId));\n  return mix(o, vec2(d, matId), update);\n}\n\nobj de(in vec3 p) {\n  obj o = vec2(_Far, 0.0);\n  ${obj_des}\n  return o;\n}\n\n\n//------------------------------------------------------------------------------\n// Shading\n\n${obj_mats}\n\n\ncolor shade(obj o, vec3 p, float t, vec3 rd) {\n  ${obj_shs}\n  return color(0.0, 0.0, 0.0, 0.0);\n}\n\nvec3 bgcolor(vec3 ro, vec3 rd) {\n  ${bgcolor}\n  return 3.*mix(vec3(0.025,0.1,0.05)+rd*0.025,vec3(0.1,0.2,0.3)+rd*0.2,smoothstep(-0.1,0.1,rd.z));\n}\n// front to back\n// GL_ONE_MINUS_DST_ALPHA, GL_ONE\ncolor blend2(color front, color back) {\n  vec4 c;\n  //if (back.a < 0.2) return front;\n  //c.rgb = mix(front.rgb, back.rgb, front.a);\n  c.rgb = (1.0 - front.a) * back.a * (back.rgb) + front.rgb * front.a;\n  c.a = front.a + (1.0 - front.a) * back.a;//(1.0 - src.a) * dst.a;\n  //c.a = max(front.a, back.a);\n  //c.a = 1.0;\n  return c;\n}\n// try http://en.wikipedia.org/wiki/Alpha_compositing\ncolor blend(color front, color back) {\n  vec4 c;\n  c.a = front.a + (1.0 - front.a) * back.a;\n  c.rgb = ((1.0 - front.a) * back.a * back.rgb + front.rgb * front.a) * (1.0/c.a);\n  return c;\n}\n\nfloat random(vec2 n) {\n  return fract(sin(dot(n.xy, vec2(12.9898, 78.233)))* 43758.5453);\n}\n\nvoid main(void) {\n  float far = _Far;\n  float near = _Near;\n  vec3 ro= _ViewPosition;\n\n  // Configuration de la camera.\n  vec3 vz = normalize(ro - _FocusPosition);\n  vec3 vup = _ViewUp;\n  vec3 vx = normalize(cross(vup,vz));\n  vec3 vy = -cross(vx,vz);\n  vec2 vPos = -1.0 + 2.0 * vTexCoord0.xy; //([-1.0, 1.0], [-1.0, 1.0])\n  float coeff = _TanHalfFov;\n  //vec3 scrCoord=vcv+vPos.x*u*_PixelSize.x+vPos.y*v*_PixelSize.y;\n  //vec3 scrCoord = vcv+vPos.x*u* _PixelSize.z + vPos.y*v;\n  //vec3 scrCoord = ro + vz * -1.0 + vPos.x* vx * _PixelSize.z + vPos.y* vy;\n  vec3 scrCoord = ro + vz * -1.0 + vx * vPos.x * coeff * _PixelSize.z + vy * vPos.y * coeff;\n  vec3 rd=normalize(scrCoord-ro);\n  //float epsilonPixel = sin(atan(coeff)) * _PixelSize.x;\n\n  // Raymarching.\n  vec2 o = obj(0.0, 0.0);\n  float t = near;\n  vec3 p;\n  float epsilon_de = 0.005;\n  vec4 col = vec4(0.0,0.0,0.0,0.0);\n  for(int i=0;i< MAXSTEP;i++) {\n    if (col.a >= 0.85 || t > far) break;\n    p = ro + rd * t;\n    o = de(p);\n    //epsilon_de = epsilonPixel * t;\n    if (abs(o.x) < epsilon_de) {\n      matIdIgnored = -1.0;\n      \n      col = blend(col, shade(o, p, t, rd));\n      o.x = 0.0;\n      matIdIgnored = o.y;\n    }\n    t += abs(o.x);\n  }\n  //c.a = 1.0;\n  //gl_FragColor= vec4((t - near)/(far - near), 0.0, 0.0, 1.0);  //check last distance\n  //gl_FragColor= vec4(rd, 1.0); // check ray direction\n  vec3 bg=bgcolor(ro, rd);\n  col.rgb+=bg*(1.0-clamp(col.a,0.0,1.0));\n  gl_FragColor = col + vec4(random(0.1 * vTexCoord0.xy) / 255.0);\n  //gl_FragColor = vec4(clamp(col.rgb,0.0,1.0),1.0);\n}\n",256,!1,T.vI(),"",H.VM([],[T.uc]),!0,null,null,[])
+v.Ti(z,null,T.Fo())
+w=new Q.UM(null,null,null,v,l,null,0,null,x,w,y.cd,y.z8,null,null)
+w.l7(y)
+this.uT=w
+this.wk.Vw(new S.yx(P.L5(null,null,null,J.O,[S.EP,S.qn]),P.L5(null,null,null,S.qn,[S.EP,J.O]),null))
+w=this.wk
+y=S.Eg([C.G7,C.n8])
+x=Array(16)
+x.fixed$length=init
+x=new Q.Kq(null,null,0,null,H.VM(new S.EP(x,0),[S.qn]),y.Hv,y.cd,y.z8,null,null)
+x.l7(y)
+w.jV(x)
 x=this.wk
-u=E.mc(E.bt())
-z=S.Eg([C.Oy])
+w=E.mc(E.bt())
+y=S.Eg([C.Oy])
 v=Array(16)
 v.fixed$length=init
-v=new Q.ql(null,null,null,null,0,0,833.3333333333333,1944.4444444444446,E.xF(),u,0,0,null,H.VM(new S.EP(v,0),[S.qn]),z.Hv,z.cd,z.z8,null,null)
-v.l7(z)
+v=new Q.ql(null,null,null,null,0,0,833.3333333333333,1944.4444444444446,E.xF(),w,0,0,null,H.VM(new S.EP(v,0),[S.qn]),y.Hv,y.cd,y.z8,null,null)
+v.l7(y)
 x.jV(v)
 v=this.wk
 x=S.Eg([C.DS,C.n8])
-z=Array(16)
-z.fixed$length=init
-z=new Q.oC(null,null,null,null,this,null,0,null,H.VM(new S.EP(z,0),[S.qn]),x.Hv,x.cd,x.z8,null,null)
-z.l7(x)
-v.jV(z)
-z=this.wk
+y=Array(16)
+y.fixed$length=init
+y=new Q.oC(null,null,null,null,this,null,0,null,H.VM(new S.EP(y,0),[S.qn]),x.Hv,x.cd,x.z8,null,null)
+y.l7(x)
+v.jV(y)
+y=this.wk
 v=S.Eg([C.YH,C.n8])
 x=Array(16)
 x.fixed$length=init
 x=new Q.yw(null,null,null,null,0,null,H.VM(new S.EP(x,0),[S.qn]),v.Hv,v.cd,v.z8,null,null)
 x.l7(v)
-z.jV(x)
+y.jV(x)
 this.wk.LV(this.uT,!0)
-this.wk.LV(this.eO,!0)
 this.wk.eQ(0)
 this.Ip(this.IS)
 x=this.IS
 x.tabIndex=-1
 x.focus()
-this.S1.Yf(0,$.nP()).yI(this.gpj())},"$0","gMz",0,0,16,"init"],
+this.S1.Yf(0,$.nP()).yI(this.gpj())},"$0","gV3",0,0,16,"init"],
 IP:[function(a){switch(a){case 1:this.yT()
 break
 case 2:this.bi()
@@ -8661,7 +8635,6 @@ v.uA=!1
 v.fu=40
 v.Z0="return vec3(0.0,0.0,0.0);"
 v.vI()
-w.eO.CH(0)
 v=w.bX
 v.yd+=3
 v.j6(0)
@@ -8700,11 +8673,9 @@ this.b.ic(z,y)}},"$1",null,2,0,0,833,"call"]},
 mE:{
 "^":"Tp:0;c-",
 $1:[function(a){var z,y,x,w
-try{x=this.c
-x.uT.VU()
-x.eO.VU()}catch(w){x=H.Ru(w)
-z=x
-y=new H.XO(w,null)
+try{this.c.uT.VU()}catch(x){w=H.Ru(x)
+z=w
+y=new H.XO(x,null)
 this.c.ic(z,y)}},"$1",null,2,0,0,833,"call"]},
 QR:{
 "^":"Tp:0;a-",
@@ -8947,7 +8918,7 @@ Nq:{
 $isNq:true,
 static:{"^":"yA-,tI-,x2g-,kr-"}},
 ZC:{
-"^":"jR;V3<-",
+"^":"jR;iS-",
 $isZC:true,
 static:{"^":"wU-"}},
 iH:{
@@ -9148,7 +9119,7 @@ Sx:{
 "^":"Tp:0;a-",
 $1:[function(a){return this.a.Oz(a)},"$1",null,2,0,0,780,"call"]},
 ql:{
-"^":"HK;Au-,CW-,qR-,xl-,Ju-,uu-,RO-,ag-,cS-,a8-,Fl-,Gs-,BW-,F2-,Hv-,cd-,z8-,i2-,NS-",
+"^":"HK;Au-,CW-,qR-,js-,Ju-,uu-,RO-,ag-,cS-,a8-,Fl-,Gs-,BW-,F2-,Hv-,cd-,z8-,i2-,NS-",
 Qq:function(a,b,c){return this.cS.$3(a,b,c)},
 wo:function(a,b,c){return this.a8.$3(a,b,c)},
 eQ:[function(a){this.Au=S.Zc(C.Oy,this.BW,Q.Nq)
@@ -9175,7 +9146,7 @@ y=y<=-0.3?0.0018:0.006}z.sLC(x,y)},"$1","gOl",2,0,774,780,"processEntity"],
 Qu:[function(){var z=C.rl.aM(document)
 z=H.VM(new W.Ov(0,z.uv,z.Ph,W.aF(new Q.Zx(this)),z.Sg),[H.Kp(z,0)])
 z.Zz()
-this.xl=z},"$0","gJD",0,0,132,"_bindKeyboardControl"]},
+this.js=z},"$0","gJD",0,0,132,"_bindKeyboardControl"]},
 Zx:{
 "^":"Tp:847;a-",
 $1:[function(a){var z,y,x,w
@@ -9331,34 +9302,6 @@ z=z.hu
 if(y>>>0!==y||y>=z.length)return H.e(z,y)
 y=z[y]
 return y!=null?y.gU7().Ev[1]-2:a},"$2",null,4,0,52,848,849,"call"]},
-Pt:{
-"^":"xE;Ll-,yy-,qw-,Zc-,js-,fS-,tB-,ra-,Gs-,BW-,F2-,Hv-,cd-,z8-,i2-,NS-",
-eQ:[function(a){this.Ll=S.Zc(C.DS,this.BW,Q.ZC)
-this.CH(0)},"$0","gu5",0,0,132,"initialize"],
-IY:[function(){var z=S.xE.prototype.IY.call(this)
-if(!this.js)this.CH(0)
-return z&&this.js},"$0","gFW",0,0,404,"checkProcessing"],
-xU:[function(a){a.aN(0,new Q.y5(this))},"$1","gzw",2,0,786,787,"processEntities"],
-CH:[function(a){var z,y,x
-this.js=!1
-z=this.yy
-y=z.querySelector("#hud").childNodes
-x=y.length
-if(x===1){if(0>=x)return H.e(y,0)
-x=z.querySelector("#score")
-this.qw=x
-if(x!=null)x.textContent="0"
-z=z.querySelector("#scoreInc")
-this.Zc=z
-if(z!=null)J.LY(z.style,"all 1.5s ease-out")
-this.js=!0}},"$0","gTh",0,0,132,"reset"]},
-y5:{
-"^":"Tp:0;a-",
-$1:[function(a){var z,y
-z=this.a
-y=z.Ll.nx(a)
-if(y!=null){z=z.qw
-if(z!=null)z.textContent=C.jn.bu(y.gV3())}},"$1",null,2,0,0,780,"call"]},
 IW:{
 "^":"a;bh<-,Rh<-,F5-,oJ-"},
 VB:{
@@ -9700,7 +9643,7 @@ this.TD=z
 this.H6=new G.fC(P.L5(null,null,null,J.im,G.aR),this)},null,null,2,0,813,182,""]},
 lc:{
 "^":"hh;jp-,H4-,LM-",
-static:{"^":"DqQ-,C1-,VSU-,aW-,bg-,oXT-,pD-,uk-,v0-,UCX-,Vi-,wh-,bGW-,onW-,p3V-,OJ-,l0-,VJ8-,ZT-,mz-,ER-,MXY-,tE-,et-,n0X-,r5-,xX-,Ya-,Co-,dz-,bD-,Nx-,RF-,tN-,ye-,Gt-,Yk-,rv-,Mv-,jF-,RQ-,N8-,PS-,Bw-,XU-,Qh-,wZ-,yI-,aT-,EZ-,G3-,Ro-,tf-,Pj-,wo-,ay-,Ze-,tce-,uw-,Fw-,waf-,Q2-,yOf-,T7-,c4-,VLg-,eG-,YG-,pX-,GB-,Ow-,jM-,Es-,V8-,Ys-,hM-,FN-,FC-,U2-,YW-,n7-,Ni-,Fj-,tq-,Bk-,Ia-,UVN-,wE-,Li-,hA-,H7-,GgX-,bV-,qa-,OlG-,Lz-,dS-,JYH-,uK-,LJ-,Qw-,tF-,m0-,fn-,DZ-,Cu-,fE-,CB-,b7-,J63-,zJ-,hU-,ob-,RP-,xG-,Tn-,Fg-,eT-,wK-,MV-,eR-,hD-,qp-,Ho-"}},
+static:{"^":"DqQ-,C1-,BZ-,aW-,bg-,oXT-,pD-,uk-,v0-,UCX-,Vi-,wh-,bGW-,onW-,p3V-,OJ-,l0-,VJ8-,ZT-,mz-,ER-,MXY-,tE-,et-,n0X-,r5-,xX-,Ya-,Co-,dz-,bD-,Nx-,RF-,tN-,ye-,Gt-,Yk-,rv-,Mv-,jF-,RQ-,N8-,PS-,Bw-,XU-,Qh-,wZ-,yI-,aT-,EZ-,G3-,Ro-,tf-,Pj-,wo-,ay-,Ze-,tce-,uw-,Fw-,waf-,Q2-,yOf-,T7-,c4-,VLg-,eG-,YG-,pX-,GB-,Ow-,jM-,Es-,V8-,Ys-,hM-,FN-,FC-,U2-,YW-,n7-,Ni-,Fj-,tq-,Bk-,Ia-,UVN-,wE-,Li-,hA-,H7-,GgX-,bV-,qa-,OlG-,Lz-,dS-,JYH-,uK-,LJ-,Qw-,tF-,m0-,fn-,DZ-,Cu-,fE-,CB-,b7-,J63-,zJ-,hU-,ob-,RP-,xG-,Tn-,Fg-,eT-,wK-,MV-,eR-,hD-,qp-,Ho-"}},
 iX:{
 "^":"hh;iB-,Tx-,Nh-,Vy-,jA-,KI-,Sx-,Xa-,yp-,hz-,pr-,jp-,H4-,LM-",
 gx:[function(a){return this.Nh},null,null,1,0,449,"x"],
@@ -9908,7 +9851,7 @@ this.Wy=a
 z=a.createBuffer()
 this.Ai=z
 a.bindBuffer(34962,z)
-a.bufferData(34962,new Float32Array(H.XF([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1])),35044)},"$1","gMz",2,0,0,368,"init"]},
+a.bufferData(34962,new Float32Array(H.XF([-1,-1,1,-1,-1,1,-1,1,1,-1,1,1])),35044)},"$1","gV3",2,0,0,368,"init"]},
 fQ:{
 "^":"a;Wy-,F5-,fO-,Ob-,RB-,Df-,Ya-,KE-",
 bL:[function(){var z,y,x,w,v,u,t,s,r,q,p,o,n,m,l,k
@@ -10069,7 +10012,7 @@ y=u.mA("filter2d_fxaa","filter2d","packages/glf/shaders/filters_2d/fxaa.frag",nu
 u=u.OA.f4(y)
 t=this.Ms.Ix
 y=t.mA("filter2d_hvblur","filter2d","packages/glf/shaders/filters_2d/hvblur.frag",null,null)
-return P.pH([z,x,w,v,u,t.OA.f4(y)],!1).ml(0,new G.rt(this))},"$0","gMz",0,0,16,"init"],
+return P.pH([z,x,w,v,u,t.OA.f4(y)],!1).ml(0,new G.rt(this))},"$0","gV3",0,0,16,"init"],
 pK:[function(a){var z=this.Ms.Ix.y4("filter2d_brightness")
 z=new L.tJ(z.gEe(),z.y9)
 z.y9=new G.TK(a)
@@ -10601,7 +10544,7 @@ y.kI()
 $.UH=y
 $.yH().Yf(0,$.nl()).yI(new E.VW())
 $.yH().Yf(0,$.aD()).yI(new E.oZ())
-y=new Q.fq(null,null,null,"l0",null,null,null,null,null,null,null,null,null)
+y=new Q.fq(null,null,null,"l0",null,null,null,null,null,null,null,null)
 y.IS=document.querySelector("#screenInGame")
 y.Gy=z
 y.S1=$.yH()
@@ -10643,7 +10586,7 @@ y+=a[3].toUpperCase()
 if(4>=z)return H.e(a,4)
 return y+a[4].toUpperCase()+x},"$1","cP",2,0,87,425,"canonicalizedLocale"],
 M7:{
-"^":"a;Kt-,wq-,MD-,AU-,o3-,XH-,qn-,os-,xy-,ND-,lU-,j8-,Pn-,dH-,al-,UB-,E0-,HX-,WW2-,Be-",
+"^":"a;Kt-,wq-,MD-,AU-,o3-,XH-,qn-,os-,xy-,qw-,lU-,j8-,Pn-,dH-,al-,UB-,E0-,HX-,WW2-,Be-",
 ys:[function(a){var z
 if(a==null)return
 this.al=J.JA(a," ","\u00a0")
@@ -10793,9 +10736,9 @@ v.j8=z
 if(z<0)v.j8=0}if(x>=0)r=x
 else r=t
 z=r-y
-v.ND=z
+v.qw=z
 if(v.os){v.xy=y+z
-if(s===0&&z===0)v.ND=1}v.o3=P.y(0,this.SI)
+if(s===0&&z===0)v.qw=1}v.o3=P.y(0,this.SI)
 z=this.ns
 v.XH=z===0||z===t
 return J.AG(this.Km)},"$0","gWd",0,0,20,"_parseTrunk"],
@@ -11001,7 +10944,7 @@ $1:[function(a){return J.jU(a)},"$1",null,2,0,0,31,"call"]},
 dV:{
 "^":"a;IS-,S1-,ma-,IJ-,vr-",
 kI:[function(){this.S1.Yf(0,$.aD()).yI(new S.du(this))
-this.vr=new S.Ll(this)},"$0","gMz",0,0,16,"init"],
+this.vr=new S.Ll(this)},"$0","gV3",0,0,16,"init"],
 Li:[function(a){var z,y
 z=this.IS
 if(z==null)return
@@ -11026,7 +10969,7 @@ wY:{
 "^":"a;IS-,S1-,G1>-,Yc<-,Q9<-,ma-,vr-,hO-",
 kI:[function(){this.S1.Yf(0,$.nl()).yI(new S.TU(this))
 this.S1.Yf(0,$.aD()).yI(new S.nH(this))
-this.vr=new S.zV(this)},"$0","gMz",0,0,16,"init"],
+this.vr=new S.zV(this)},"$0","gV3",0,0,16,"init"],
 Li:[function(a){var z,y,x,w,v,u
 x=this.IS
 if(x==null)return
@@ -11044,7 +10987,9 @@ x=J.Vg(y)
 x.gtH(x).ml(0,this.gZO())}catch(u){H.Ru(u)}},"$0","gjX",0,0,16,"update"],
 AG:[function(a){var z=this.kY()
 if(z!=null)J.nU(C.ol.gmW(window),"/a/"+z)},"$1","gZO",2,0,0,640,"_onNext"],
-kY:[function(){switch(this.Yc){case"l0":return"l1"}return},"$0","gSo",0,0,16,"_findNextAreaId"]},
+kY:[function(){switch(this.Yc){case"l0":return"l1"
+case"l1":return"l2"
+case"l2":return"l0"}return},"$0","gSo",0,0,16,"_findNextAreaId"]},
 TU:{
 "^":"Tp:0;a-",
 $1:[function(a){var z=this.a
@@ -11481,7 +11426,7 @@ zL:{
 "^":"a;",
 $iszL:true},
 JM:{
-"^":"a;Oc-,Cf-,EY-,tl-,QD-,Bq-,A9-,Ws-,ws-,x8-,qO-,pz-",
+"^":"a;Oc-,Cf-,EY-,tl-,QD-,zd-,A9-,Ws-,ws-,x8-,qO-,pz-",
 XT:[function(){var z,y,x
 this.QD.disconnect(0)
 this.tl.disconnect(0)
@@ -11495,18 +11440,18 @@ if(z==null)return
 this.tl.gain.value=z
 this.A9=null},null,null,3,0,689,234,"mute"],
 pJ:[function(){var z,y
-for(z=this.Bq,y=z.length-1;y>=0;--y)z[y].geZ()},"$0","gAV",0,0,404,"_scanSounds"],
+for(z=this.zd,y=z.length-1;y>=0;--y)z[y].geZ()},"$0","gAV",0,0,404,"_scanSounds"],
 sX0:[function(a,b){if(b){if(this.Ws)return
 this.t7()
 this.Ws=!0}else{if(!this.Ws)return
 this.XZ()
 this.Ws=!1}},null,null,3,0,689,234,"pause"],
 t7:[function(){this.pJ()
-var z=this.Bq
+var z=this.zd
 z.toString
 H.bQ(z,new Q.i6())},"$0","gjv",0,0,132,"_pause"],
 XZ:[function(){this.pJ()
-var z=this.Bq
+var z=this.zd
 z.toString
 H.bQ(z,new Q.C7())},"$0","giz",0,0,132,"_resume"],
 gx:[function(a){return this.ws},null,null,1,0,49,"x"],
@@ -11518,7 +11463,7 @@ z=z.my.createPanner()
 this.QD=z
 z.coneOuterGain=1
 this.XT()
-this.Bq=H.VM([],[Q.zL])},null,null,6,0,928,925,929,930,"_internal"],
+this.zd=H.VM([],[Q.zL])},null,null,6,0,928,925,929,930,"_internal"],
 $isJM:true},
 i6:{
 "^":"Tp:0;",
@@ -12304,8 +12249,6 @@ W.ew.$isrg=true
 W.ew.$isa=true
 Q.i0.$isa=true
 P.r2.$isa=true
-Q.ZC.$isjR=true
-Q.ZC.$isa=true
 Q.iH.$isjR=true
 Q.iH.$isa=true
 U.dq.$isjR=true
@@ -12313,6 +12256,8 @@ U.dq.$isLU=true
 U.dq.$isa=true
 Q.Nq.$isjR=true
 Q.Nq.$isa=true
+Q.ZC.$isjR=true
+Q.ZC.$isa=true
 Q.zN.$isjR=true
 Q.zN.$isa=true
 L.tJ.$isa=true
@@ -12446,7 +12391,6 @@ J.Iz=function(a){return J.RE(a).gfY(a)}
 J.JA=function(a,b,c){return J.rY(a).h8(a,b,c)}
 J.K0=function(a){return J.RE(a).gd4(a)}
 J.KU=function(a,b){return J.RE(a).T2(a,b)}
-J.LY=function(a,b){return J.RE(a).sNm(a,b)}
 J.M5=function(a,b){return J.w1(a).rb(a,b)}
 J.M6=function(a){return J.RE(a).grk(a)}
 J.MX=function(a){return J.RE(a).gQg(a)}
@@ -12722,7 +12666,7 @@ C.tP=new B.EA("af",",","\u00a0","%","0","+","-","E","\u2030","\u221e","NaN","#,#
 C.N4=new B.EA("am",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","ETB")
 C.Sk=new B.EA("ar","\u066b","\u066c","\u066a","\u0660","+","-","\u0627\u0633","\u0609","\u221e","\u0644\u064a\u0633\u00a0\u0631\u0642\u0645","#0.###;#0.###-","#E0","#,##0%","\u00a4\u00a0#0.00;\u00a4\u00a0#0.00-","EGP")
 C.fm=new B.EA("bg",",","\u00a0","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","#,##0.00\u00a0\u00a4","BGN")
-C.Cb=new B.EA("bn",".",",","%","\u09e6","+","-","E","\u2030","\u221e","\u09b8\u0982\u0996\u09cd\u09af\u09be\u00a0\u09a8\u09be","#,##,##0.###","#E0","#,##,##0%","#,##,##0.00\u00a4;(#,##,##0.00\u00a4)","BDT")
+C.RJ=new B.EA("bn",".",",","%","\u09e6","+","-","E","\u2030","\u221e","\u09b8\u0982\u0996\u09cd\u09af\u09be\u00a0\u09a8\u09be","#,##,##0.###","#E0","#,##,##0%","#,##,##0.00\u00a4;(#,##,##0.00\u00a4)","BDT")
 C.rA=new B.EA("ca",",",".","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","EUR")
 C.Zw=new B.EA("cs",",","\u00a0","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0\u00a0%","#,##0.00\u00a0\u00a4","CZK")
 C.ZU=new B.EA("da",",",".","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0\u00a0%","#,##0.00\u00a0\u00a4","DKK")
@@ -12738,7 +12682,7 @@ C.rz=new B.EA("en_IN",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##,
 C.xR=new B.EA("en_SG",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","SGD")
 C.Ba=new B.EA("en_US",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","USD")
 C.Pd=new B.EA("en_ZA",",","\u00a0","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","ZAR")
-C.NcS=new B.EA("es",",",".","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","#,##0.00\u00a0\u00a4","EUR")
+C.Cb=new B.EA("es",",",".","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","#,##0.00\u00a0\u00a4","EUR")
 C.yes=new B.EA("es_419",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00","MXN")
 C.VLw=new B.EA("et",",","\u00a0","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","#,##0%","#0.00\u00a4;(#0.00\u00a4)","EUR")
 C.uS=new B.EA("eu",",",".","%","0","+","-","E","\u2030","\u221e","NaN","#,##0.###","#E0","%\u00a0#,##0","#,##0.00\u00a0\u00a4;(#,##0.00\u00a0\u00a4)","EUR")
@@ -12797,7 +12741,7 @@ C.brI=new B.EA("zh_CN",".",",","%","0","+","-","E","\u2030","\u221e","NaN","#,##
 C.iR=new B.EA("zh_HK",".",",","%","0","+","-","E","\u2030","\u221e","\u975e\u6578\u503c","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","HKD")
 C.fT=new B.EA("zh_TW",".",",","%","0","+","-","E","\u2030","\u221e","\u975e\u6578\u503c","#,##0.###","#E0","#,##0%","\u00a4#,##0.00","TWD")
 C.ig=new B.EA("zu",".",",","%","0","+","-","E","\u2030","\u221e","I-NaN","#,##0.###","#E0","#,##0%","\u00a4#,##0.00;(\u00a4#,##0.00)","ZAR")
-C.an=new H.LP(79,{af:C.tP,am:C.N4,ar:C.Sk,bg:C.fm,bn:C.Cb,ca:C.rA,cs:C.Zw,da:C.ZU,de:C.qe,de_AT:C.pm,de_CH:C.UG,el:C.M2,en:C.Dp,en_AU:C.yq,en_GB:C.mB,en_IE:C.Sc,en_IN:C.rz,en_SG:C.xR,en_US:C.Ba,en_ZA:C.Pd,es:C.NcS,es_419:C.yes,et:C.VLw,eu:C.uS,fa:C.TM,fi:C.DJ,fil:C.NY,fr:C.Zd,fr_CA:C.jh,gl:C.Tu,gsw:C.to,gu:C.ikd,he:C.wb,hi:C.Yq,hr:C.je,hu:C.c7,id:C.xKb,in:C.l2,is:C.m6,it:C.lo,iw:C.SF,ja:C.lL,kn:C.Zu,ko:C.wc,ln:C.hS,lt:C.Ad,lv:C.KB,ml:C.lH,mr:C.Ai,ms:C.ce,mt:C.Gl,nl:C.Ag,no:C.IV,or:C.azI,pl:C.Zn,pt:C.LW,pt_BR:C.RS,pt_PT:C.cU,ro:C.SK,ru:C.FT,sk:C.OT,sl:C.Ib,sq:C.Ks,sr:C.Ck,sv:C.fp,sw:C.Nw,ta:C.Bt,te:C.Xq,th:C.Ek,tl:C.pz,tr:C.oE,uk:C.RB,ur:C.JG,vi:C.Y1p,zh:C.eO,zh_CN:C.brI,zh_HK:C.iR,zh_TW:C.fT,zu:C.ig},C.UZ)
+C.an=new H.LP(79,{af:C.tP,am:C.N4,ar:C.Sk,bg:C.fm,bn:C.RJ,ca:C.rA,cs:C.Zw,da:C.ZU,de:C.qe,de_AT:C.pm,de_CH:C.UG,el:C.M2,en:C.Dp,en_AU:C.yq,en_GB:C.mB,en_IE:C.Sc,en_IN:C.rz,en_SG:C.xR,en_US:C.Ba,en_ZA:C.Pd,es:C.Cb,es_419:C.yes,et:C.VLw,eu:C.uS,fa:C.TM,fi:C.DJ,fil:C.NY,fr:C.Zd,fr_CA:C.jh,gl:C.Tu,gsw:C.to,gu:C.ikd,he:C.wb,hi:C.Yq,hr:C.je,hu:C.c7,id:C.xKb,in:C.l2,is:C.m6,it:C.lo,iw:C.SF,ja:C.lL,kn:C.Zu,ko:C.wc,ln:C.hS,lt:C.Ad,lv:C.KB,ml:C.lH,mr:C.Ai,ms:C.ce,mt:C.Gl,nl:C.Ag,no:C.IV,or:C.azI,pl:C.Zn,pt:C.LW,pt_BR:C.RS,pt_PT:C.cU,ro:C.SK,ru:C.FT,sk:C.OT,sl:C.Ib,sq:C.Ks,sr:C.Ck,sv:C.fp,sw:C.Nw,ta:C.Bt,te:C.Xq,th:C.Ek,tl:C.pz,tr:C.oE,uk:C.RB,ur:C.JG,vi:C.Y1p,zh:C.eO,zh_CN:C.brI,zh_HK:C.iR,zh_TW:C.fT,zu:C.ig},C.UZ)
 C.R7=new Y.CZ("horizontal")
 C.yJ=new Y.CZ("vertical")
 C.oO=new Y.Rk("hide")
@@ -12974,7 +12918,7 @@ z.PJ(0,0,1)
 return z})
 
 init.functionAliases={}
-init.metadata=[{func:"aB",args:[null]},"object",{func:"b3",args:[null,null,null,null]},"interceptor","proto","extension","indexability","length",{func:"N4",ret:J.kn,args:[J.im]},"codeUnit",{func:"OP",ret:J.im,args:[J.O,J.im]},"string","index",{func:"lY",args:[H.aX,P.EH]},"isolate","function",{func:"NT"},{func:"Tz",void:true,args:[null,null]},"entry","args",{func:"I6",ret:J.O},"sender","e","msg",{func:"vO",void:true,args:[P.EH,[J.Q,J.O],null,J.kn,J.kn,P.bC]},"topLevel","message","isSpawnUri","startPaused","replyTo",{func:"yJ",ret:J.kn,args:[null]},"x",{func:"fP",args:[J.im,{func:"kl",void:true}]},"milliseconds","callback",{func:"Gl",ret:J.kn,args:[null,null]},"record",{func:"ju",ret:J.O,args:[null]},"value",{func:"bz",ret:H.FD,args:[null]},"jsFunction",{func:"xr",ret:J.im,args:[null]},{func:"zx",args:[J.O]},{func:"OL",ret:J.im,args:[J.O,J.im,{func:"Tl",ret:J.im,args:[J.O]}]},"source","radix","handleError",{func:"Lk",ret:J.VA,args:[J.O,{func:"Zh",ret:J.VA,args:[J.O]}]},{func:"FD",ret:J.O,args:[P.a]},{func:"bg",ret:J.P},"charCode","receiver",{func:"Ls",args:[null,null]},"key",{func:"Yv",void:true,args:[null,null,null]},"argument","ex","expression",{func:"Za",args:[J.O,null]},"_message","match",{func:"ZI",args:[null,P.Z0]},"keyValuePairs","result",{func:"eu",args:[P.EH,null,J.im,null,null,null,null]},"closure","numberOfArguments","arg1","arg2","arg3","arg4",{func:"lN",args:[null,J.im]},"arity",{func:"jo",args:[null,J.Q,J.Q,J.kn,null,J.O]},"functions","reflectionInfo","isStatic","jsArguments","propertyName",{func:"rP",args:[J.im,J.kn,J.O,null]},"isSuperCall","stubName",{func:"Q2",args:[null,null,J.kn]},"isIntercepted","name",{func:"n7",args:[null,null,null,null,null,null]},{func:"tj",args:[H.v]},{func:"zs",ret:J.O,args:[J.O]},"fieldName","property",{func:"ut",args:[P.a,P.a]},"actualType","expectedType",{func:"xM",void:true,args:[J.O]},"staticName","list",{func:"P1",ret:H.GN,args:[null,null,null]},"returnType","parameterTypes","optionalParameterTypes",{func:"mD",ret:H.q1},{func:"Y3",ret:P.uq,args:[J.O]},{func:"Xv",ret:P.a,args:[P.a,null]},"target","typeInfo",{func:"rf",args:[P.a]},"substitutionName",{func:"cD",args:[P.a,J.O,J.im]},{func:"Y5",args:[P.a,J.im]},{func:"tS",ret:J.O,args:[null],named:{onTypeVariable:{func:"Pt",ret:J.O,args:[J.im]}}},,"type","onTypeVariable",{func:"PZ",ret:J.O,args:[null,J.im],named:{onTypeVariable:{func:"Pt",ret:J.O,args:[J.im]}}},"types","startIndex","substitution","arguments","s","t",{func:"oY",args:[null,null,null]},"signature","context","contextName","o",{func:"qe",ret:J.kn,args:[J.Q,J.Q,J.kn]},"allowShorter",{func:"uy",ret:P.a,args:[null,null,null]},"obj",{func:"zl",void:true,args:[null,J.O,null]},"tag","interceptorClass",{func:"kl",void:true},"transformer","hooks",{func:"nI",args:[J.O,J.kn,J.kn,J.kn]},"pattern","multiLine","caseSensitive","global",{func:"zy",args:[P.nv,[J.Q,J.O]]},"_match","other","from","to",{func:"Mu",ret:J.O,args:[P.Od]},"onMatch","onNonMatch",{func:"lT",ret:P.b8,args:[F.rE,J.O,{func:"aB",args:[null]},F.zY]},"asset","responseType","extractResponse","tracer",{func:"zI",args:[[P.Z0,J.O,P.Z0]]},"json","details",{func:"Vd",opt:[J.O]},"",{func:"i8",ret:J.O,args:[[J.Q,J.im]]},"bytes","iterable",{func:"wn",void:true,args:[P.QV,{func:"G5",void:true,args:[null]}]},"f",{func:"Te",ret:J.kn,args:[P.QV,{func:"yJ",ret:J.kn,args:[null]}]},{func:"tY",args:[P.QV,null,{func:"Ls",args:[null,null]}]},"initialValue","combine",{func:"rd",ret:J.O,args:[P.QV,J.O,J.O]},"leftDelimiter","rightDelimiter",{func:"dz",void:true,args:[J.Q,J.im,J.im,P.QV,J.im]},"start","end","skipCount",{func:"Tt",void:true,args:[J.Q,J.im,J.Q,J.im,J.im]},"src","srcStart","dst","dstStart","count",{func:"tU",ret:J.im,args:[J.Q,P.a,J.im,J.im]},"a","element","endIndex",{func:"c2",ret:J.O,args:[H.wv]},"symbol",{func:"Ze",ret:J.Q,args:[null]},"victim",{func:"RY",ret:P.EH,args:[P.EH,P.JB]},"errorHandler","zone","duration","computation",{func:"Qe",ret:[P.b8,J.Q],args:[[P.QV,P.b8]],named:{eagerError:J.kn}},!1,"futures","eagerError",{func:"XO",args:[null],opt:[P.Pi]},"error","stackTrace",{func:"uS",void:true,args:[P.b8,P.vs]},{func:"wD",void:true,args:[P.vs,P.vs]},"listeners",{func:"G5",void:true,args:[null]},{func:"SZ",void:true,args:[{func:"kl",void:true}]},"onListen","onPause","onResume","onCancel","sync",{func:"Wc",ret:P.b8,args:[{func:"NT"}]},"notificationHandler",{func:"Mx",void:true,args:[null],opt:[P.Pi]},{func:"VK",args:[{func:"NT"},{func:"aB",args:[null]},{func:"bb",args:[null,P.Pi]}]},"userCode","onSuccess","onError",{func:"R4",void:true,args:[P.MO,P.vs,null,P.Pi]},"subscription","future",{func:"jt",args:[P.MO,P.vs]},{func:"NH",void:true,args:[P.MO,P.vs,null]},{func:"l2",ret:P.dX,args:[P.a6,{func:"kl",void:true}]},{func:"ln",ret:P.JB,args:[P.JB]},{func:"pA",void:true,args:[P.JB,P.e4,P.JB,null,P.Pi]},"self","parent",{func:"aD",args:[P.JB,P.e4,P.JB,{func:"NT"}]},{func:"ke",args:[P.JB,P.e4,P.JB,{func:"aB",args:[null]},null]},"arg",{func:"ta",args:[P.JB,P.e4,P.JB,{func:"Ls",args:[null,null]},null,null]},{func:"qH",void:true,args:[P.JB,P.e4,P.JB,{func:"NT"}]},{func:"Uk",ret:P.dX,args:[P.JB,P.e4,P.JB,P.a6,{func:"kl",void:true}]},"table","b","equals","hashCode","isValidKey",{func:"T3",ret:J.O,args:[P.QV]},{func:"r9",void:true,args:[P.QV,J.Q]},"parts",{func:"pT",ret:J.O,args:[P.Z0]},"m",{func:"EQ",args:[null,{func:"Ls",args:[null,null]}]},"reviver",{func:"F9",args:[J.O,{func:"Ls",args:[null,null]}]},{func:"Fg",ret:J.O,args:[P.IN]},{func:"Se",args:[J.im],named:{isUtc:J.kn}},"millisecondsSinceEpoch","isUtc",{func:"Pt",ret:J.O,args:[J.im]},"n",{func:"Ec",named:{days:J.im,hours:J.im,microseconds:J.im,milliseconds:J.im,minutes:J.im,seconds:J.im}},0,"days","hours","minutes","seconds","microseconds",{func:"hd",opt:[null]},{func:"c7",args:[J.P]},{func:"wU",args:[J.P,J.P,J.P]},{func:"Hu",opt:[P.a]},"modifiedObject","variableName",{func:"RA",ret:P.Q4,opt:[null]},{func:"zv",ret:J.kn,args:[P.a,P.a]},{func:"ZY",ret:J.im,args:[P.a]},"fill",!0,"growable",{func:"DF",void:true,args:[P.a]},"content",{func:"YM",ret:P.iD,args:[J.O]},"uri",{func:"De",named:{fragment:null,host:J.O,path:J.O,pathSegments:[P.QV,J.O],port:null,query:J.O,queryParameters:[P.Z0,J.O,J.O],scheme:J.O,userInfo:J.O}},"scheme","userInfo","host","port","path","pathSegments","query","queryParameters","fragment",{func:"JI",ret:J.O,args:[J.O,[P.Z0,J.O,J.O]]},"component",{func:"oT",ret:[J.Q,J.im],args:[J.O]},{func:"mr",ret:J.O,args:[[J.Q,J.im],J.O],named:{encoding:P.Zi,spaceToPlus:J.kn}},C.dy,"canonicalTable","text","encoding","spaceToPlus",{func:"Hc",args:[[P.QV,W.cv]]},"_elementIterable",{func:"mR",args:[[J.Q,W.KV]]},"_nodeList",{func:"pp",ret:J.O,args:[W.nq]},{func:"B2",args:[J.O,J.O]},"typeExtension",{func:"aZ",ret:[P.b8,W.fJ],args:[J.O],named:{method:J.O,mimeType:J.O,onProgress:{func:"Qh",void:true,args:[W.ew]},requestHeaders:[P.Z0,J.O,J.O],responseType:J.O,sendData:null,withCredentials:J.kn}},"url","method","withCredentials","mimeType","requestHeaders","sendData","onProgress","thing",{func:"BC",ret:J.im,args:[J.im,J.im]},"hash",{func:"Ga",ret:W.Xv,args:[null]},"win",{func:"Aw",ret:W.nq,args:[null]},"w",{func:"kb",args:[{func:"aB",args:[null]}]},{func:"RE",ret:P.b8,args:[P.m9]},"request",{func:"Gp",ret:P.XY},{func:"an",ret:J.im,args:[J.im]},{func:"wJ",ret:J.P,args:[J.P,J.P]},{func:"R1",ret:J.Q,args:[J.Q]},{func:"CA",ret:S.Yl,args:[[J.Q,P.uq]]},"componentTypes",{func:"Ww",args:[P.uq,S.x4]},"componentType","world",{func:"TG",ret:S.St,args:[P.uq]},"typeOfComponent",{func:"fE",args:[{func:"Ye",ret:J.P,args:[J.VA,J.P,J.P]}]},"f0",{func:"Ye",ret:J.P,args:[J.VA,J.P,J.P]},"ratio","change","baseValue",{func:"GW",ret:[P.Z0,J.O,J.O],args:[W.cv,[P.QV,J.O]]},"properties",{func:"hI",void:true,args:[W.cv,[P.Z0,J.O,J.O],{func:"kl",void:true}]},"originalValues","action",{func:"qr",ret:[P.Z0,J.O,J.O],args:[Y.u1,Y.ai]},"xOffset","yOffset",{func:"J6",ret:J.O,args:[Y.dE]},"timing",{func:"hD",ret:Y.wg,args:[W.cv]},{func:"xF",ret:[P.b8,Y.t2],args:[W.cv],named:{duration:J.im,effect:Y.Lv,effectTiming:Y.dE}},"effect","effectTiming",{func:"Pi",ret:[P.b8,Y.t2],args:[Y.Rk,W.cv],named:{duration:J.im,effect:Y.Lv,effectTiming:Y.dE}},{func:"hg",ret:J.kn,args:[Y.Rk,Y.wg]},"state",{func:"Wt",ret:[P.b8,Y.t2],args:[J.kn,W.cv,J.im,Y.Lv,Y.dE]},"doShow","desiredDuration",{func:"TV",ret:[P.b8,Y.t2],args:[W.cv,J.im,Y.Lv,Y.dE]},{func:"Kz",void:true,args:[W.cv]},{func:"ew",ret:J.O,args:[W.cv]},{func:"iZ",ret:[P.b8,J.kn],args:[[J.Q,W.cv],W.cv],named:{duration:J.im,effect:Y.Lv,effectTiming:Y.dE,hideEffect:Y.Lv}},"children","child","hideEffect",{func:"PW",ret:[P.b8,J.kn],args:[[J.Q,W.cv],Y.Lv,J.im,Y.dE]},{func:"lB",ret:[P.b8,W.cv],args:[[J.Q,W.cv]]},{func:"Fv",ret:[P.b8,J.kn],args:[[J.Q,W.cv]]},"nodeName",{func:"fV",args:[P.Qt,J.O,J.O]},"gl","vertSrc","fragSrc",{func:"nt",args:[P.Qt,J.O,J.im]},{func:"zo",args:[P.Qt,P.W4,W.br]},"tex","ele",{func:"q8",args:[L.CT,P.W4],opt:[J.im,J.O]},"ctx","texture","textureUnit","sfname",{func:"nH",args:[[J.Q,T.An],T.An,T.An,T.z3]},"vs","axis","origin","out",{func:"yg",ret:[J.Q,J.O],args:[J.O]},"l",{func:"VT",args:[null,T.AU,T.AU]},"size","color0","color1",{func:"Aj",args:[[J.Q,T.uc]],named:{bgcolor:null,lightSegment:null,stepmax:null,tmpl:J.O}},"// based on\n// http://geeks3d.developpez.com/GLSL/raymarching/\n// http://9bitscience.blogspot.fr/2013/07/raymarching-distance-fields_14.html\n// http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm\n// https://www.shadertoy.com/view/MsXGWr\nprecision mediump float;\n\nconst float PI = 3.14159265358979323846264;\nconst float surface = 0.001;\nconst vec3 eps = vec3(surface*0.5,0.0,0.0);\n\n${obj_uniforms}\n\nvarying vec2 vTexCoord0;\nuniform vec3 _PixelSize;\nuniform vec3 _ViewPosition, _ViewUp, _FocusPosition;\nuniform float _Near, _Far, _TanHalfFov;\n\n// ro  : the ray origin position (eg: the camera position)\n// rd  : the ray direction for the current pixel\n// rd0 : the camera direction (that is the ray direction at the center of the screen) \n// t   : distance traveled\n// p   : a position 3D\n// de(): distance estimator function (~ map() or f())\n// sd_xxxx() : a signed distance function\n// ud_xxxx() : a unisigned distance function\n// o   : an object\n// obj.x : distance of the object\n// obj.y : id of the object 's material\n\n// type alias\n#define obj vec2\n#define color vec4\n\n#define MAXSTEP ${stepmax}\n//------------------------------------------------------------------------------\n// primitive shape (distance functions)\n\n\n//------------------------------------------------------------------------------\n// Domain operations\n\n// rotation/translation\nvec3 opTx( vec3 p, mat4 m) {\n    return (m * vec4(p, 1.0)).xyz;\n    //return (inverse(m) * vec4(p, 1.0)).xyz;\n}\n//------------------------------------------------------------------------------\n// Objects definitions (distance functions)\n\n${obj_sds}\n\n//------------------------------------------------------------------------------\n// Distance estimator\nfloat matIdIgnored = -1.0;\nobj obj_union(obj o, float d, float matId) {\n  //if (matIdIgnored != matId && abs(o.x) > abs(d)) { obj(d, matId);}\n  float update = step(abs(d), abs(o.x)) * (step(matId, matIdIgnored) + step(matIdIgnored, matId));\n  return mix(o, vec2(d, matId), update);\n}\n\nobj de(in vec3 p) {\n  obj o = vec2(_Far, 0.0);\n  ${obj_des}\n  return o;\n}\n\n\n//------------------------------------------------------------------------------\n// Shading\n\n${obj_mats}\n\n\ncolor shade(obj o, vec3 p, float t, vec3 rd) {\n  ${obj_shs}\n  return color(0.0, 0.0, 0.0, 0.0);\n}\n\nvec3 bgcolor(vec3 ro, vec3 rd) {\n  ${bgcolor}\n  return 3.*mix(vec3(0.025,0.1,0.05)+rd*0.025,vec3(0.1,0.2,0.3)+rd*0.2,smoothstep(-0.1,0.1,rd.z));\n}\n// front to back\n// GL_ONE_MINUS_DST_ALPHA, GL_ONE\ncolor blend2(color front, color back) {\n  vec4 c;\n  //if (back.a < 0.2) return front;\n  //c.rgb = mix(front.rgb, back.rgb, front.a);\n  c.rgb = (1.0 - front.a) * back.a * (back.rgb) + front.rgb * front.a;\n  c.a = front.a + (1.0 - front.a) * back.a;//(1.0 - src.a) * dst.a;\n  //c.a = max(front.a, back.a);\n  //c.a = 1.0;\n  return c;\n}\n// try http://en.wikipedia.org/wiki/Alpha_compositing\ncolor blend(color front, color back) {\n  vec4 c;\n  c.a = front.a + (1.0 - front.a) * back.a;\n  c.rgb = ((1.0 - front.a) * back.a * back.rgb + front.rgb * front.a) * (1.0/c.a);\n  return c;\n}\n\nfloat random(vec2 n) {\n  return fract(sin(dot(n.xy, vec2(12.9898, 78.233)))* 43758.5453);\n}\n\nvoid main(void) {\n  float far = _Far;\n  float near = _Near;\n  vec3 ro= _ViewPosition;\n\n  // Configuration de la camera.\n  vec3 vz = normalize(ro - _FocusPosition);\n  vec3 vup = _ViewUp;\n  vec3 vx = normalize(cross(vup,vz));\n  vec3 vy = -cross(vx,vz);\n  vec2 vPos = -1.0 + 2.0 * vTexCoord0.xy; //([-1.0, 1.0], [-1.0, 1.0])\n  float coeff = _TanHalfFov;\n  //vec3 scrCoord=vcv+vPos.x*u*_PixelSize.x+vPos.y*v*_PixelSize.y;\n  //vec3 scrCoord = vcv+vPos.x*u* _PixelSize.z + vPos.y*v;\n  //vec3 scrCoord = ro + vz * -1.0 + vPos.x* vx * _PixelSize.z + vPos.y* vy;\n  vec3 scrCoord = ro + vz * -1.0 + vx * vPos.x * coeff * _PixelSize.z + vy * vPos.y * coeff;\n  vec3 rd=normalize(scrCoord-ro);\n  //float epsilonPixel = sin(atan(coeff)) * _PixelSize.x;\n\n  // Raymarching.\n  vec2 o = obj(0.0, 0.0);\n  float t = near;\n  vec3 p;\n  float epsilon_de = 0.005;\n  vec4 col = vec4(0.0,0.0,0.0,0.0);\n  for(int i=0;i< MAXSTEP;i++) {\n    if (col.a >= 0.85 || t > far) break;\n    p = ro + rd * t;\n    o = de(p);\n    //epsilon_de = epsilonPixel * t;\n    if (abs(o.x) < epsilon_de) {\n      matIdIgnored = -1.0;\n      \n      col = blend(col, shade(o, p, t, rd));\n      o.x = 0.0;\n      matIdIgnored = o.y;\n    }\n    t += abs(o.x);\n  }\n  //c.a = 1.0;\n  //gl_FragColor= vec4((t - near)/(far - near), 0.0, 0.0, 1.0);  //check last distance\n  //gl_FragColor= vec4(rd, 1.0); // check ray direction\n  vec3 bg=bgcolor(ro, rd);\n  col.rgb+=bg*(1.0-clamp(col.a,0.0,1.0));\n  gl_FragColor = col + vec4(random(0.1 * vTexCoord0.xy) / 255.0);\n  //gl_FragColor = vec4(clamp(col.rgb,0.0,1.0),1.0);\n}\n",256,"os","tmpl","stepmax","lightSegment","bgcolor",{func:"ah",ret:P.Z0,args:[null]},{func:"BV",args:[P.Z0]},"dict",{func:"BG",args:[null],named:{mustCopy:null}},"mustCopy",{func:"Uf",ret:J.kn},{func:"dt",ret:[P.QV,[P.b8,W.cv]]},{func:"kA",args:[J.O,P.Z0]},"kv",{func:"QI",args:[P.Z0,J.O]},"k",{func:"BB",void:true,args:[W.HL]},"evt",{func:"QO",void:true,args:[W.Aj]},{func:"yD",void:true,args:[null,Y.Rk]},"id",{func:"xp",ret:Q.QG,args:[null]},"baseUrl",{func:"G3",void:true,args:[F.Cd]},"err",{func:"Il",ret:J.O,args:[J.O,P.EH],named:{onFailure:P.EH}},T.w0(),"newLocale","localeExists","onFailure","localeName","aLocale",{func:"NG",ret:T.M7,opt:[J.O,J.O]},"newPattern","locale",{func:"Tl",ret:J.im,args:[J.O]},"v",{func:"Zh",ret:J.VA,args:[J.O]},{func:"By",ret:U.dq,args:[T.An],opt:[T.An,T.An]},"position","rotation","scale",{func:"IM",ret:W.Oi,args:[J.O],opt:[P.Z0]},"contextId","attrs",{func:"cY",void:true,args:[J.O,J.O],opt:[J.O]},"priority",{func:"pC",ret:W.Wv,args:[null],opt:[J.O]},"data_OR_file",{func:"ov",void:true,args:[J.im]},{func:"OQ",ret:W.Wv,args:[J.im]},{func:"TJ",ret:W.cv,args:[J.O]},"selectors",{func:"Yu",ret:[P.qh,W.Aj]},{func:"fK",ret:[P.qh,W.HL]},{func:"S5",ret:J.im},{func:"zk",void:true,args:[J.im,J.O]},{func:"nM",ret:[P.Z0,J.O,J.O]},{func:"r5",ret:[J.Q,W.cv]},{func:"nB",ret:W.ha},{func:"Vn",ret:W.oJ,opt:[J.O]},"pseudoElement",{func:"Pu",ret:[W.Ry,W.rg]},{func:"Rl",ret:[W.Ry,W.Aj]},{func:"R2",ret:[W.Ry,W.HL]},{func:"d6",ret:[W.Ry,W.J6]},{func:"NA",void:true,args:[{func:"kl",void:true}],opt:[{func:"jb",void:true,args:[W.Aa]}]},"successCallback","errorCallback",{func:"rl",ret:P.b8},{func:"Oe",void:true,args:[J.O,{func:"dG",args:[W.rg]}],opt:[J.kn]},"listener","useCapture",{func:"e1",ret:W.dU,args:[J.im]},{func:"Yk",void:true,args:[J.im,W.dU]},{func:"Pf",ret:W.dU},{func:"ym",void:true,args:[W.Az]},"data",{func:"Ok",void:true,args:[W.n5]},"fontFace",{func:"W0",void:true,args:[{func:"x3",void:true,args:[W.n5,W.n5,W.Ay]}],opt:[P.a]},"thisArg",{func:"M8",ret:W.KV,args:[J.im]},{func:"tF",void:true,args:[J.im,W.KV]},{func:"If",ret:W.KV},{func:"Mc",void:true,args:[J.O,J.O],named:{async:J.kn,password:J.O,user:J.O}},"async","user","password",{func:"Qk",void:true,opt:[null]},{func:"yk",void:true,args:[P.n6],opt:[J.P]},"timestamp",{func:"MG",ret:W.AW,args:[J.im]},{func:"lL",void:true,args:[J.im,W.AW]},{func:"tR",ret:W.AW},{func:"kN",ret:W.KV,args:[W.KV]},"otherNode",{func:"CT",ret:W.KV,args:[W.KV,W.KV]},"newChild","oldChild",{func:"ck",ret:[P.qh,W.rg]},{func:"UV",ret:W.kT,args:[J.im]},{func:"zB",void:true,args:[J.im,W.kT]},{func:"nO",ret:W.kT},{func:"Xc",ret:W.x8,args:[J.im]},{func:"OK",void:true,args:[J.im,W.x8]},{func:"cB",ret:W.x8},{func:"QP",ret:W.Y4,args:[J.im]},{func:"v2",void:true,args:[J.im,W.Y4]},{func:"ON",ret:W.Y4},{func:"oN",void:true,args:[J.O,J.O]},{func:"l4",void:true,args:[{func:"oN",void:true,args:[J.O,J.O]}]},{func:"pD",ret:[P.QV,J.O]},{func:"xe",ret:W.Bo,args:[J.im]},{func:"Q0",void:true,args:[J.im,W.Bo]},{func:"GS",ret:W.Bo},{func:"qv",ret:W.A1,args:[J.im]},{func:"Oi",void:true,args:[J.im,W.A1]},{func:"yN",ret:W.A1},{func:"UN",ret:W.WC,args:[J.im]},{func:"Xb",void:true,args:[J.im,W.WC]},{func:"Ta",ret:W.WC},{func:"Mg",ret:W.u8},{func:"qc",ret:J.im,args:[{func:"QB",void:true,args:[J.P]}]},{func:"L0",ret:W.Xv},{func:"NR",ret:P.tn,args:[J.im]},{func:"aS",void:true,args:[J.im,P.tn]},{func:"pu",ret:P.tn},{func:"Dr",ret:W.lw,args:[J.im]},{func:"ky",void:true,args:[J.im,W.lw]},{func:"rV",ret:W.lw},{func:"tq",ret:W.Lr,args:[J.im]},{func:"vL",void:true,args:[J.im,W.Lr]},{func:"Le",ret:W.Lr},{func:"fj",ret:W.Io,args:[J.im]},{func:"AR",void:true,args:[J.im,W.Io]},{func:"y6",ret:W.Io},{func:"wz",ret:W.ph,args:[J.im]},{func:"jg",void:true,args:[J.im,W.ph]},{func:"VO",ret:W.ph},{func:"PK",ret:W.l8,args:[J.im]},{func:"Tb",void:true,args:[J.im,W.l8]},{func:"te",ret:W.l8},{func:"zt",ret:W.L3,args:[J.im]},{func:"qU",void:true,args:[J.im,W.L3]},{func:"yU",ret:W.L3},{func:"Ro",ret:P.b8,args:[null],opt:[null]},{func:"KN",ret:P.m9,args:[null],opt:[null]},{func:"K8",ret:P.hC,args:[J.im]},{func:"lt",void:true,args:[J.im,P.hC]},{func:"FZ",ret:P.hC},{func:"To",ret:P.hC,args:[P.hC]},"item",{func:"MX",ret:P.uP,args:[J.im]},{func:"H2",void:true,args:[J.im,P.uP]},{func:"Eq",ret:P.uP},{func:"UK",ret:P.uP,args:[P.uP]},{func:"z3",ret:P.XW,args:[J.im]},{func:"TE",void:true,args:[J.im,P.XW]},{func:"dT",ret:P.XW},{func:"ja",ret:P.XW,args:[P.XW]},"newItem",{func:"aO",ret:P.Vj,args:[P.Vj]},{func:"IO",ret:P.KQ,args:[J.im]},{func:"D8",void:true,args:[J.im,P.KQ]},{func:"IX",ret:P.KQ},{func:"Tr",ret:P.KQ,args:[P.KQ]},{func:"LF",ret:P.D5,args:[J.im]},{func:"LR",void:true,args:[J.im,P.D5]},{func:"C4",ret:P.D5},{func:"xt",void:true,args:[P.I2,{func:"Um",void:true,args:[P.r2]}],opt:[{func:"Um",void:true,args:[P.r2]}]},"audioData",{func:"ZF",ret:P.Jm},{func:"XR",ret:[P.b8,P.r2],args:[P.I2]},{func:"l9",ret:P.Z0,args:[J.im]},{func:"Yd",void:true,args:[J.im,P.Z0]},{func:"qo",ret:P.Z0},{func:"K9",ret:P.uq},{func:"xA",void:true,args:[J.im,J.im]},{func:"ne",ret:J.P,args:[J.im]},{func:"Yx",void:true,args:[J.im,J.P]},{func:"Lc",ret:J.kn,args:[P.a]},"collection",{func:"Ab",ret:J.O,opt:[J.O]},"separator","newLength",{func:"LZ",ret:J.P,args:[J.P]},{func:"JN",ret:J.VA},{func:"Q7",ret:J.kn,args:[J.P]},{func:"wy",ret:J.O,args:[P.nv,J.O]},{func:"SB",ret:J.O,args:[P.nv,{func:"Mu",ret:J.O,args:[P.Od]}]},"convert",{func:"Ur",ret:J.kn,args:[P.nv],opt:[J.im]},{func:"Px",ret:J.O,args:[J.im],opt:[J.im]},"times",{func:"c8",ret:J.O,args:[J.im],opt:[J.O]}," ","width","padding",{func:"cr",ret:[J.Q,J.im]},{func:"rz",ret:J.im,args:[P.nv],opt:[J.im]},"i",{func:"Zi",args:[P.EH]},{func:"SE",void:true,args:[P.XY,P.XY]},"authentification","resume",{func:"Ko",void:true,args:[P.XY]},{func:"yF",void:true,args:[P.bC]},"responsePort",{func:"a3",void:true,args:[P.XY,J.kn]},"errorsAreFatal",{func:"jC",void:true,args:[P.bC,J.im]},"pingType","code",{func:"WI",ret:H.yo,args:[J.im]},"portId",{func:"xL",void:true,args:[J.im,H.yo]},{func:"OT",ret:H.IY},"dataEvent",{func:"eg",args:[P.bC]},{func:"RH",args:[P.XY]},{func:"xj",ret:P.bC,args:[J.Q]},{func:"WX",ret:P.XY,args:[J.Q]},"info",{func:"Ao",ret:P.Z0,args:[P.Z0]},"map","val",{func:"Ux",args:[J.Q]},{func:"Xe",ret:P.Z0,args:[J.Q]},{func:"TS",args:[null,J.O]},{func:"Pz",ret:P.Od,args:[J.O]},"str",{func:"D2",ret:P.Od,args:[J.O,J.im]},{func:"BO",ret:P.Od},{func:"hm",ret:[P.b8,F.rE],args:[F.rE]},"tracer0","payload","assetName",{func:"uq",ret:F.rE,args:[J.O,J.O,J.O,P.Z0,P.Z0]},"loaderArguments","importerArguments",{func:"nq",ret:F.rE,args:[J.O,[J.Q,J.O],J.kn]},"fullAssetPath","assetPath","throwOnNotFound",{func:"Nx",ret:[P.b8,F.NR],args:[J.O,J.O]},"_",{func:"rC",void:true,args:[F.rE]},{func:"vt",void:true,args:[F.rE,J.O]},"errorLabel",{func:"ep",void:true,args:[F.rE,J.O,J.O]},{func:"FP",ret:[P.b8,F.rE],args:[null,F.rE,F.zY]},"imported","packFileAsset","loaded",{func:"d3",ret:P.b8,args:[F.rE,F.zY]},"event",{func:"Lq",ret:[P.b8,[P.Z0,J.O,J.O]],args:[F.rE,F.zY]},"requestUrl",{func:"YT",void:true,args:[[J.Q,J.im]]},{func:"YD",void:true,args:[[J.Q,J.im],J.im]},"dataIndex",{func:"KY",ret:[J.Q,J.im],args:[J.im]},"word","test",{func:"e8",ret:P.WV},{func:"Hy",ret:P.vs},"cancelOnError",{func:"xS",ret:P.Ge},{func:"GA",void:true,args:[P.a],opt:[P.Pi]},{func:"ZG",void:true,args:[P.a,P.Pi]},{func:"YU",void:true,args:[P.lx]},"ignored","theError","theStackTrace",{func:"SF",args:[J.kn]},{func:"Ue",ret:P.b8,args:[P.EH],named:{test:{func:"yJ",ret:J.kn,args:[null]}}},{func:"c3",void:true,args:[P.vs]},{func:"u9",void:true,args:[null,P.Pi]},{func:"yV",args:[null],opt:[null]},{func:"rt",ret:[P.b8,J.im]},"newValue","st","isMatch",{func:"dk",ret:P.ht},{func:"IK",ret:P.Qk},{func:"B8",ret:P.yU},{func:"cu",ret:{func:"NT"}},{func:"nu",void:true,args:[P.ht]},"pendingEvents","handleData",{func:"pY",void:true,args:[P.EH]},"handleDone",{func:"Pb",void:true,opt:[P.b8]},"resumeSignal",{func:"wO",void:true,args:[J.kn]},"wasInputPaused","onData","onDone","dispatch",{func:"xg",void:true,args:[P.Cf]},{func:"pg",ret:P.lx},"_source","onListenHandler","onCancelHandler",{func:"bb",args:[null,P.Pi]},{func:"Db",args:[{func:"NT"}]},{func:"Bg",args:[{func:"aB",args:[null]},null]},{func:"hi",args:[{func:"Ls",args:[null,null]},null,null]},{func:"vD",ret:{func:"NT"},args:[{func:"NT"}],named:{runGuarded:J.kn}},"runGuarded",{func:"uC",ret:{func:"aB",args:[null]},args:[{func:"aB",args:[null]}],named:{runGuarded:J.kn}},{func:"mw",ret:{func:"NT"},args:[{func:"NT"}]},{func:"lg",ret:{func:"aB",args:[null]},args:[{func:"aB",args:[null]}]},{func:"r5b",ret:J.Q},{func:"GF",ret:J.im,args:[null,null]},"bucket","each","ifAbsent",{func:"Yw",void:true,args:[P.db]},"cell",{func:"vf",ret:J.kn,args:[null,P.a]},{func:"fv",void:true,args:[P.tj]},"offset",{func:"IG",opt:[J.im]},"initialCapacity",{func:"AC",args:[J.O],named:{reviver:{func:"Ls",args:[null,null]}}},{func:"KL",ret:P.QM},{func:"YV",ret:[P.zF,J.O,[J.Q,J.im]]},{func:"i5",ret:J.kn,args:[J.im,J.im]},"leadingSurrogate","nextCodeUnit",{func:"af",ret:J.im,args:[J.O,J.im,J.im]},{func:"Nc",args:[P.IN,null]},{func:"rw",ret:P.iP,args:[P.a6]},{func:"jW",ret:P.a6,args:[P.a6]},{func:"CP",ret:P.a6,args:[J.P]},"factor",{func:"hF",ret:J.kn,args:[P.a6]},{func:"kS",ret:P.Pi},{func:"uB",void:true,args:[P.QV],opt:[J.O]},"objects",{func:"DZ",ret:J.O,args:[J.O,[P.QV,J.O]]},{func:"jN",ret:J.O,args:[J.O,J.O]},"base","reference",{func:"P6",ret:J.kn,args:[J.O]},{func:"Qd",ret:P.iD,args:[P.iD]},"ch","digit","part","current","byteString","byte","buffer",{func:"uQ",ret:W.cv,args:[J.im]},{func:"wL",void:true,args:[J.im,W.cv]},{func:"jT",ret:W.cv,args:[W.cv]},{func:"Zdb",ret:[P.Dk,W.cv]},{func:"Bs",void:true,args:[J.im,J.im,[P.QV,W.cv]],opt:[J.im]},{func:"y7",ret:W.cv},{func:"bD",ret:W.E1},"header",{func:"Fp",void:true,args:[W.KV]},{func:"wja",ret:[P.Dk,W.KV]},{func:"WU",void:true,args:[J.im,J.im,[P.QV,W.KV]],opt:[J.im]},{func:"B1",ret:J.kn,args:[W.KV]},"node",{func:"tX",ret:J.O,args:[J.O],named:{startUppercase:J.kn}},"hyphenedName","startUppercase",{func:"Fo",ret:[P.uE,J.O]},{func:"Gn",void:true,args:[[P.uE,J.O]]},"stream",{func:"O6",void:true,args:[P.uE]},{func:"Dg",ret:J.kn,args:[J.im,J.im,H.b0,J.im]},{func:"Qb",void:true,args:[J.im,J.im,[P.QV,J.VA]],opt:[J.im]},{func:"UG7",void:true,args:[J.im,J.im,[P.QV,J.im]],opt:[J.im]},{func:"lq",ret:J.im,args:[J.im,[J.Q,P.uq]]},"mask",{func:"Ty",void:true,args:[S.qn]},{func:"hB",void:true,args:[S.qn,S.St,S.jR]},{func:"IC",void:true,args:[S.qn,S.St]},{func:"MC",void:true,args:[S.qn,{func:"R0",void:true,args:[[S.EP,S.jR],J.im]}]},"components","typeId","entity",{func:"zJ",args:[S.Yl]},"aspect",{func:"YQ",void:true,args:[S.qn,J.O]},"group",{func:"qt",ret:[P.QV,S.qn],args:[J.O]},{func:"QY",void:true,args:[[P.QV,S.qn]]},"entities","newCapacity",{func:"X1",void:true,args:[S.d7]},"manager",{func:"TI",ret:S.qn,opt:[[J.Q,S.jR]]},C.xD,{func:"GN",ret:S.ME,args:[S.ME],named:{passive:J.kn}},"system","passive",{func:"wY",void:true,args:[[S.EP,S.qn],{func:"Tz",void:true,args:[null,null]}]},"perform","observer",{func:"ip",args:[J.VA,J.P,J.P]},{func:"jz",ret:J.im,args:[W.cv,J.im,Y.dE],opt:[J.P]},"fractionComplete",1,{func:"Bx",ret:J.im,args:[J.kn,W.cv,J.im,Y.dE,J.P]},"doingShow",{func:"WE",args:[J.O],opt:[[P.Z0,J.O,J.O]]},"_property","animatingOverrides",{func:"DW",ret:J.O,args:[J.P,W.cv]},{func:"Ic",ret:J.P,args:[W.cv]},{func:"NK",ret:[P.b8,Y.t2],args:[J.im]},"durationMS",{func:"Ac",ret:J.im,args:[W.cv,J.P,Y.dE],opt:[J.P]},{func:"n4",args:[W.cv]},"currentlyVisible",{func:"ZD",args:[[J.Q,Y.t2]]},"results","successList",{func:"SC",args:[Y.t2]},{func:"Gm",args:[[J.Q,Y.wg]]},"states","r",{func:"Z5",args:[J.im]},"success","successValues",{func:"O7",ret:P.qh,args:[M.AA]},"eventType",{func:"ih",void:true,args:[M.AA,null]},"req","viaExit",{func:"Wr",ret:P.b8,args:[J.O]},"areaId","pack","gameLoop",{func:"zm",ret:[J.Q,S.qn],args:[F.NR]},"assetpack",{func:"FG",named:{c:J.O,n:J.O}},"normalToColor(n)","n_de(o, p)","c",{func:"Kn",ret:Q.VB,args:[null]},"camera",{func:"LE",ret:Q.VB},{func:"wZ",ret:Q.VB,args:[T.An]},{func:"R7",ret:Q.VB,args:[T.An,T.An]},"dim",{func:"DS",args:[null,S.qn]},{func:"JO",args:[W.HL]},"acc","e2","barrier","p",{func:"MO",ret:J.kn,args:[null,null,null]},"newCyclePos",{func:"rl6",ret:[P.b8,F.hx]},{func:"Up",void:true,args:[B.UP]},{func:"Yr",args:[B.ra,[J.Q,J.im]]},"buttonIds",{func:"QB",void:true,args:[J.P]},{func:"WW",void:true,args:[W.rg]},{func:"PB",void:true,args:[W.y6]},{func:"bW",args:[G.Fk]},{func:"Mb",void:true,args:[G.aR,W.WC]},"glTouch","touch",{func:"ba",ret:J.kn,args:[[J.Q,W.WC],null]},"touches","identifier",{func:"mRV",args:[[J.Q,W.WC]]},{func:"El",args:[W.WC]},{func:"bf",ret:P.SI,args:[J.O]},{func:"K6",named:{hasDepthBuff:null,height:J.im,type:J.im,width:J.im}},-1,5121,"height","hasDepthBuff",{func:"T7",named:{deleteFramebuffer:null,deleteTex:null}},"deleteTex","deleteFramebuffer","line",{func:"BU",args:[null,L.xn]},"plan",{func:"mm",ret:P.b8,args:[null,F.rE,F.zY]},{func:"RG",void:true,args:[L.CT]},{func:"yz",void:true,args:[P.W4]},{func:"B5",void:true,args:[L.tJ]},{func:"v4",args:[G.Eo]},"ctrl",{func:"mV",args:[J.VA]},"radiusInPixel","mat","sd",{func:"YN",args:[null],named:{fboTarget:L.Lf,makeShader:null}},T.Fo(),"fboTarget","makeShader",{func:"uw",args:[J.im,null]},{func:"u6",ret:[P.Dk,J.O]},{func:"Sl",void:true,args:[{func:"xM",void:true,args:[J.O]}]},{func:"eE",ret:J.kn,args:[{func:"P6",ret:J.kn,args:[J.O]}]},{func:"rQ",args:[null,{func:"TS",args:[null,J.O]}]},{func:"h0",args:[{func:"PT",args:[[P.uE,J.O]]}]},{func:"zj",void:true,args:[{func:"Kz",void:true,args:[W.cv]}]},"needle","el","httpRequest",{func:"mZ",args:[J.O,P.EH]},"getPattern",{func:"ny",ret:J.kn,args:[P.Rn]},"affix",{func:"rh",void:true,args:[F.Rp]},{func:"nZ",args:[W.cv],named:{displayBackward:null,ease:{func:"Ye",ret:J.P,args:[J.VA,J.P,J.P]}}},U.y1(),"view","ease","displayBackward","selector","init","onChange",{func:"Jr",void:true,args:[P.r2,[P.A0,Q.i0]]},"completer",{func:"z5",void:true,args:[W.fJ,[P.A0,Q.i0]]},{func:"rti",ret:[P.b8,Q.i0]},"baseURL",{func:"CY",args:[Q.QG,P.Jm]},"_manager","output",{func:"M0",ret:J.kn,args:[P.oI,J.im]},{func:"nk",args:[Q.QG,J.O,P.Jm]},"_name","_output","sound",{func:"Yt",ret:J.VA,args:[J.im]},{func:"eP",void:true,args:[J.im,J.VA]},{func:"ZV",ret:T.An,args:[J.im]},"row",{func:"Zb",ret:T.No,args:[T.No]},{func:"Qs",ret:T.No},{func:"Bk",ret:T.AU,args:[J.im]},{func:"Td",ret:T.hX,args:[T.hX]},{func:"zb",ret:T.hX},{func:"U3",ret:T.z3,args:[T.z3]},{func:"AA",ret:T.z3,args:[J.VA]},{func:"Dn",ret:T.An,args:[J.VA,J.VA,J.VA]},"x_","y_","z_",{func:"No",ret:T.An,args:[T.An]},{func:"Yz",ret:T.An,args:[J.VA]},{func:"XK",ret:T.An},{func:"om",ret:T.AU,args:[J.VA,J.VA,J.VA,J.VA]},"w_",{func:"VC",ret:T.AU,args:[T.AU]},{func:"Hn",ret:T.AU,args:[J.VA]},];$=null
+init.metadata=[{func:"aB",args:[null]},"object",{func:"b3",args:[null,null,null,null]},"interceptor","proto","extension","indexability","length",{func:"N4",ret:J.kn,args:[J.im]},"codeUnit",{func:"OP",ret:J.im,args:[J.O,J.im]},"string","index",{func:"lY",args:[H.aX,P.EH]},"isolate","function",{func:"NT"},{func:"Tz",void:true,args:[null,null]},"entry","args",{func:"I6",ret:J.O},"sender","e","msg",{func:"vO",void:true,args:[P.EH,[J.Q,J.O],null,J.kn,J.kn,P.bC]},"topLevel","message","isSpawnUri","startPaused","replyTo",{func:"ra",ret:J.kn,args:[null]},"x",{func:"fP",args:[J.im,{func:"kl",void:true}]},"milliseconds","callback",{func:"Gl",ret:J.kn,args:[null,null]},"record",{func:"ju",ret:J.O,args:[null]},"value",{func:"bz",ret:H.FD,args:[null]},"jsFunction",{func:"xr",ret:J.im,args:[null]},{func:"zx",args:[J.O]},{func:"OL",ret:J.im,args:[J.O,J.im,{func:"Tl",ret:J.im,args:[J.O]}]},"source","radix","handleError",{func:"Lk",ret:J.VA,args:[J.O,{func:"Zh",ret:J.VA,args:[J.O]}]},{func:"FD",ret:J.O,args:[P.a]},{func:"bg",ret:J.P},"charCode","receiver",{func:"Ls",args:[null,null]},"key",{func:"Yv",void:true,args:[null,null,null]},"argument","ex","expression",{func:"Za",args:[J.O,null]},"_message","match",{func:"ZI",args:[null,P.Z0]},"keyValuePairs","result",{func:"eu",args:[P.EH,null,J.im,null,null,null,null]},"closure","numberOfArguments","arg1","arg2","arg3","arg4",{func:"lN",args:[null,J.im]},"arity",{func:"jo",args:[null,J.Q,J.Q,J.kn,null,J.O]},"functions","reflectionInfo","isStatic","jsArguments","propertyName",{func:"rP",args:[J.im,J.kn,J.O,null]},"isSuperCall","stubName",{func:"Q2",args:[null,null,J.kn]},"isIntercepted","name",{func:"n7",args:[null,null,null,null,null,null]},{func:"tj",args:[H.v]},{func:"zs",ret:J.O,args:[J.O]},"fieldName","property",{func:"ut",args:[P.a,P.a]},"actualType","expectedType",{func:"xM",void:true,args:[J.O]},"staticName","list",{func:"P1",ret:H.GN,args:[null,null,null]},"returnType","parameterTypes","optionalParameterTypes",{func:"mD",ret:H.q1},{func:"Y3",ret:P.uq,args:[J.O]},{func:"Xv",ret:P.a,args:[P.a,null]},"target","typeInfo",{func:"rf",args:[P.a]},"substitutionName",{func:"cD",args:[P.a,J.O,J.im]},{func:"Y5",args:[P.a,J.im]},{func:"tS",ret:J.O,args:[null],named:{onTypeVariable:{func:"Pt",ret:J.O,args:[J.im]}}},,"type","onTypeVariable",{func:"PZ",ret:J.O,args:[null,J.im],named:{onTypeVariable:{func:"Pt",ret:J.O,args:[J.im]}}},"types","startIndex","substitution","arguments","s","t",{func:"oY",args:[null,null,null]},"signature","context","contextName","o",{func:"qe",ret:J.kn,args:[J.Q,J.Q,J.kn]},"allowShorter",{func:"uy",ret:P.a,args:[null,null,null]},"obj",{func:"zl",void:true,args:[null,J.O,null]},"tag","interceptorClass",{func:"kl",void:true},"transformer","hooks",{func:"nI",args:[J.O,J.kn,J.kn,J.kn]},"pattern","multiLine","caseSensitive","global",{func:"zy",args:[P.nv,[J.Q,J.O]]},"_match","other","from","to",{func:"Mu",ret:J.O,args:[P.Od]},"onMatch","onNonMatch",{func:"lT",ret:P.b8,args:[F.rE,J.O,{func:"aB",args:[null]},F.zY]},"asset","responseType","extractResponse","tracer",{func:"zI",args:[[P.Z0,J.O,P.Z0]]},"json","details",{func:"Vd",opt:[J.O]},"",{func:"i8",ret:J.O,args:[[J.Q,J.im]]},"bytes","iterable",{func:"wn",void:true,args:[P.QV,{func:"G5",void:true,args:[null]}]},"f",{func:"Te",ret:J.kn,args:[P.QV,{func:"ra",ret:J.kn,args:[null]}]},{func:"tY",args:[P.QV,null,{func:"Ls",args:[null,null]}]},"initialValue","combine",{func:"rd",ret:J.O,args:[P.QV,J.O,J.O]},"leftDelimiter","rightDelimiter",{func:"dz",void:true,args:[J.Q,J.im,J.im,P.QV,J.im]},"start","end","skipCount",{func:"Tt",void:true,args:[J.Q,J.im,J.Q,J.im,J.im]},"src","srcStart","dst","dstStart","count",{func:"tU",ret:J.im,args:[J.Q,P.a,J.im,J.im]},"a","element","endIndex",{func:"c2",ret:J.O,args:[H.wv]},"symbol",{func:"Ze",ret:J.Q,args:[null]},"victim",{func:"RY",ret:P.EH,args:[P.EH,P.JB]},"errorHandler","zone","duration","computation",{func:"Qe",ret:[P.b8,J.Q],args:[[P.QV,P.b8]],named:{eagerError:J.kn}},!1,"futures","eagerError",{func:"XO",args:[null],opt:[P.Pi]},"error","stackTrace",{func:"uS",void:true,args:[P.b8,P.vs]},{func:"wD",void:true,args:[P.vs,P.vs]},"listeners",{func:"G5",void:true,args:[null]},{func:"SZ",void:true,args:[{func:"kl",void:true}]},"onListen","onPause","onResume","onCancel","sync",{func:"Wc",ret:P.b8,args:[{func:"NT"}]},"notificationHandler",{func:"Mx",void:true,args:[null],opt:[P.Pi]},{func:"VK",args:[{func:"NT"},{func:"aB",args:[null]},{func:"bb",args:[null,P.Pi]}]},"userCode","onSuccess","onError",{func:"R4",void:true,args:[P.MO,P.vs,null,P.Pi]},"subscription","future",{func:"jt",args:[P.MO,P.vs]},{func:"NH",void:true,args:[P.MO,P.vs,null]},{func:"l2",ret:P.dX,args:[P.a6,{func:"kl",void:true}]},{func:"ln",ret:P.JB,args:[P.JB]},{func:"pA",void:true,args:[P.JB,P.e4,P.JB,null,P.Pi]},"self","parent",{func:"aD",args:[P.JB,P.e4,P.JB,{func:"NT"}]},{func:"ke",args:[P.JB,P.e4,P.JB,{func:"aB",args:[null]},null]},"arg",{func:"ta",args:[P.JB,P.e4,P.JB,{func:"Ls",args:[null,null]},null,null]},{func:"qH",void:true,args:[P.JB,P.e4,P.JB,{func:"NT"}]},{func:"Uk",ret:P.dX,args:[P.JB,P.e4,P.JB,P.a6,{func:"kl",void:true}]},"table","b","equals","hashCode","isValidKey",{func:"T3",ret:J.O,args:[P.QV]},{func:"r9",void:true,args:[P.QV,J.Q]},"parts",{func:"pT",ret:J.O,args:[P.Z0]},"m",{func:"EQ",args:[null,{func:"Ls",args:[null,null]}]},"reviver",{func:"F9",args:[J.O,{func:"Ls",args:[null,null]}]},{func:"Fg",ret:J.O,args:[P.IN]},{func:"Se",args:[J.im],named:{isUtc:J.kn}},"millisecondsSinceEpoch","isUtc",{func:"Pt",ret:J.O,args:[J.im]},"n",{func:"Ec",named:{days:J.im,hours:J.im,microseconds:J.im,milliseconds:J.im,minutes:J.im,seconds:J.im}},0,"days","hours","minutes","seconds","microseconds",{func:"hd",opt:[null]},{func:"c7",args:[J.P]},{func:"wU",args:[J.P,J.P,J.P]},{func:"Hu",opt:[P.a]},"modifiedObject","variableName",{func:"RA",ret:P.Q4,opt:[null]},{func:"zv",ret:J.kn,args:[P.a,P.a]},{func:"ZY",ret:J.im,args:[P.a]},"fill",!0,"growable",{func:"DF",void:true,args:[P.a]},"content",{func:"YM",ret:P.iD,args:[J.O]},"uri",{func:"De",named:{fragment:null,host:J.O,path:J.O,pathSegments:[P.QV,J.O],port:null,query:J.O,queryParameters:[P.Z0,J.O,J.O],scheme:J.O,userInfo:J.O}},"scheme","userInfo","host","port","path","pathSegments","query","queryParameters","fragment",{func:"JI",ret:J.O,args:[J.O,[P.Z0,J.O,J.O]]},"component",{func:"oT",ret:[J.Q,J.im],args:[J.O]},{func:"mr",ret:J.O,args:[[J.Q,J.im],J.O],named:{encoding:P.Zi,spaceToPlus:J.kn}},C.dy,"canonicalTable","text","encoding","spaceToPlus",{func:"Hc",args:[[P.QV,W.cv]]},"_elementIterable",{func:"mR",args:[[J.Q,W.KV]]},"_nodeList",{func:"pp",ret:J.O,args:[W.nq]},{func:"B2",args:[J.O,J.O]},"typeExtension",{func:"aZ",ret:[P.b8,W.fJ],args:[J.O],named:{method:J.O,mimeType:J.O,onProgress:{func:"Qh",void:true,args:[W.ew]},requestHeaders:[P.Z0,J.O,J.O],responseType:J.O,sendData:null,withCredentials:J.kn}},"url","method","withCredentials","mimeType","requestHeaders","sendData","onProgress","thing",{func:"BC",ret:J.im,args:[J.im,J.im]},"hash",{func:"Ga",ret:W.Xv,args:[null]},"win",{func:"Aw",ret:W.nq,args:[null]},"w",{func:"kb",args:[{func:"aB",args:[null]}]},{func:"RE",ret:P.b8,args:[P.m9]},"request",{func:"Gp",ret:P.XY},{func:"an",ret:J.im,args:[J.im]},{func:"wJ",ret:J.P,args:[J.P,J.P]},{func:"R1",ret:J.Q,args:[J.Q]},{func:"CA",ret:S.Yl,args:[[J.Q,P.uq]]},"componentTypes",{func:"Ww",args:[P.uq,S.x4]},"componentType","world",{func:"TG",ret:S.St,args:[P.uq]},"typeOfComponent",{func:"fE",args:[{func:"Ye",ret:J.P,args:[J.VA,J.P,J.P]}]},"f0",{func:"Ye",ret:J.P,args:[J.VA,J.P,J.P]},"ratio","change","baseValue",{func:"GW",ret:[P.Z0,J.O,J.O],args:[W.cv,[P.QV,J.O]]},"properties",{func:"hI",void:true,args:[W.cv,[P.Z0,J.O,J.O],{func:"kl",void:true}]},"originalValues","action",{func:"qr",ret:[P.Z0,J.O,J.O],args:[Y.u1,Y.ai]},"xOffset","yOffset",{func:"J6",ret:J.O,args:[Y.dE]},"timing",{func:"hD",ret:Y.wg,args:[W.cv]},{func:"xF",ret:[P.b8,Y.t2],args:[W.cv],named:{duration:J.im,effect:Y.Lv,effectTiming:Y.dE}},"effect","effectTiming",{func:"Pi",ret:[P.b8,Y.t2],args:[Y.Rk,W.cv],named:{duration:J.im,effect:Y.Lv,effectTiming:Y.dE}},{func:"hg",ret:J.kn,args:[Y.Rk,Y.wg]},"state",{func:"Wt",ret:[P.b8,Y.t2],args:[J.kn,W.cv,J.im,Y.Lv,Y.dE]},"doShow","desiredDuration",{func:"TV",ret:[P.b8,Y.t2],args:[W.cv,J.im,Y.Lv,Y.dE]},{func:"Kz",void:true,args:[W.cv]},{func:"ew",ret:J.O,args:[W.cv]},{func:"iZ",ret:[P.b8,J.kn],args:[[J.Q,W.cv],W.cv],named:{duration:J.im,effect:Y.Lv,effectTiming:Y.dE,hideEffect:Y.Lv}},"children","child","hideEffect",{func:"PW",ret:[P.b8,J.kn],args:[[J.Q,W.cv],Y.Lv,J.im,Y.dE]},{func:"lB",ret:[P.b8,W.cv],args:[[J.Q,W.cv]]},{func:"Fv",ret:[P.b8,J.kn],args:[[J.Q,W.cv]]},"nodeName",{func:"fV",args:[P.Qt,J.O,J.O]},"gl","vertSrc","fragSrc",{func:"nt",args:[P.Qt,J.O,J.im]},{func:"zo",args:[P.Qt,P.W4,W.br]},"tex","ele",{func:"q8",args:[L.CT,P.W4],opt:[J.im,J.O]},"ctx","texture","textureUnit","sfname",{func:"nH",args:[[J.Q,T.An],T.An,T.An,T.z3]},"vs","axis","origin","out",{func:"yg",ret:[J.Q,J.O],args:[J.O]},"l",{func:"VT",args:[null,T.AU,T.AU]},"size","color0","color1",{func:"Aj",args:[[J.Q,T.uc]],named:{bgcolor:null,lightSegment:null,stepmax:null,tmpl:J.O}},"// based on\n// http://geeks3d.developpez.com/GLSL/raymarching/\n// http://9bitscience.blogspot.fr/2013/07/raymarching-distance-fields_14.html\n// http://www.iquilezles.org/www/articles/distfunctions/distfunctions.htm\n// https://www.shadertoy.com/view/MsXGWr\nprecision mediump float;\n\nconst float PI = 3.14159265358979323846264;\nconst float surface = 0.001;\nconst vec3 eps = vec3(surface*0.5,0.0,0.0);\n\n${obj_uniforms}\n\nvarying vec2 vTexCoord0;\nuniform vec3 _PixelSize;\nuniform vec3 _ViewPosition, _ViewUp, _FocusPosition;\nuniform float _Near, _Far, _TanHalfFov;\n\n// ro  : the ray origin position (eg: the camera position)\n// rd  : the ray direction for the current pixel\n// rd0 : the camera direction (that is the ray direction at the center of the screen) \n// t   : distance traveled\n// p   : a position 3D\n// de(): distance estimator function (~ map() or f())\n// sd_xxxx() : a signed distance function\n// ud_xxxx() : a unisigned distance function\n// o   : an object\n// obj.x : distance of the object\n// obj.y : id of the object 's material\n\n// type alias\n#define obj vec2\n#define color vec4\n\n#define MAXSTEP ${stepmax}\n//------------------------------------------------------------------------------\n// primitive shape (distance functions)\n\n\n//------------------------------------------------------------------------------\n// Domain operations\n\n// rotation/translation\nvec3 opTx( vec3 p, mat4 m) {\n    return (m * vec4(p, 1.0)).xyz;\n    //return (inverse(m) * vec4(p, 1.0)).xyz;\n}\n//------------------------------------------------------------------------------\n// Objects definitions (distance functions)\n\n${obj_sds}\n\n//------------------------------------------------------------------------------\n// Distance estimator\nfloat matIdIgnored = -1.0;\nobj obj_union(obj o, float d, float matId) {\n  //if (matIdIgnored != matId && abs(o.x) > abs(d)) { obj(d, matId);}\n  float update = step(abs(d), abs(o.x)) * (step(matId, matIdIgnored) + step(matIdIgnored, matId));\n  return mix(o, vec2(d, matId), update);\n}\n\nobj de(in vec3 p) {\n  obj o = vec2(_Far, 0.0);\n  ${obj_des}\n  return o;\n}\n\n\n//------------------------------------------------------------------------------\n// Shading\n\n${obj_mats}\n\n\ncolor shade(obj o, vec3 p, float t, vec3 rd) {\n  ${obj_shs}\n  return color(0.0, 0.0, 0.0, 0.0);\n}\n\nvec3 bgcolor(vec3 ro, vec3 rd) {\n  ${bgcolor}\n  return 3.*mix(vec3(0.025,0.1,0.05)+rd*0.025,vec3(0.1,0.2,0.3)+rd*0.2,smoothstep(-0.1,0.1,rd.z));\n}\n// front to back\n// GL_ONE_MINUS_DST_ALPHA, GL_ONE\ncolor blend2(color front, color back) {\n  vec4 c;\n  //if (back.a < 0.2) return front;\n  //c.rgb = mix(front.rgb, back.rgb, front.a);\n  c.rgb = (1.0 - front.a) * back.a * (back.rgb) + front.rgb * front.a;\n  c.a = front.a + (1.0 - front.a) * back.a;//(1.0 - src.a) * dst.a;\n  //c.a = max(front.a, back.a);\n  //c.a = 1.0;\n  return c;\n}\n// try http://en.wikipedia.org/wiki/Alpha_compositing\ncolor blend(color front, color back) {\n  vec4 c;\n  c.a = front.a + (1.0 - front.a) * back.a;\n  c.rgb = ((1.0 - front.a) * back.a * back.rgb + front.rgb * front.a) * (1.0/c.a);\n  return c;\n}\n\nfloat random(vec2 n) {\n  return fract(sin(dot(n.xy, vec2(12.9898, 78.233)))* 43758.5453);\n}\n\nvoid main(void) {\n  float far = _Far;\n  float near = _Near;\n  vec3 ro= _ViewPosition;\n\n  // Configuration de la camera.\n  vec3 vz = normalize(ro - _FocusPosition);\n  vec3 vup = _ViewUp;\n  vec3 vx = normalize(cross(vup,vz));\n  vec3 vy = -cross(vx,vz);\n  vec2 vPos = -1.0 + 2.0 * vTexCoord0.xy; //([-1.0, 1.0], [-1.0, 1.0])\n  float coeff = _TanHalfFov;\n  //vec3 scrCoord=vcv+vPos.x*u*_PixelSize.x+vPos.y*v*_PixelSize.y;\n  //vec3 scrCoord = vcv+vPos.x*u* _PixelSize.z + vPos.y*v;\n  //vec3 scrCoord = ro + vz * -1.0 + vPos.x* vx * _PixelSize.z + vPos.y* vy;\n  vec3 scrCoord = ro + vz * -1.0 + vx * vPos.x * coeff * _PixelSize.z + vy * vPos.y * coeff;\n  vec3 rd=normalize(scrCoord-ro);\n  //float epsilonPixel = sin(atan(coeff)) * _PixelSize.x;\n\n  // Raymarching.\n  vec2 o = obj(0.0, 0.0);\n  float t = near;\n  vec3 p;\n  float epsilon_de = 0.005;\n  vec4 col = vec4(0.0,0.0,0.0,0.0);\n  for(int i=0;i< MAXSTEP;i++) {\n    if (col.a >= 0.85 || t > far) break;\n    p = ro + rd * t;\n    o = de(p);\n    //epsilon_de = epsilonPixel * t;\n    if (abs(o.x) < epsilon_de) {\n      matIdIgnored = -1.0;\n      \n      col = blend(col, shade(o, p, t, rd));\n      o.x = 0.0;\n      matIdIgnored = o.y;\n    }\n    t += abs(o.x);\n  }\n  //c.a = 1.0;\n  //gl_FragColor= vec4((t - near)/(far - near), 0.0, 0.0, 1.0);  //check last distance\n  //gl_FragColor= vec4(rd, 1.0); // check ray direction\n  vec3 bg=bgcolor(ro, rd);\n  col.rgb+=bg*(1.0-clamp(col.a,0.0,1.0));\n  gl_FragColor = col + vec4(random(0.1 * vTexCoord0.xy) / 255.0);\n  //gl_FragColor = vec4(clamp(col.rgb,0.0,1.0),1.0);\n}\n",256,"os","tmpl","stepmax","lightSegment","bgcolor",{func:"ah",ret:P.Z0,args:[null]},{func:"BV",args:[P.Z0]},"dict",{func:"BG",args:[null],named:{mustCopy:null}},"mustCopy",{func:"Uf",ret:J.kn},{func:"dt",ret:[P.QV,[P.b8,W.cv]]},{func:"kA",args:[J.O,P.Z0]},"kv",{func:"QI",args:[P.Z0,J.O]},"k",{func:"BB",void:true,args:[W.HL]},"evt",{func:"QO",void:true,args:[W.Aj]},{func:"yD",void:true,args:[null,Y.Rk]},"id",{func:"xp",ret:Q.QG,args:[null]},"baseUrl",{func:"G3",void:true,args:[F.Cd]},"err",{func:"Il",ret:J.O,args:[J.O,P.EH],named:{onFailure:P.EH}},T.w0(),"newLocale","localeExists","onFailure","localeName","aLocale",{func:"NG",ret:T.M7,opt:[J.O,J.O]},"newPattern","locale",{func:"Tl",ret:J.im,args:[J.O]},"v",{func:"Zh",ret:J.VA,args:[J.O]},{func:"By",ret:U.dq,args:[T.An],opt:[T.An,T.An]},"position","rotation","scale",{func:"IM",ret:W.Oi,args:[J.O],opt:[P.Z0]},"contextId","attrs",{func:"cY",void:true,args:[J.O,J.O],opt:[J.O]},"priority",{func:"pC",ret:W.Wv,args:[null],opt:[J.O]},"data_OR_file",{func:"ov",void:true,args:[J.im]},{func:"OQ",ret:W.Wv,args:[J.im]},{func:"TJ",ret:W.cv,args:[J.O]},"selectors",{func:"Yu",ret:[P.qh,W.Aj]},{func:"fK",ret:[P.qh,W.HL]},{func:"S5",ret:J.im},{func:"zk",void:true,args:[J.im,J.O]},{func:"nM",ret:[P.Z0,J.O,J.O]},{func:"r5",ret:[J.Q,W.cv]},{func:"nB",ret:W.ha},{func:"Vn",ret:W.oJ,opt:[J.O]},"pseudoElement",{func:"Pu",ret:[W.Ry,W.rg]},{func:"Rl",ret:[W.Ry,W.Aj]},{func:"R2",ret:[W.Ry,W.HL]},{func:"d6",ret:[W.Ry,W.J6]},{func:"NA",void:true,args:[{func:"kl",void:true}],opt:[{func:"jb",void:true,args:[W.Aa]}]},"successCallback","errorCallback",{func:"rl",ret:P.b8},{func:"Oe",void:true,args:[J.O,{func:"dG",args:[W.rg]}],opt:[J.kn]},"listener","useCapture",{func:"e1",ret:W.dU,args:[J.im]},{func:"Yk",void:true,args:[J.im,W.dU]},{func:"Pf",ret:W.dU},{func:"ym",void:true,args:[W.Az]},"data",{func:"Ok",void:true,args:[W.n5]},"fontFace",{func:"lx",void:true,args:[{func:"x3",void:true,args:[W.n5,W.n5,W.Ay]}],opt:[P.a]},"thisArg",{func:"M8",ret:W.KV,args:[J.im]},{func:"tF",void:true,args:[J.im,W.KV]},{func:"If",ret:W.KV},{func:"Mc",void:true,args:[J.O,J.O],named:{async:J.kn,password:J.O,user:J.O}},"async","user","password",{func:"Qk",void:true,opt:[null]},{func:"yk",void:true,args:[P.n6],opt:[J.P]},"timestamp",{func:"MG",ret:W.AW,args:[J.im]},{func:"lL",void:true,args:[J.im,W.AW]},{func:"tR",ret:W.AW},{func:"kN",ret:W.KV,args:[W.KV]},"otherNode",{func:"CT",ret:W.KV,args:[W.KV,W.KV]},"newChild","oldChild",{func:"ck",ret:[P.qh,W.rg]},{func:"UV",ret:W.kT,args:[J.im]},{func:"zB",void:true,args:[J.im,W.kT]},{func:"nO",ret:W.kT},{func:"Xc",ret:W.x8,args:[J.im]},{func:"OK",void:true,args:[J.im,W.x8]},{func:"cB",ret:W.x8},{func:"QP",ret:W.Y4,args:[J.im]},{func:"v2",void:true,args:[J.im,W.Y4]},{func:"ON",ret:W.Y4},{func:"oN",void:true,args:[J.O,J.O]},{func:"l4",void:true,args:[{func:"oN",void:true,args:[J.O,J.O]}]},{func:"pD",ret:[P.QV,J.O]},{func:"xe",ret:W.Bo,args:[J.im]},{func:"Q0",void:true,args:[J.im,W.Bo]},{func:"GS",ret:W.Bo},{func:"qv",ret:W.A1,args:[J.im]},{func:"Oi",void:true,args:[J.im,W.A1]},{func:"yN",ret:W.A1},{func:"UN",ret:W.WC,args:[J.im]},{func:"Xb",void:true,args:[J.im,W.WC]},{func:"Ta",ret:W.WC},{func:"Mg",ret:W.u8},{func:"qc",ret:J.im,args:[{func:"QB",void:true,args:[J.P]}]},{func:"L0",ret:W.Xv},{func:"NR",ret:P.tn,args:[J.im]},{func:"aS",void:true,args:[J.im,P.tn]},{func:"pu",ret:P.tn},{func:"Dr",ret:W.lw,args:[J.im]},{func:"ky",void:true,args:[J.im,W.lw]},{func:"rV",ret:W.lw},{func:"tq",ret:W.Lr,args:[J.im]},{func:"vL",void:true,args:[J.im,W.Lr]},{func:"Le",ret:W.Lr},{func:"fj",ret:W.Io,args:[J.im]},{func:"AR",void:true,args:[J.im,W.Io]},{func:"y6",ret:W.Io},{func:"wz",ret:W.ph,args:[J.im]},{func:"jg",void:true,args:[J.im,W.ph]},{func:"VO",ret:W.ph},{func:"PK",ret:W.l8,args:[J.im]},{func:"Tb",void:true,args:[J.im,W.l8]},{func:"te",ret:W.l8},{func:"zt",ret:W.L3,args:[J.im]},{func:"qU",void:true,args:[J.im,W.L3]},{func:"yU",ret:W.L3},{func:"Ro",ret:P.b8,args:[null],opt:[null]},{func:"KN",ret:P.m9,args:[null],opt:[null]},{func:"K8",ret:P.hC,args:[J.im]},{func:"lt",void:true,args:[J.im,P.hC]},{func:"FZ",ret:P.hC},{func:"To",ret:P.hC,args:[P.hC]},"item",{func:"MX",ret:P.uP,args:[J.im]},{func:"xl",void:true,args:[J.im,P.uP]},{func:"Eq",ret:P.uP},{func:"UK",ret:P.uP,args:[P.uP]},{func:"z3",ret:P.XW,args:[J.im]},{func:"TE",void:true,args:[J.im,P.XW]},{func:"dT",ret:P.XW},{func:"ja",ret:P.XW,args:[P.XW]},"newItem",{func:"aO",ret:P.Vj,args:[P.Vj]},{func:"IO",ret:P.KQ,args:[J.im]},{func:"D8",void:true,args:[J.im,P.KQ]},{func:"IX",ret:P.KQ},{func:"Tr",ret:P.KQ,args:[P.KQ]},{func:"LF",ret:P.D5,args:[J.im]},{func:"LR",void:true,args:[J.im,P.D5]},{func:"C4",ret:P.D5},{func:"xt",void:true,args:[P.I2,{func:"Um",void:true,args:[P.r2]}],opt:[{func:"Um",void:true,args:[P.r2]}]},"audioData",{func:"ZF",ret:P.Jm},{func:"XR",ret:[P.b8,P.r2],args:[P.I2]},{func:"l9",ret:P.Z0,args:[J.im]},{func:"Yd",void:true,args:[J.im,P.Z0]},{func:"qo",ret:P.Z0},{func:"K9",ret:P.uq},{func:"xA",void:true,args:[J.im,J.im]},{func:"ne",ret:J.P,args:[J.im]},{func:"Yx",void:true,args:[J.im,J.P]},{func:"Lc",ret:J.kn,args:[P.a]},"collection",{func:"Ab",ret:J.O,opt:[J.O]},"separator","newLength",{func:"LZ",ret:J.P,args:[J.P]},{func:"JN",ret:J.VA},{func:"Q7",ret:J.kn,args:[J.P]},{func:"wy",ret:J.O,args:[P.nv,J.O]},{func:"SB",ret:J.O,args:[P.nv,{func:"Mu",ret:J.O,args:[P.Od]}]},"convert",{func:"Ur",ret:J.kn,args:[P.nv],opt:[J.im]},{func:"Px",ret:J.O,args:[J.im],opt:[J.im]},"times",{func:"c8",ret:J.O,args:[J.im],opt:[J.O]}," ","width","padding",{func:"cr",ret:[J.Q,J.im]},{func:"rz",ret:J.im,args:[P.nv],opt:[J.im]},"i",{func:"Zi",args:[P.EH]},{func:"SE",void:true,args:[P.XY,P.XY]},"authentification","resume",{func:"Ko",void:true,args:[P.XY]},{func:"yF",void:true,args:[P.bC]},"responsePort",{func:"a3",void:true,args:[P.XY,J.kn]},"errorsAreFatal",{func:"jC",void:true,args:[P.bC,J.im]},"pingType","code",{func:"WI",ret:H.yo,args:[J.im]},"portId",{func:"xL",void:true,args:[J.im,H.yo]},{func:"OT",ret:H.IY},"dataEvent",{func:"eg",args:[P.bC]},{func:"RH",args:[P.XY]},{func:"xj",ret:P.bC,args:[J.Q]},{func:"WX",ret:P.XY,args:[J.Q]},"info",{func:"Ao",ret:P.Z0,args:[P.Z0]},"map","val",{func:"Ux",args:[J.Q]},{func:"Xe",ret:P.Z0,args:[J.Q]},{func:"TS",args:[null,J.O]},{func:"Pz",ret:P.Od,args:[J.O]},"str",{func:"D2",ret:P.Od,args:[J.O,J.im]},{func:"BO",ret:P.Od},{func:"hm",ret:[P.b8,F.rE],args:[F.rE]},"tracer0","payload","assetName",{func:"uq",ret:F.rE,args:[J.O,J.O,J.O,P.Z0,P.Z0]},"loaderArguments","importerArguments",{func:"nq",ret:F.rE,args:[J.O,[J.Q,J.O],J.kn]},"fullAssetPath","assetPath","throwOnNotFound",{func:"Nx",ret:[P.b8,F.NR],args:[J.O,J.O]},"_",{func:"rC",void:true,args:[F.rE]},{func:"vt",void:true,args:[F.rE,J.O]},"errorLabel",{func:"ep",void:true,args:[F.rE,J.O,J.O]},{func:"FP",ret:[P.b8,F.rE],args:[null,F.rE,F.zY]},"imported","packFileAsset","loaded",{func:"d3",ret:P.b8,args:[F.rE,F.zY]},"event",{func:"Lq",ret:[P.b8,[P.Z0,J.O,J.O]],args:[F.rE,F.zY]},"requestUrl",{func:"YT",void:true,args:[[J.Q,J.im]]},{func:"YD",void:true,args:[[J.Q,J.im],J.im]},"dataIndex",{func:"KY",ret:[J.Q,J.im],args:[J.im]},"word","test",{func:"e8",ret:P.WV},{func:"Hy",ret:P.vs},"cancelOnError",{func:"xS",ret:P.Ge},{func:"GA",void:true,args:[P.a],opt:[P.Pi]},{func:"ZG",void:true,args:[P.a,P.Pi]},{func:"YU",void:true,args:[P.lx]},"ignored","theError","theStackTrace",{func:"SF",args:[J.kn]},{func:"Ue",ret:P.b8,args:[P.EH],named:{test:{func:"ra",ret:J.kn,args:[null]}}},{func:"c3",void:true,args:[P.vs]},{func:"u9",void:true,args:[null,P.Pi]},{func:"yV",args:[null],opt:[null]},{func:"rt",ret:[P.b8,J.im]},"newValue","st","isMatch",{func:"dk",ret:P.ht},{func:"IK",ret:P.Qk},{func:"B8",ret:P.yU},{func:"cu",ret:{func:"NT"}},{func:"nu",void:true,args:[P.ht]},"pendingEvents","handleData",{func:"pY",void:true,args:[P.EH]},"handleDone",{func:"Pb",void:true,opt:[P.b8]},"resumeSignal",{func:"wO",void:true,args:[J.kn]},"wasInputPaused","onData","onDone","dispatch",{func:"xg",void:true,args:[P.Cf]},{func:"fS",ret:P.lx},"_source","onListenHandler","onCancelHandler",{func:"bb",args:[null,P.Pi]},{func:"Db",args:[{func:"NT"}]},{func:"Bg",args:[{func:"aB",args:[null]},null]},{func:"hi",args:[{func:"Ls",args:[null,null]},null,null]},{func:"vD",ret:{func:"NT"},args:[{func:"NT"}],named:{runGuarded:J.kn}},"runGuarded",{func:"uC",ret:{func:"aB",args:[null]},args:[{func:"aB",args:[null]}],named:{runGuarded:J.kn}},{func:"mw",ret:{func:"NT"},args:[{func:"NT"}]},{func:"lg",ret:{func:"aB",args:[null]},args:[{func:"aB",args:[null]}]},{func:"r5b",ret:J.Q},{func:"GF",ret:J.im,args:[null,null]},"bucket","each","ifAbsent",{func:"Yw",void:true,args:[P.db]},"cell",{func:"vf",ret:J.kn,args:[null,P.a]},{func:"fv",void:true,args:[P.tj]},"offset",{func:"IG",opt:[J.im]},"initialCapacity",{func:"AC",args:[J.O],named:{reviver:{func:"Ls",args:[null,null]}}},{func:"KL",ret:P.QM},{func:"YV",ret:[P.zF,J.O,[J.Q,J.im]]},{func:"i5",ret:J.kn,args:[J.im,J.im]},"leadingSurrogate","nextCodeUnit",{func:"af",ret:J.im,args:[J.O,J.im,J.im]},{func:"Nc",args:[P.IN,null]},{func:"rw",ret:P.iP,args:[P.a6]},{func:"jW",ret:P.a6,args:[P.a6]},{func:"CP",ret:P.a6,args:[J.P]},"factor",{func:"hF",ret:J.kn,args:[P.a6]},{func:"kS",ret:P.Pi},{func:"uB",void:true,args:[P.QV],opt:[J.O]},"objects",{func:"DZ",ret:J.O,args:[J.O,[P.QV,J.O]]},{func:"jN",ret:J.O,args:[J.O,J.O]},"base","reference",{func:"P6",ret:J.kn,args:[J.O]},{func:"Qd",ret:P.iD,args:[P.iD]},"ch","digit","part","current","byteString","byte","buffer",{func:"uQ",ret:W.cv,args:[J.im]},{func:"wL",void:true,args:[J.im,W.cv]},{func:"jT",ret:W.cv,args:[W.cv]},{func:"Zdb",ret:[P.Dk,W.cv]},{func:"Bs",void:true,args:[J.im,J.im,[P.QV,W.cv]],opt:[J.im]},{func:"y7",ret:W.cv},{func:"bD",ret:W.E1},"header",{func:"Fp",void:true,args:[W.KV]},{func:"wja",ret:[P.Dk,W.KV]},{func:"WU",void:true,args:[J.im,J.im,[P.QV,W.KV]],opt:[J.im]},{func:"B1",ret:J.kn,args:[W.KV]},"node",{func:"tX",ret:J.O,args:[J.O],named:{startUppercase:J.kn}},"hyphenedName","startUppercase",{func:"Fo",ret:[P.uE,J.O]},{func:"Gn",void:true,args:[[P.uE,J.O]]},"stream",{func:"O6",void:true,args:[P.uE]},{func:"Dg",ret:J.kn,args:[J.im,J.im,H.b0,J.im]},{func:"Qb",void:true,args:[J.im,J.im,[P.QV,J.VA]],opt:[J.im]},{func:"UG7",void:true,args:[J.im,J.im,[P.QV,J.im]],opt:[J.im]},{func:"lq",ret:J.im,args:[J.im,[J.Q,P.uq]]},"mask",{func:"Ty",void:true,args:[S.qn]},{func:"hB",void:true,args:[S.qn,S.St,S.jR]},{func:"IC",void:true,args:[S.qn,S.St]},{func:"MC",void:true,args:[S.qn,{func:"R0",void:true,args:[[S.EP,S.jR],J.im]}]},"components","typeId","entity",{func:"va",args:[S.Yl]},"aspect",{func:"YQ",void:true,args:[S.qn,J.O]},"group",{func:"qt",ret:[P.QV,S.qn],args:[J.O]},{func:"QY",void:true,args:[[P.QV,S.qn]]},"entities","newCapacity",{func:"X1",void:true,args:[S.d7]},"manager",{func:"TI",ret:S.qn,opt:[[J.Q,S.jR]]},C.xD,{func:"GN",ret:S.ME,args:[S.ME],named:{passive:J.kn}},"system","passive",{func:"wY",void:true,args:[[S.EP,S.qn],{func:"Tz",void:true,args:[null,null]}]},"perform","observer",{func:"ip",args:[J.VA,J.P,J.P]},{func:"jz",ret:J.im,args:[W.cv,J.im,Y.dE],opt:[J.P]},"fractionComplete",1,{func:"Bx",ret:J.im,args:[J.kn,W.cv,J.im,Y.dE,J.P]},"doingShow",{func:"WE",args:[J.O],opt:[[P.Z0,J.O,J.O]]},"_property","animatingOverrides",{func:"DW",ret:J.O,args:[J.P,W.cv]},{func:"Ic",ret:J.P,args:[W.cv]},{func:"NK",ret:[P.b8,Y.t2],args:[J.im]},"durationMS",{func:"Ac",ret:J.im,args:[W.cv,J.P,Y.dE],opt:[J.P]},{func:"n4",args:[W.cv]},"currentlyVisible",{func:"ZD",args:[[J.Q,Y.t2]]},"results","successList",{func:"SC",args:[Y.t2]},{func:"Gm",args:[[J.Q,Y.wg]]},"states","r",{func:"Z5",args:[J.im]},"success","successValues",{func:"O7",ret:P.qh,args:[M.AA]},"eventType",{func:"ih",void:true,args:[M.AA,null]},"req","viaExit",{func:"Wr",ret:P.b8,args:[J.O]},"areaId","pack","gameLoop",{func:"zm",ret:[J.Q,S.qn],args:[F.NR]},"assetpack",{func:"FG",named:{c:J.O,n:J.O}},"normalToColor(n)","n_de(o, p)","c",{func:"Kn",ret:Q.VB,args:[null]},"camera",{func:"LE",ret:Q.VB},{func:"wZ",ret:Q.VB,args:[T.An]},{func:"R7",ret:Q.VB,args:[T.An,T.An]},"dim",{func:"DS",args:[null,S.qn]},{func:"JO",args:[W.HL]},"acc","e2","barrier","p",{func:"MO",ret:J.kn,args:[null,null,null]},"newCyclePos",{func:"rl6",ret:[P.b8,F.hx]},{func:"Up",void:true,args:[B.UP]},{func:"Yr",args:[B.ra,[J.Q,J.im]]},"buttonIds",{func:"QB",void:true,args:[J.P]},{func:"WW",void:true,args:[W.rg]},{func:"PB",void:true,args:[W.y6]},{func:"bW",args:[G.Fk]},{func:"Mb",void:true,args:[G.aR,W.WC]},"glTouch","touch",{func:"ba",ret:J.kn,args:[[J.Q,W.WC],null]},"touches","identifier",{func:"mRV",args:[[J.Q,W.WC]]},{func:"El",args:[W.WC]},{func:"bf",ret:P.SI,args:[J.O]},{func:"K6",named:{hasDepthBuff:null,height:J.im,type:J.im,width:J.im}},-1,5121,"height","hasDepthBuff",{func:"T7",named:{deleteFramebuffer:null,deleteTex:null}},"deleteTex","deleteFramebuffer","line",{func:"BU",args:[null,L.xn]},"plan",{func:"mm",ret:P.b8,args:[null,F.rE,F.zY]},{func:"RG",void:true,args:[L.CT]},{func:"yz",void:true,args:[P.W4]},{func:"B5",void:true,args:[L.tJ]},{func:"v4",args:[G.Eo]},"ctrl",{func:"mV",args:[J.VA]},"radiusInPixel","mat","sd",{func:"YN",args:[null],named:{fboTarget:L.Lf,makeShader:null}},T.Fo(),"fboTarget","makeShader",{func:"uw",args:[J.im,null]},{func:"u6",ret:[P.Dk,J.O]},{func:"Sl",void:true,args:[{func:"xM",void:true,args:[J.O]}]},{func:"eE",ret:J.kn,args:[{func:"P6",ret:J.kn,args:[J.O]}]},{func:"rQ",args:[null,{func:"TS",args:[null,J.O]}]},{func:"h0",args:[{func:"PT",args:[[P.uE,J.O]]}]},{func:"zj",void:true,args:[{func:"Kz",void:true,args:[W.cv]}]},"needle","el","httpRequest",{func:"mZ",args:[J.O,P.EH]},"getPattern",{func:"ny",ret:J.kn,args:[P.Rn]},"affix",{func:"rh",void:true,args:[F.Rp]},{func:"nZ",args:[W.cv],named:{displayBackward:null,ease:{func:"Ye",ret:J.P,args:[J.VA,J.P,J.P]}}},U.y1(),"view","ease","displayBackward","selector","init","onChange",{func:"Jr",void:true,args:[P.r2,[P.A0,Q.i0]]},"completer",{func:"z5",void:true,args:[W.fJ,[P.A0,Q.i0]]},{func:"rti",ret:[P.b8,Q.i0]},"baseURL",{func:"CY",args:[Q.QG,P.Jm]},"_manager","output",{func:"M0",ret:J.kn,args:[P.oI,J.im]},{func:"nk",args:[Q.QG,J.O,P.Jm]},"_name","_output","sound",{func:"Yt",ret:J.VA,args:[J.im]},{func:"eP",void:true,args:[J.im,J.VA]},{func:"ZV",ret:T.An,args:[J.im]},"row",{func:"Zb",ret:T.No,args:[T.No]},{func:"Qs",ret:T.No},{func:"Bk",ret:T.AU,args:[J.im]},{func:"Td",ret:T.hX,args:[T.hX]},{func:"zb",ret:T.hX},{func:"U3",ret:T.z3,args:[T.z3]},{func:"AA",ret:T.z3,args:[J.VA]},{func:"Dn",ret:T.An,args:[J.VA,J.VA,J.VA]},"x_","y_","z_",{func:"No",ret:T.An,args:[T.An]},{func:"Yz",ret:T.An,args:[J.VA]},{func:"XK",ret:T.An},{func:"om",ret:T.AU,args:[J.VA,J.VA,J.VA,J.VA]},"w_",{func:"VC",ret:T.AU,args:[T.AU]},{func:"Hn",ret:T.AU,args:[J.VA]},];$=null
 I = I.$finishIsolateConstructor(I)
 $=new I()
 function convertToFastObject(properties) {

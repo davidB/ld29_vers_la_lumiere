@@ -1,0 +1,6 @@
+{
+   "barriers":{
+      "url":"barriers.json",
+      "type":"json"
+   }
+}
