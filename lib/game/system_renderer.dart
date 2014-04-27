@@ -112,7 +112,10 @@ class System_Render extends EntitySystem {
     ..contrast = 0.3
     ;
     return factory_filter2d.init().then((_){
-      _renderer.filters2d.add(factory_filter2d.makeFXAA());
+      //_renderer.filters2d.add(factory_filter2d.makeFXAA());
+      //_renderer.filters2d.add(factory_filter2d.makeConvolution3(Factory_Filter2D.c3_gaussianBlur3));
+      _renderer.filters2d.add(factory_filter2d.makeHBlur(1.0));
+      _renderer.filters2d.add(factory_filter2d.makeVBlur(0.5));
       _renderer.filters2d.add(factory_filter2d.makeBrightness(bctrl));
     }).then((l) => _am);
   }
