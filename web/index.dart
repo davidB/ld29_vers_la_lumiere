@@ -62,18 +62,21 @@ void main() {
 
 void _setupRoutes() {
   Window.hashChangeEvent.forTarget(window).listen((e) {
-    _route(window.location.hash);
+    _route(window.location.href);
   });
-  _route(window.location.hash);
+  _route(window.location.href);
 }
 
-void _route(String hash) {
-  //RegExp exp = new RegExp(r"(\w+)");
-  if (hash.startsWith("#/a/")) {
-    game.areaReq = hash.substring("#/a/".length);
+void _route(String href) {
+  var uri = Uri.parse(href);
+  var hash = uri.fragment;
+  if (hash.startsWith("/a/")) {
+    var st = uri.queryParameters["stepmax"];
+    game.stepmax = (st == null) ? 45 : int.parse(st);
+    game.areaReq = hash.substring("/a/".length);
     bus.fire(eventInGameReqAction, IGAction.INITIALIZE);
     _showScreen("screenInit");
-  } else if (hash.startsWith("#/s/")) {
+  } else if (hash.startsWith("/s/")) {
     bus.fire(eventInGameReqAction, IGAction.PAUSE);
     _showScreen(hash.substring("#/s/".length));
   } else {

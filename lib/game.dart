@@ -30,6 +30,7 @@ class Game {
   var audioManager;
   var bus;
   var areaReq = 'l0';
+  var stepmax = 40;
 
   World _world;
   GameLoopHtml _gameLoop;
@@ -145,6 +146,7 @@ class Game {
         var es = _entitiesFactory.newFullArea(pack);
         es.forEach((e) => e.addToWorld());
         _world.processEntityChanges();
+        _renderSystem.stepmax = stepmax;
         _renderSystem.reset();
         _progressCtrl.end(3);
         _updateStatus(IGStatus.INITIALIZED);
