@@ -134,38 +134,27 @@
 	</target>
 
 	<target name="deploy0" depends="js, insert_ga, remove_packages">
-		<mkdir dir="${target}/api"/>
-		<copy todir="${target}/api">
-			<fileset dir="src/go"/>
-		</copy>
-		<copy file="src/cfg/app.yaml" tofile="${target}/app.yaml"/>
 	</target>
+
+  <target name="deploy-only">
+   <echo file="target/publish-site.sh">
+#!/bin/sh
+cd ${basedir}/../ld29.gh-pages
+git checkout gh-pages
+git pull
+touch .nojekyll
+rm -Rf compo
+mkdir compo
+cp -fr ${basedir}/target/web/. compo
+git add compo .nojekyll
+git commit -a -m "publish reports to gh-pages"
+git push -u origin gh-pages
+</echo>
+    <chmod perm="+x" file="target/publish-site.sh"/>
+    <exec executable="target/publish-site.sh" failonerror="true" failifexecutionfails="true"/>
+  </target>
 
 	<target name="deploy" depends="deploy0, deploy-only"/>
-
-	<target name="deploy-only">
-		<input message="email ?" addproperty="email"/>
-		<input message="password ?" addproperty="pass"/>
-		<exec executable="python2" inputstring="${pass}">
-			<arg line="${user.home}/bin/soft/go_appengine/appcfg.py update --skip_sdk_update_check --email=${email} --passin ${target}"/>
-		</exec>
-	</target>
-
-	<target name="archives">
-		<input message="version" addproperty="version"/>
-		<propertyregex property="versionB" input="${version}" regexp="." replace="-" global="true" />
-		<property name="archdir" value="../vdrones-archives"/>
-		<mkdir dir="${archdir}/tmp"/>
-		<exec executable="python2">
-			<arg line="${user.home}/bin/soft/go_appengine/appcfg.py download_app --skip_sdk_update_check -A vdrones -V ${versionB} ${archdir}/tmp"/>
-		</exec>
-		<tar destfile="${archdir}/vdrones-${version}.tar" basedir="${archdir}/tmp"/>
-		<gzip destfile="${archdir}/vdrones-${version}.tar.gz" src="${archdir}/vdrones-${version}.tar"/>
-		<delete file="${archdir}/vdrones-${version}.tar"/>
-		<delete includeEmptyDirs="true">
-			<fileset dir="${archdir}/tmp"/>
-		</delete>
-	</target>
 
   <!-- Find and delete empty folders under dir -->
 	<macrodef name="deleteEmptyFolders">

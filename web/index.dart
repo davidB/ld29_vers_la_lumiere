@@ -4,9 +4,9 @@ import 'package:logging/logging.dart';
 import 'package:html_toolbox/html_toolbox.dart';
 import 'package:html_toolbox/effects.dart';
 import 'package:simple_audio/simple_audio.dart';
-import '../lib/events.dart';
-import '../lib/screens.dart';
-import '../lib/game.dart';
+import 'package:ld29_vers_la_lumiere/events.dart';
+import 'package:ld29_vers_la_lumiere/screens.dart';
+import 'package:ld29_vers_la_lumiere/game.dart';
 
 var bus = makeBus();
 var game = null;

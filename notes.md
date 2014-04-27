@@ -33,12 +33,12 @@
 
 # J2
 
-* kind < 0 => afficher ou pas (fin du last level "impossible")
-* changer la font
+- kind < 0 => afficher ou pas (fin du last level "impossible")
+- changer la font
 * brightness  + contrast dans level def
 * 3 levels
-* echec du niveau, effet tirer en arriere
-* deploiement github
+- echec du niveau, effet tirer en arriere
+- deploiement github
 * test ordi isa, windows
 * son : bruitage à la bouche (son de derriere)
   * grognement
