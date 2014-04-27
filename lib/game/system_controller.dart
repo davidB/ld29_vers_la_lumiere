@@ -98,7 +98,7 @@ class System_CameraFollower extends EntityProcessingSystem {
       position.z = approachMulti(next.z, position.z, 0.3);
       camera.upDirection.setFrom(math2.VZ_AXIS);
       camera.focusPosition.setFrom(_targetPosition).add(follower.focusTranslation);
-      camera.focusPosition.z = -1.0;//math.max(0.0, camera.focusPosition.z);
+      camera.focusPosition.z = math.max(0.0, camera.focusPosition.z);
     }
     //follower.info.updateProjectionMatrix();
     //camera.adjustNearFar(follower.focusAabb, 0.001, 0.1);
@@ -313,7 +313,7 @@ class System_BarrierHandler extends EntityProcessingSystem {
     barrier.cyclePos = newCyclePos;
     barrier.kind = nfo[1];
     if (barrier.kind < 0) {
-      if ((world.time ~/ 100)% 3 == 0) {
+      if ((world.time ~/ 100)% 2 == 0) {
         // ignore this position
         return false;
       }
@@ -322,32 +322,32 @@ class System_BarrierHandler extends EntityProcessingSystem {
     p.y = nfo[0].toDouble();
     switch(barrier.kind) {
       case Barrier.K_H0 :
-        barrier.dim.setValues(2.0, 0.5, 0.5);
+        barrier.dim.setValues(2.0, 0.5, 0.4);
         p.x = 0.0;
         p.z = -1.0;
         break;
       case Barrier.K_H1 :
-        barrier.dim.setValues(2.0, 0.5, 0.5);
+        barrier.dim.setValues(2.0, 0.5, 0.4);
         p.x = 0.0;
         p.z = 0.0;
         break;
       case Barrier.K_H2 :
-        barrier.dim.setValues(2.0, 0.5, 0.5);
+        barrier.dim.setValues(2.0, 0.5, 0.4);
         p.x = 0.0;
         p.z = 1.0;
         break;
       case Barrier.K_V0 :
-        barrier.dim.setValues(0.5, 0.5, 2.0);
+        barrier.dim.setValues(0.4, 0.5, 2.0);
         p.x = -1.0;
         p.z = 0.0;
         break;
       case Barrier.K_V1 :
-        barrier.dim.setValues(0.5, 0.5, 2.0);
+        barrier.dim.setValues(0.4, 0.5, 2.0);
         p.x = 0.0;
         p.z = 0.0;
         break;
       case Barrier.K_V2 :
-        barrier.dim.setValues(0.5, 0.5, 2.0);
+        barrier.dim.setValues(0.4, 0.5, 2.0);
         p.x = 1.0;
         p.z = 0.0;
         break;
