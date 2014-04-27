@@ -143,14 +143,24 @@ class Game {
     //_newWorld();
 
     return _loadArea(areaReq).then((pack){
-      var es = _entitiesFactory.newFullArea(pack);
-      es.forEach((e) => e.addToWorld());
-      _world.processEntityChanges();
-      _renderSystem.reset();
-      _hudSystem.reset();
-      _progressCtrl.end(3);
-      _updateStatus(IGStatus.INITIALIZED);
-      return true;
+      try {
+        var es = _entitiesFactory.newFullArea(pack);
+        es.forEach((e) => e.addToWorld());
+        _world.processEntityChanges();
+        _renderSystem.reset();
+        _hudSystem.reset();
+        _progressCtrl.end(3);
+        _updateStatus(IGStatus.INITIALIZED);
+        return true;
+      } catch (err,st) {
+        print("error catched");
+        bus.fire(eventErr, new Err()
+        ..category = "load level"
+        ..exc = err
+        ..stacktrace = st
+        );
+        return false;
+      }
     });
   }
 

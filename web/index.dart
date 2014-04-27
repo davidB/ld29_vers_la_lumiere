@@ -137,6 +137,11 @@ AudioManager _newAudioManager(baseUrl) {
 }
 
 void handleError(Err err) {
+  var el = window.document.querySelector("[data-text=error]");
+  if (el != null) {
+    el.style.display = "block";
+    el.text = err.exc.toString();
+  }
   print("${err.category}\tERROR\t${err.exc}");
   if (err.stacktrace != null) print(err.stacktrace); //.fullStackTrace); // This should print the full stack trace)
 }
