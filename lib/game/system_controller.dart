@@ -7,8 +7,12 @@ var _keysRight = [KeyCode.RIGHT, KeyCode.D];
 
 class AvatarControl extends Component {
   static final CT = ComponentTypeManager.getTypeFor(AvatarControl);
+  static const SPEED0 = 0.006; // unit/ms
+  static const SPEEDJUMP = 0.006 * 0.8; // unit/ms
+  static const SPEEDDASH = 0.006 * 0.3; // unit/ms
   double z = 0.0;
   double x = 0.0;
+  double speed = SPEED0;
   AvatarControl();
 }
 
@@ -116,8 +120,8 @@ class System_AvatarController extends EntityProcessingSystem {
   AvatarControl _state;
   var _subUp, _subDown;
   var _jumpEnd = 0.0, _dashEnd = 0.0;
-  final _jumpDuration = 1.5 * 1000.0;
-  final _dashDuration = 1.2 * 1000.0;
+  final _jumpDuration = 4.0 / AvatarControl.SPEEDJUMP;
+  final _dashDuration = 3.0 / AvatarControl.SPEEDDASH;
   final _dashF = ease.outCubic;
   final _jumpF = ease.goback(ease.inQuartic);
   var time = 0.0;
@@ -138,19 +142,25 @@ class System_AvatarController extends EntityProcessingSystem {
     var jumpR = _jumpF(math.max(0.0, _jumpEnd - time) / _jumpDuration, 1.0, 0.0);
     var dashR = _dashF(math.max(0.0, _dashEnd - time) / _dashDuration, 1.0, 0.0);
     dest.z = jumpR - dashR;
+    dest.speed = (dest.z >= 0.3)? AvatarControl.SPEEDJUMP
+      : (dest.z <= -0.3) ? AvatarControl.SPEEDDASH
+      : AvatarControl.SPEED0
+      ;
   }
 
   void _bindKeyboardControl(){
     _subDown = document.onKeyDown.listen((KeyboardEvent e) {
       var isJumpingOrDashing =  (_jumpEnd > time || _dashEnd > time);
-      if (_keysUp.contains(e.keyCode) && !isJumpingOrDashing) {
-        _jumpEnd = time + _jumpDuration;
+      if (!isJumpingOrDashing) {
+        if (_keysUp.contains(e.keyCode)) {
+          _jumpEnd = time + _jumpDuration;
+        }
+        else if (_keysDown.contains(e.keyCode)){
+          _dashEnd = time + _dashDuration;
+        }
+        else if (_keysLeft.contains(e.keyCode)) _state.x = -1.0;
+        else if (_keysRight.contains(e.keyCode)) _state.x = 1.0;
       }
-      else if (_keysDown.contains(e.keyCode) && !isJumpingOrDashing){
-        _dashEnd = time + _dashDuration;
-      }
-      else if (_keysLeft.contains(e.keyCode)) _state.x = -1.0;
-      else if (_keysRight.contains(e.keyCode)) _state.x = 1.0;
     });
 //    _subUp = document.onKeyUp.listen((KeyboardEvent e) {
 //      if (_keysUp.contains(e.keyCode)) _state.z = 0.0;
@@ -187,7 +197,7 @@ class System_AvatarHandler extends EntityProcessingSystem {
     var p = transform.position3d;
     p.x = math2.clamp(p.x + ctrl.x, 1.0, -1.0);
     p.z = math2.clamp(ctrl.z, 1.0, -1.0);
-    p.y += 0.006 * world.delta;
+    p.y += ctrl.speed * world.delta;
     //TODO test if exitpoint
     var exiting = _gm.getEntities(GROUP_EXITZONE).fold(false, (acc, e2){
       var t2 = _transformMapper.get(e2);
@@ -204,7 +214,7 @@ class System_AvatarHandler extends EntityProcessingSystem {
       var t2 = _transformMapper.get(e2);
       if (t2 != null) {
         var deltaY = (p.y - t2.position3d.y);
-        similarY = (deltaY < 0.5 && deltaY > -0.5);
+        similarY = (deltaY < 0.4 && deltaY > -0.4);
       }
       var overlap = false;
       if (similarY) {
