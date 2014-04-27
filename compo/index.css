@@ -73,6 +73,7 @@ li.signin span.buttonText{font-size:135%}
 .revealed{opacity:.3;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=30)";filter:alpha(opacity=30)}
 th.score_rank,th.score_name,th.score_value{color:#646464}
 .endMessage{font-size:500%;margin-top:2em}
+.alert-error{background-color:#f00;position:absolute;top:0;left:0;width:100%;text-align:center}
 @-moz-keyframes opacityBlink{0%{opacity:.9;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";filter:alpha(opacity=90)}
 70%{opacity:.2;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=20)";filter:alpha(opacity=20)}
 100%{opacity:.9;-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(Opacity=90)";filter:alpha(opacity=90)}
