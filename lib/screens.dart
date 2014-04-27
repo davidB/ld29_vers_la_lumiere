@@ -177,6 +177,8 @@ class UiScreenRunResult {
   _findNextAreaId() {
     switch(areaId) {
       case 'l0': return 'l1';
+      case 'l1': return 'l2';
+      case 'l2': return 'l0';
     }
     return null;
   }
