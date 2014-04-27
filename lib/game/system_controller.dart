@@ -48,6 +48,21 @@ class CameraFollower extends Component {
   }
 }
 
+class Barrier extends Component {
+  static const K_UNDEF = 0;
+  static const K_H0 = 1 + 2 + 4;
+  static const K_H1 = 8 + 16 + 32;
+  static const K_H2 = 64 + 128 + 256;
+  static const K_V0 = 1 + 8 + 64;
+  static const K_V1 = 2 + 16 + 128;
+  static const K_V2 = 4 + 32 + 256;
+  int kind = K_UNDEF;
+  int cycleMax = 1;
+  int cyclePos = 0;
+  List barriers;
+  final Vector3 dim = new Vector3(0.5, 0.5, 0.5);
+}
+
 class System_CameraFollower extends EntityProcessingSystem {
   ComponentMapper<CameraFollower> _followerMapper;
   ComponentMapper<Transform> _transformMapper;
@@ -150,7 +165,7 @@ class System_AvatarHandler extends EntityProcessingSystem {
   ComponentMapper<AvatarControl> _avatarControlMapper;
   ComponentMapper<Transform> _transformMapper;
   ComponentMapper<AvatarNumbers> _avatarNumbersMapper;
-//  ComponentMapper<EntityStateComponent> _statesMapper;
+  ComponentMapper<Barrier> _barrierMapper;
   Game _game;
   GroupManager _gm;
 
@@ -159,8 +174,8 @@ class System_AvatarHandler extends EntityProcessingSystem {
   void initialize(){
     _avatarControlMapper = new ComponentMapper<AvatarControl>(AvatarControl, world);
     _avatarNumbersMapper = new ComponentMapper<AvatarNumbers>(AvatarNumbers, world);
-//    _statesMapper = new ComponentMapper<EntityStateComponent>(EntityStateComponent, world);
     _transformMapper = new ComponentMapper<Transform>(Transform, world);
+    _barrierMapper = new ComponentMapper<Barrier>(Barrier, world);
     _gm = world.getManager(GroupManager) as GroupManager;
   }
 
@@ -184,20 +199,123 @@ class System_AvatarHandler extends EntityProcessingSystem {
     }
     //TODO test if collision
     var avatarMask = avatarMaskFrom(p.x, p.z);
-    if (ctrl.x != 0.0 || ctrl.z != 0.0) print(p.toString() + " -- " + avatarMask.toString());
+    var collision = _gm.getEntities(GROUP_BARRIER).fold(false, (acc, e2){
+      var similarY = false;
+      var t2 = _transformMapper.get(e2);
+      if (t2 != null) {
+        var deltaY = (p.y - t2.position3d.y);
+        similarY = (deltaY < 0.5 && deltaY > -0.5);
+      }
+      var overlap = false;
+      if (similarY) {
+        var b2 = _barrierMapper.get(e2);
+        print("similarY !! ${avatarMask} & ${b2.kind} = ${(avatarMask & b2.kind)}");
+        overlap = ((b2 != null) && (avatarMask & b2.kind) != 0);
+      }
+      return acc || overlap;
+    });
+    if (collision) _collideBarrier();
   }
 
   int avatarMaskFrom(x, z) {
     var avatarMask = 1 << (x.toInt() + 1);
     avatarMask = avatarMask | avatarMask << 3;
     // jump
-    if (z == 1.0) avatarMask = avatarMask << 3;
+    if (z >= 0.3) avatarMask = avatarMask << 3;
     // dash
-    else if (z == -1.0) avatarMask = avatarMask >> 3;
+    else if (z <= -0.3) avatarMask = avatarMask >> 3;
     return avatarMask;
   }
 
   void _exiting() {
     _game._stop(true);
+  }
+
+  void _collideBarrier() {
+    _game._stop(false);
+  }
+}
+
+class System_BarrierHandler extends EntityProcessingSystem {
+  ComponentMapper<Barrier> _barrierMapper;
+  ComponentMapper<Transform> _transformMapper;
+  GroupManager _gm;
+  double recycleY;
+
+  System_BarrierHandler() : super(Aspect.getAspectForAllOf([Barrier, Transform]));
+
+  void initialize(){
+    _barrierMapper = new ComponentMapper<Barrier>(Barrier, world);
+    _transformMapper = new ComponentMapper<Transform>(Transform, world);
+    _gm = world.getManager(GroupManager) as GroupManager;
+  }
+
+  bool checkProcessing() {
+    recycleY = _gm.getEntities(GROUP_AVATAR).fold(0.0, (acc, e2){
+      var t2 = _transformMapper.get(e2);
+      if (t2 != null) acc = t2.position3d.y - 2.0;
+      return acc;
+    });
+    return true;
+  }
+
+  void processEntity(Entity entity) {
+    var barrier = _barrierMapper.get(entity);
+    var transform = _transformMapper.get(entity);
+    var p = transform.position3d;
+    if (barrier.kind ==  Barrier.K_UNDEF) {
+      setCyclePos(barrier.cyclePos, barrier, p);
+      print('init barrier');
+    }
+    if (p.y >= recycleY) {
+      print('recycle barrier');
+      var newCyclePos = (barrier.cyclePos + barrier.cycleMax);
+      if (newCyclePos >=   barrier.barriers.length) {
+        entity.disable();
+      } else {
+        setCyclePos(newCyclePos, barrier, p);
+      }
+    }
+  }
+
+  void setCyclePos(newCyclePos, barrier, p) {
+    var nfo = barrier.barriers[newCyclePos];
+    barrier.cyclePos = newCyclePos;
+    barrier.kind = nfo[1];
+    p.y = nfo[0].toDouble();
+    switch(barrier.kind) {
+      case Barrier.K_H0 :
+        barrier.dim.setValues(1.5, 0.5, 0.5);
+        p.x = 0.0;
+        p.z = -1.0;
+        break;
+      case Barrier.K_H1 :
+        barrier.dim.setValues(1.5, 0.5, 0.5);
+        p.x = 0.0;
+        p.z = 0.0;
+        break;
+      case Barrier.K_H2 :
+        barrier.dim.setValues(1.5, 0.5, 0.5);
+        p.x = 0.0;
+        p.z = 1.0;
+        break;
+      case Barrier.K_V0 :
+        barrier.dim.setValues(0.5, 0.5, 1.5);
+        p.x = -1.0;
+        p.z = 0.0;
+        break;
+      case Barrier.K_V1 :
+        barrier.dim.setValues(0.5, 0.5, 1.5);
+        p.x = 0.0;
+        p.z = 0.0;
+        break;
+      case Barrier.K_V2 :
+        barrier.dim.setValues(0.5, 0.5, 1.5);
+        p.x = 1.0;
+        p.z = 0.0;
+        break;
+    }
+    print(barrier.dim);
+    print(p);
   }
 }

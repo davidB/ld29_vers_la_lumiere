@@ -1,6 +1,8 @@
 part of game;
 
+const GROUP_AVATAR = "GROUP_AVATAR";
 const GROUP_EXITZONE = "GROUP_EXITZONE";
+const GROUP_BARRIER = "GROUP_BARRIER";
 
 class Factory_Entities {
   static final _random = new math.Random();
@@ -17,7 +19,6 @@ class Factory_Entities {
 
   List<Entity> newFullArea(AssetPack assetpack) {
      var gm = (_world.getManager(GroupManager) as GroupManager);
-     var areadef = assetpack['area'];
      renderFact.reset();
      var es = new List<Entity>();
      var cameraInfo = newCameraInfo(new Aabb3.minMax(new Vector3(-2.0, -5.0, -2.0), new Vector3(2.0, 102.0, 2.0)));
@@ -32,11 +33,23 @@ class Factory_Entities {
 //     es.addAll(areadef.mobileWalls.map((x) => newMobileWall(x, assetpack)));
 //     es.addAll(areadef.cubeGenerators.map((x) => newCube(x)));
 
-     es.add(newAvatar(cameraInfo));
+     var avatar = newAvatar(cameraInfo);
+     es.add(avatar);
+     gm.add(avatar, GROUP_AVATAR);
+
      es.add(newCorridor());
+
      var exitZone = newExitZone();
      es.add(exitZone);
      gm.add(exitZone, GROUP_EXITZONE);
+
+     var barriers = assetpack['barriers'];
+     var cycleMax = math.min(10, barriers.length);
+     for(var cyclePos = 0; cyclePos < cycleMax; cyclePos++) {
+       var b = newBarrier(barriers, cyclePos, cycleMax);
+       es.add(b);
+       gm.add(b, GROUP_BARRIER);
+     }
      return es;
    }
 
@@ -82,6 +95,20 @@ class Factory_Entities {
     return _world.createEntity([
       t
       ,renderFact.newExitZone(t.position3d)
+    ]);
+  }
+
+  Entity newBarrier(barriers, cyclePos, cycleMax){
+    var t = new Transform.w3d(new Vector3(0.0, -100.0, 0.0));
+    var b = new Barrier()
+    ..barriers = barriers
+    ..cyclePos = cyclePos
+    ..cycleMax = cycleMax
+    ;
+    return _world.createEntity([
+      t
+      ,b
+      ,renderFact.newBarrier(t.position3d, b.dim)
     ]);
   }
 }
@@ -299,6 +326,28 @@ float myshadow( in vec3 ro, in vec3 rd)
     }
     ;
   }
+  RenderableDef newBarrier(Vector3 position, Vector3 dim) {
+    var utx = "p${_uCnt++}";
+    var udim = "d${_uCnt++}";
+    return new RenderableDef()
+    ..onInsert = (gl, Entity entity) {
+      var transform = new Matrix4.identity();
+      var obj = new r.ObjectInfo()
+        ..uniforms = 'uniform vec3 ${utx}; uniform vec3 ${udim};'
+        ..de = "sd_box(p - ${utx}, ${udim})"
+        ..sds = [r.sd_box]
+        ..mats = [_defaultShadeMats]
+        ..sh = _defaultShade(c : "vec4(.5,.5,.5,1.0)")
+        ..at = (ctx) {
+          ctx.gl.uniform3fv(ctx.getUniformLocation(utx), position.storage);
+          ctx.gl.uniform3fv(ctx.getUniformLocation(udim), dim.storage);
+        }
+      ;
+      return new Renderable()..obj = obj;
+    }
+    ;
+  }
+
 /*
   RenderableDef newMobileWall(Iterable<Polygone> shapes, num dz, Vector4 color) {
     var utx = 'utx${_uCnt++}';

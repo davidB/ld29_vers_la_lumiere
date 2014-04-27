@@ -178,6 +178,7 @@ class Game {
     _world.addSystem(new System_CameraFollower());
     _world.addSystem(new System_AvatarController());
     _world.addSystem(new System_AvatarHandler(this));
+    _world.addSystem(new System_BarrierHandler());
     _world.addSystem(_renderSystem, passive: true);
     //if (audioManager != null) _world.addSystem(new System_Audio(audioManager, clipProvider : (x) => _assetManager[x], handleError: _handleError), passive : false);
     _world.addSystem(_hudSystem, passive: true);
