@@ -275,7 +275,7 @@ class System_BarrierHandler extends EntityProcessingSystem {
     if (barrier.kind ==  Barrier.K_UNDEF) {
       setCyclePos(barrier.cyclePos, barrier, p);
     }
-    if (p.y >= recycleY) {
+    if (p.y <= recycleY) {
       var newCyclePos = (barrier.cyclePos + barrier.cycleMax);
       if (newCyclePos >=   barrier.barriers.length) {
         entity.disable();

@@ -104,6 +104,7 @@ class Factory_Entities {
     ..barriers = barriers
     ..cyclePos = cyclePos
     ..cycleMax = cycleMax
+    ..kind =  Barrier.K_UNDEF
     ;
     return _world.createEntity([
       t
