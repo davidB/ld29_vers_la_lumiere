@@ -121,14 +121,14 @@ class UiScreenInit {
 class UiScreenRunResult {
   Element el;
   var bus;
-  num score = 0;
+  var message = "";
   var _onPlayEnabled = false;
   Function _onPlay;
   var _fmt = new NumberFormat("+00");
 
   init() {
     bus.on(eventRunResult).listen((x) {
-      score = x.score;
+      message = x.message;
       update();
     });
     bus.on(eventInGameStatus).listen((x) {
@@ -143,7 +143,7 @@ class UiScreenRunResult {
   update(){
     if (el == null) return;
     try {
-      _update0("score", score);
+      _update0("message", message);
       var btnPlay = el.querySelector(".play");
       (btnPlay as ButtonElement).disabled = !_onPlayEnabled;
       btnPlay.onClick.first.then(_onPlay);

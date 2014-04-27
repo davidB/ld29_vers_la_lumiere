@@ -125,7 +125,7 @@ class Game {
     }
 
     bus.fire(eventRunResult, new RunResult()
-    ..score = 0
+    ..message = (viaExit) ?  "Bravo, you're lucky.": "No light for you!"
     );
     _initialize();
   }

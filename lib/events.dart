@@ -35,5 +35,5 @@ class IGAction {
 }
 
 class RunResult {
-  int score = 0;
+  String message = "";
 }

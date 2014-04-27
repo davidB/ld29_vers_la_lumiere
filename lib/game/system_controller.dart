@@ -98,6 +98,7 @@ class System_CameraFollower extends EntityProcessingSystem {
       position.z = approachMulti(next.z, position.z, 0.3);
       camera.upDirection.setFrom(math2.VZ_AXIS);
       camera.focusPosition.setFrom(_targetPosition).add(follower.focusTranslation);
+      camera.focusPosition.z = math.max(0.0, camera.focusPosition.z);
     }
     //follower.info.updateProjectionMatrix();
     //camera.adjustNearFar(follower.focusAabb, 0.001, 0.1);
@@ -137,6 +138,7 @@ class System_AvatarController extends EntityProcessingSystem {
   void processEntity(Entity entity) {
     time = world.time;
     var dest = _avatarControlMapper.get(entity);
+    if (dest == null) return;
     dest.x = _state.x;
     _state.x = 0.0;
     var jumpR = _jumpF(math.max(0.0, _jumpEnd - time) / _jumpDuration, 1.0, 0.0);
@@ -179,7 +181,7 @@ class System_AvatarHandler extends EntityProcessingSystem {
   Game _game;
   GroupManager _gm;
 
-  System_AvatarHandler(this._game) : super(Aspect.getAspectForAllOf([AvatarControl, AvatarNumbers, Transform]));
+  System_AvatarHandler(this._game) : super(Aspect.getAspectForAllOf([AvatarNumbers, Transform]));
 
   void initialize(){
     _avatarControlMapper = new ComponentMapper<AvatarControl>(AvatarControl, world);
@@ -192,38 +194,47 @@ class System_AvatarHandler extends EntityProcessingSystem {
   void processEntity(Entity entity) {
     //var esc = _statesMapper.getSafe(entity);
     //var numbers = _avatarNumbersMapper.get(entity);
-    var ctrl = _avatarControlMapper.get(entity);
     var transform = _transformMapper.get(entity);
     var p = transform.position3d;
-    p.x = math2.clamp(p.x + ctrl.x, 1.0, -1.0);
-    p.z = math2.clamp(ctrl.z, 1.0, -1.0);
-    p.y += ctrl.speed * world.delta;
-    //TODO test if exitpoint
-    var exiting = _gm.getEntities(GROUP_EXITZONE).fold(false, (acc, e2){
-      var t2 = _transformMapper.get(e2);
-      return (t2 != null && p.y > t2.position3d.y);
-    });
-    if (exiting) {
-      _exiting();
-      return;
+    var ctrl = _avatarControlMapper.get(entity);
+    if (ctrl != null) {
+      p.x = math2.clamp(p.x + ctrl.x, 1.0, -1.0);
+      p.z = math2.clamp(ctrl.z, 1.0, -1.0);
+      p.y += ctrl.speed * world.delta;
+      //TODO test if exitpoint
+      var exiting = _gm.getEntities(GROUP_EXITZONE).fold(false, (acc, e2){
+        var t2 = _transformMapper.get(e2);
+        return (t2 != null && p.y > t2.position3d.y);
+      });
+      if (exiting) {
+        _exiting();
+        return;
+      }
+      //TODO test if collision
+      var avatarMask = avatarMaskFrom(p.x, p.z);
+      var collision = _gm.getEntities(GROUP_BARRIER).fold(false, (acc, e2){
+        var similarY = false;
+        var t2 = _transformMapper.get(e2);
+        if (e2.active && t2 != null) {
+          var deltaY = (p.y - t2.position3d.y);
+          similarY = (deltaY < 0.4 && deltaY > -0.4);
+        }
+        var overlap = false;
+        if (similarY) {
+          var b2 = _barrierMapper.get(e2);
+          overlap = ((b2 != null) && (avatarMask & b2.kind) != 0);
+        }
+        return acc || overlap;
+      });
+      if (collision) _collideBarrier(entity);
+    } else {
+      p.x = 0.0;
+      p.z = 0.0;
+      p.y += -0.06 * world.delta;
+      if (p.y < -100) {
+        _game._stop(false);
+      }
     }
-    //TODO test if collision
-    var avatarMask = avatarMaskFrom(p.x, p.z);
-    var collision = _gm.getEntities(GROUP_BARRIER).fold(false, (acc, e2){
-      var similarY = false;
-      var t2 = _transformMapper.get(e2);
-      if (e2.active && t2 != null) {
-        var deltaY = (p.y - t2.position3d.y);
-        similarY = (deltaY < 0.4 && deltaY > -0.4);
-      }
-      var overlap = false;
-      if (similarY) {
-        var b2 = _barrierMapper.get(e2);
-        overlap = ((b2 != null) && (avatarMask & b2.kind) != 0);
-      }
-      return acc || overlap;
-    });
-    if (collision) _collideBarrier();
   }
 
   int avatarMaskFrom(x, z) {
@@ -240,8 +251,14 @@ class System_AvatarHandler extends EntityProcessingSystem {
     _game._stop(true);
   }
 
-  void _collideBarrier() {
-    _game._stop(false);
+  void _collideBarrier(Entity entity) {
+    entity.removeComponentByType(AvatarControl.CT);
+    //TODO make animation to disable barrier (need state)
+    _gm.getEntities(GROUP_BARRIER).forEach((e2){
+      //var t2 = _transformMapper.get(e2);
+      //if (t2 != null) t2.position3d.z = -100.0;
+      e2.disable();
+    });
   }
 }
 
@@ -278,6 +295,7 @@ class System_BarrierHandler extends EntityProcessingSystem {
     if (p.y <= recycleY) {
       var newCyclePos = (barrier.cyclePos + barrier.cycleMax);
       if (newCyclePos >=   barrier.barriers.length) {
+        p.z = -50.0;
         entity.disable();
       } else {
         setCyclePos(newCyclePos, barrier, p);
