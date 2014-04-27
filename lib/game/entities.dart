@@ -129,12 +129,11 @@ class Factory_Renderables {
     r.n_de(l);
     r.normalToColor(l);
     r.aoToColor(l);
-    r.shade1(l);
-    r.shade0(l);
-//    r.shadeOutdoor(l);
+    r.distToColor(l);
     _myshade(l);
   }
   _myshade(l) {
+ //   r.softshadow(l);
     l.add('''
 #define HIGH
   // see http://www.altdevblogaday.com/2011/08/23/shader-code-for-physically-based-lighting/
@@ -148,35 +147,20 @@ float myao(in vec3 p, in vec3 n, float sca0){
   float totao = 0.0;
   float sca = sca0;
   for (int aoi=0; aoi<5; aoi++ ) {
-    float hr = 0.01 + 0.05*float(aoi);
+    float hr = 0.01 + 0.02*float(aoi);
     vec3 aopos =  n * hr + p;
     float dd = de( aopos ).x;
     totao += -(dd-hr)*sca;
     sca *= 0.75;
   }
-  return clamp( 1.0 - 4.0*totao, 0.0, 1.0 );
+  return clamp(1.0- 4.0*totao, 0.0, 1.0 );
 }
-
-float myshadow( in vec3 ro, in vec3 rd)
-{
-  float res = 1.0;
-    float t = 0.1;
-  float h;
-  
-    for (int i = 0; i < 7; i++)
-  {
-    h = de( ro + rd*t ).x;
-    res = min(7.0*h / t, res);
-    t += h+.04;
-  }
-    return max(res, 0.0);
-}
-
   color myshade(color c, vec3 p, vec3 n, float t, vec3 rd) {
     vec3 light_direction = normalize( -rd );
     float n_dot_l = clamp( dot( n, light_direction ), 0.0, 1.0 ); 
     //vec3 diffuse = light_colour * n_dot_l;
     float diffuse = n_dot_l;
+    //float diffuse = 1.0;
     //diffuse =  mix ( diffuse, 0, somethingAboutSpecularLobeLuminance );
 
     vec3 hv = normalize(light_direction - rd);
@@ -203,16 +187,12 @@ float myshadow( in vec3 ro, in vec3 rd)
     specularCoeff = specularCoeff * visibility_term;
 #endif
     vec3 albedo = c.rgb;
-    float ao = 1.0 - myao(p, n, 0.5);
-    float ambient = 0.0;
-    diffuse = fract(1.0 / t);
+    float sh = myao(p, n, 1.0);
+    diffuse = diffuse * 3.0 / max(t, 3.0);
     //diffuse = clamp(diffuse, ambient, 1.0);
-    float sh = softshadow( p, light_direction, 0.02, 10.0, 7.0 );
-    //float sh = myshadow(p, light_direction);
-    sh = max(sh, ao);
-    //float sh = ao;
-    c.rgb = albedo * diffuse * sh + light_colour * specularCoeff;
-    //c.rgb = vec3(ao);
+    // no shadow as r0 is the light source (spot)
+    c.rgb = albedo * diffuse * sh ;//+ light_colour * specularCoeff;
+    //c.rgb = vec3(sh);
     return c;
 //
 //    float ao = ao_de(p, n);
@@ -248,14 +228,13 @@ float myshadow( in vec3 ro, in vec3 rd)
         vec3 n = n_de(o, p2);
         vec3 nf = faceforward(n, rd, n);
         return myshade($c, p2, nf, t2, rd);
-//        return shade1($c, p, nf, t, rd);
-        //return shade0($c, p, nf);
-        //return shadeOutdoor($c, p, nf);
         //return vec4(vec3(1.0) - aoToColor(p, nf).rgb, 1.0);
         //return vec4(aoToColor(p, nf).rgb, 1.0);
 //        return normalToColor(nf);
         //return $c * ao_de(p, nf);
 //return $c;
+//        return vec4( vec3(1.0) - distToColor(t2, ${glf.SFNAME_NEAR}, ${glf.SFNAME_FAR}).rgb, 1.0); ;
+//        return distToColor(t2, ${glf.SFNAME_NEAR}, ${glf.SFNAME_FAR});
         """;
   }
 
@@ -288,8 +267,8 @@ float myshadow( in vec3 ro, in vec3 rd)
         ..de = "sd_corridor(p)"
         ..sds = [sd_corridor()]
         ..mats = [r.mat_chessboardXY0(1.0, new Vector4(0.9,0.0,0.5,1.0), new Vector4(0.2,0.2,0.8,1.0)), _defaultShadeMats]
-        ..sh = _defaultShade(c: "mat_chessboardXY0(p)")
-        //..sh = _defaultShade(c: "vec4(1.0)")
+        //..sh = _defaultShade(c: "mat_chessboardXY0(p)")
+        ..sh = _defaultShade(c: "vec4(0.3,0.3,0.3,1.0)")
 //        ..at = (ctx) {
 //          ctx.gl.uniform3fv(ctx.getUniformLocation("scroll"), scroll.storage);
 //        }
@@ -329,13 +308,21 @@ float myshadow( in vec3 ro, in vec3 rd)
   RenderableDef newBarrier(Vector3 position, Vector3 dim) {
     var utx = "p${_uCnt++}";
     var udim = "d${_uCnt++}";
+    twist(l) => l.add("""vec3 opTwist( vec3 p )
+    {
+        float c = cos(20.0*p.y);
+        float s = sin(20.0*p.y);
+        mat2  m = mat2(c,-s,s,c);
+        vec3  q = vec3(m*p.xz,p.y);
+        return q;
+    }""");
     return new RenderableDef()
     ..onInsert = (gl, Entity entity) {
       var transform = new Matrix4.identity();
       var obj = new r.ObjectInfo()
         ..uniforms = 'uniform vec3 ${utx}; uniform vec3 ${udim};'
         ..de = "sd_box(p - ${utx}, ${udim})"
-        ..sds = [r.sd_box]
+        ..sds = [r.sd_box, twist]
         ..mats = [_defaultShadeMats]
         ..sh = _defaultShade(c : "vec4(.5,.5,.5,1.0)")
         ..at = (ctx) {

@@ -57,7 +57,7 @@ class System_Render extends EntitySystem {
   bool checkProcessing() => _renderer.camera != null;
 
   void reset() {
-    _renderer.debugPrintFragShader = true;
+    _renderer.debugPrintFragShader = false;
     //_renderer.nearLight = r.nearLight_SpotGrid(10.0);
     _renderer.lightSegment = r.lightSegment_spotAt(new Vector3(50.0, 50.0, 50.0));
     _renderer.stepmax = 200;
