@@ -1,0 +1,6 @@
+{
+   "hud":{
+      "url":"../../_images/gui.svg",
+      "type":"svg"
+   }
+}

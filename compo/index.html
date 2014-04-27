@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="no-js">
+    <head>
+        <title>...vers la lumière</title>
+        <meta name="description" content="Game (for Ludum Dare 29) : ">
+        <meta charset="utf-8"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+        <link type="text/plain" rel="author" href="humans.txt" />
+        <meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+        <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+        <link rel="shortcut icon" href="favicon.ico" >
+        <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <!--script src="_vendors/modernizr-2.6.2.min.js"></script-->
+        <link rel="stylesheet" href="_vendors/normalize-2.0.1/normalize.css">
+        <!--link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootswatch/2.3.1/slate/bootstrap.min.css"/-->
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.1/css/font-awesome.css">
+        <link rel="stylesheet" href="index.css">
+    </head>
+    <body class="body">
+        <!--[if lt IE 10]><p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p><![endif]-->
+        <noscript>
+            <div class="alert alert-error">
+                Sorry, you the need a modern browser with Javascript and WebGL to play the game.
+                <ul>
+                    <li>Use a modern browser like Chrome or Firefox 15+ (may be IE + <a href="http://www.google.com/chromeframe">Chrome Frame</a>)</li>
+                    <li>Please enable javascript in your browser settings.</li>
+                    <li>Check WebGL at <a href="http://get.webgl.org/">http://get.webgl.org/</a>)</li>
+                </ul>
+            </div>
+        </noscript>
+
+        <div class="vbadge"><div style="font-size:80%;opacity:0.8;margin-bottom:0.2em;">LD 29</div></div>
+        <header class="navbar navbar-inverse header">
+            <ul class="nav">
+                <li class="dropdown" is="x-dropdown" id="audioVolume">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><span class="fa fa-volume-up"></span><b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li><label for="mute"><span class="fa fa-volume-off" title="mute"></span></label> <input type="checkbox" id="mute" bind-checked="game.masterMute"/></li>
+                        <li><label for="masterVolume"><span class="fa fa-volume-down" title="master (all)"></span></label><input id="masterVolume" min="0" max="1" step="0.1" type="range" class="volumemeter" bind-value="game.masterVolume"/></li>
+                        <li><label for="musicVolume"><span class="fa fa-music" title="music"></span></label><input id="musicVolume" min="0" max="1" step="0.1" type="range" class="volumemeter" bind-value="game.musicVolume"/></li>
+                        <li><label for="sourceVolume"><span class="fa fa-bell" title="effects"></span></label><input id="sourceVolume" min="0" max="1" step="0.1" type="range" class="volumemeter" bind-value="game.sourceVolume"/><li>
+                        </ul>
+                </li>
+            </ul>
+            <div style="font-size:110%;font-weight:bold;">...vers la lumière</div>
+            <ul class="nav">
+                <li><a href="#/s/screenInfo" title="About ...vers la lumière" onClick="_gaq.push(['_trackEvent', 'info', 'goto', 'info']);"><i class="fa fa-info-circle"></i></a></li>
+                <li class="divider-vertical"></li>
+                <!-- May be use service of http://sharethis.com/ -->
+                <li><a href="mailto:?Subject=...vers la lumière" title="share via email" target="_blank" onClick="_gaq.push(['_trackEvent', 'community', 'share', 'email']);"><span class="fa fa-envelope"></span></a></li>
+                <li><a href="http://github.com/davidB/ld29_vers_la_lumiere" target="_blank" onClick="_gaq.push(['_trackEvent', 'community', 'info', 'gihub']);"><span class="fa fa-github" ></span></a></li>
+            </ul>
+        </header>
+        <div class="main">
+            <section id="game_area" class="sh">
+                <div id="layers">
+                    <div id="screenInGame">
+                        <canvas id="3d" style="z-index:0"></canvas>
+                        <!--canvas id="2d_debug" style="z-index:1"></canvas-->
+                        <div id="hud" style="z-index:10" data-svg-src="_images/gui.svg"></div>
+                        <div id="pauseOverlay" style="z-index:11; visibility: hidden">
+                            <div><a class="fa fa-pauseplay" title="play"></a></div>
+                        </div>
+                    </div>
+                    <div id="screenRunResult" class="screen" style="display:none">
+                        <div class="endMessage"><span data-text="message"></span></div>
+                        <div class="actions">
+                            <!-- a href="#/s/screenAreaSelector" class="btn btn-icon" disabled="disabled" tabindex="2" title="Choose an other area"><i class="fa fa-th"></i></a-->
+                            <button class="btn btn-icon play" disabled="disabled" tabindex="0" title="Replay on same area (try to do better)"><i class="fa fa-repeat"></i></button>
+                            <button class="btn btn-icon next" disabled="disabled" tabindex="1" title="Go to next area"><i class="fa fa-forward"></i></button>
+                        </div>
+                    </div>
+            <div id="screenInfo" class="screen">
+                <div style="overflow:auto; max-height:99%">
+                    <h3>About ...vers la lumière</h3>
+                    <p>'...vers la lumière' a game created for Ludum Dare 29 by davidB.</p>
+                </div>
+                <div class="actions"></div>
+            </div>
+            <div id="screenInit" class="screen">
+                <h3>...vers la lumière,</h3>
+                <h3>Area <span data-text="area">.....</span></h3>
+                <div id="rules_help">
+                    Run to the light. Avoid<br>
+                </div>
+                <table id="controls_help" style="margin-top:3em;margin-bottom:3em;">
+                    <tr>
+                        <td>Jump</td>
+                        <td>[W] [up] or [Space]</td>
+                    </tr>
+                    <tr>
+                        <td>Down</td>
+                        <td>[S] [down]</td>
+                    </tr>
+                    <tr>
+                        <td>Right</td>
+                        <td>[A] [right]</td>
+                    </tr>
+                    <tr>
+                        <td>Left</td>
+                        <td>[D] [left]</td>
+                    </tr>
+                </table>
+                <div id="msgLoading" style="opacity: 1;text-align:center"><span class="fa fa-spinner fa-spin"></span> Please wait, loading ...</div>
+                <div class="actions">
+                    <button class="btn btn-primary play" disabled="disabled" tabindex="0">START</button>
+                </div>
+            </div>
+            </div>
+            <div id="alert" class="alert alert-error" style="z-index:100; display:none" data-bind="text: alert, visible: shouldShowAlert">
+            </div>
+            <progress id="gameload" max="100" value="0">
+                <!--span id="progressFallback" data-bind="text : (progressCurrent() * 100 / progressMax()) + '%'"></span-->
+            </progress>
+        </section>
+        </div>
+        <footer class="footer">
+        by davidB.
+        </footer>
+
+        <script src="packages/browser/dart.js"></script>
+        <script type="application/javascript" src="index.dart.js"></script>
+        <!--script src="loader.js" data-dartsrc="index.dart.js"></script-->
+        <script type="text/javascript">
+            var _gaq = _gaq || [];
+            _gaq.push(['_setAccount', 'UA-18659445-5']);
+            _gaq.push(['_trackPageview']);
+        </script>
+    
+  <script type="text/javascript">
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+
+  </script>
+  </body>
+</html>
