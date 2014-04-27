@@ -212,14 +212,13 @@ class System_AvatarHandler extends EntityProcessingSystem {
     var collision = _gm.getEntities(GROUP_BARRIER).fold(false, (acc, e2){
       var similarY = false;
       var t2 = _transformMapper.get(e2);
-      if (t2 != null) {
+      if (e2.active && t2 != null) {
         var deltaY = (p.y - t2.position3d.y);
         similarY = (deltaY < 0.4 && deltaY > -0.4);
       }
       var overlap = false;
       if (similarY) {
         var b2 = _barrierMapper.get(e2);
-        print("similarY !! ${avatarMask} & ${b2.kind} = ${(avatarMask & b2.kind)}");
         overlap = ((b2 != null) && (avatarMask & b2.kind) != 0);
       }
       return acc || overlap;
@@ -275,10 +274,8 @@ class System_BarrierHandler extends EntityProcessingSystem {
     var p = transform.position3d;
     if (barrier.kind ==  Barrier.K_UNDEF) {
       setCyclePos(barrier.cyclePos, barrier, p);
-      print('init barrier');
     }
     if (p.y >= recycleY) {
-      print('recycle barrier');
       var newCyclePos = (barrier.cyclePos + barrier.cycleMax);
       if (newCyclePos >=   barrier.barriers.length) {
         entity.disable();
@@ -295,37 +292,35 @@ class System_BarrierHandler extends EntityProcessingSystem {
     p.y = nfo[0].toDouble();
     switch(barrier.kind) {
       case Barrier.K_H0 :
-        barrier.dim.setValues(1.5, 0.5, 0.5);
+        barrier.dim.setValues(2.0, 0.5, 0.5);
         p.x = 0.0;
         p.z = -1.0;
         break;
       case Barrier.K_H1 :
-        barrier.dim.setValues(1.5, 0.5, 0.5);
+        barrier.dim.setValues(2.0, 0.5, 0.5);
         p.x = 0.0;
         p.z = 0.0;
         break;
       case Barrier.K_H2 :
-        barrier.dim.setValues(1.5, 0.5, 0.5);
+        barrier.dim.setValues(2.0, 0.5, 0.5);
         p.x = 0.0;
         p.z = 1.0;
         break;
       case Barrier.K_V0 :
-        barrier.dim.setValues(0.5, 0.5, 1.5);
+        barrier.dim.setValues(0.5, 0.5, 2.0);
         p.x = -1.0;
         p.z = 0.0;
         break;
       case Barrier.K_V1 :
-        barrier.dim.setValues(0.5, 0.5, 1.5);
+        barrier.dim.setValues(0.5, 0.5, 2.0);
         p.x = 0.0;
         p.z = 0.0;
         break;
       case Barrier.K_V2 :
-        barrier.dim.setValues(0.5, 0.5, 1.5);
+        barrier.dim.setValues(0.5, 0.5, 2.0);
         p.x = 1.0;
         p.z = 0.0;
         break;
     }
-    print(barrier.dim);
-    print(p);
   }
 }
