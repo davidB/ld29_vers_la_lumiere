@@ -89,6 +89,7 @@ class Game {
     _status = v;
     bus.fire(eventInGameStatus, new IGStatus()
     ..kind = v
+    ..area = areaReq
     );
     print("status :" + _status.toString());
   }
@@ -126,6 +127,8 @@ class Game {
 
     bus.fire(eventRunResult, new RunResult()
     ..message = (viaExit) ?  "Bravo, you're lucky.": "No light for you!"
+    ..success = viaExit
+    ..areaId = areaReq
     );
     _initialize();
   }
@@ -152,6 +155,7 @@ class Game {
   }
 
   Future _loadPack(String v) {
+    print("pack $v");
     return (_assetManager[v] == null) ?
         _assetManager.loadPack(v, '_packs/${v}/_.pack')
         : new Future.value(_assetManager[v]);

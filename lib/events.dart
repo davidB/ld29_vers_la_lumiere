@@ -36,4 +36,6 @@ class IGAction {
 
 class RunResult {
   String message = "";
+  bool success = false;
+  String areaId = "";
 }

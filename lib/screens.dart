@@ -111,7 +111,6 @@ class UiScreenInit {
   update(){
     if (el == null) return;
     el.querySelector("#msgLoading").style.opacity = _onPlayEnabled ? "0" : "1";
-    el.querySelector("[data-text=area]").text = _area;
     var btn = el.querySelector(".play");
     (btn as ButtonElement).disabled = !_onPlayEnabled;
     btn.onClick.first.then(_onPlay);
@@ -122,13 +121,17 @@ class UiScreenRunResult {
   Element el;
   var bus;
   var message = "";
+  String areaId = "";
+  var success = false;
   var _onPlayEnabled = false;
   Function _onPlay;
   var _fmt = new NumberFormat("+00");
 
   init() {
     bus.on(eventRunResult).listen((x) {
+      success = x.success;
       message = x.message;
+      areaId = x.areaId;
       update();
     });
     bus.on(eventInGameStatus).listen((x) {
@@ -148,7 +151,7 @@ class UiScreenRunResult {
       (btnPlay as ButtonElement).disabled = !_onPlayEnabled;
       btnPlay.onClick.first.then(_onPlay);
       var btnNext = el.querySelector(".next");
-      (btnNext as ButtonElement).disabled = (_findNextAreaId() == null);
+      (btnNext as ButtonElement).disabled = !success || (_findNextAreaId() == null);
       btnNext.onClick.first.then(_onNext);
     } catch(e, st) {
 //      print("WARNING");
@@ -172,12 +175,9 @@ class UiScreenRunResult {
   }
 
   _findNextAreaId() {
-//    switch(areaId) {
-//      case 'alpha0': return 'beta0';
-//      case 'beta0': return 'beta1';
-//      case 'beta1': return 'gamma0';
-//      case 'gamma0': return 'pacman0';
-//    }
+    switch(areaId) {
+      case 'l0': return 'l1';
+    }
     return null;
   }
 }

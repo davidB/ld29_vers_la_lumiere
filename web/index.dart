@@ -70,13 +70,14 @@ void _setupRoutes() {
 void _route(String hash) {
   //RegExp exp = new RegExp(r"(\w+)");
   if (hash.startsWith("#/a/")) {
+    game.areaReq = hash.substring("#/a/".length);
     bus.fire(eventInGameReqAction, IGAction.INITIALIZE);
     _showScreen("screenInit");
   } else if (hash.startsWith("#/s/")) {
     bus.fire(eventInGameReqAction, IGAction.PAUSE);
     _showScreen(hash.substring("#/s/".length));
   } else {
-    window.location.hash = '/a/';
+    window.location.hash = '/a/l0';
   }
 }
 
