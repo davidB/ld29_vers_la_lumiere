@@ -98,7 +98,7 @@ class System_CameraFollower extends EntityProcessingSystem {
       position.z = approachMulti(next.z, position.z, 0.3);
       camera.upDirection.setFrom(math2.VZ_AXIS);
       camera.focusPosition.setFrom(_targetPosition).add(follower.focusTranslation);
-      camera.focusPosition.z = math.max(0.0, camera.focusPosition.z);
+      camera.focusPosition.z = -1.0;//math.max(0.0, camera.focusPosition.z);
     }
     //follower.info.updateProjectionMatrix();
     //camera.adjustNearFar(follower.focusAabb, 0.001, 0.1);
@@ -122,7 +122,7 @@ class System_AvatarController extends EntityProcessingSystem {
   var _subUp, _subDown;
   var _jumpEnd = 0.0, _dashEnd = 0.0;
   final _jumpDuration = 4.0 / AvatarControl.SPEEDJUMP;
-  final _dashDuration = 3.0 / AvatarControl.SPEEDDASH;
+  final _dashDuration = 3.5 / AvatarControl.SPEEDDASH;
   final _dashF = ease.outCubic;
   final _jumpF = ease.goback(ease.inQuartic);
   var time = 0.0;
@@ -152,7 +152,7 @@ class System_AvatarController extends EntityProcessingSystem {
 
   void _bindKeyboardControl(){
     _subDown = document.onKeyDown.listen((KeyboardEvent e) {
-      var isJumpingOrDashing =  (_jumpEnd > time || _dashEnd > time);
+      var isJumpingOrDashing =  (_jumpEnd - (0.1 * _jumpDuration) > time || _dashEnd - (0.1 * _dashDuration)> time);
       if (!isJumpingOrDashing) {
         if (_keysUp.contains(e.keyCode)) {
           _jumpEnd = time + _jumpDuration;
@@ -215,7 +215,7 @@ class System_AvatarHandler extends EntityProcessingSystem {
       var collision = _gm.getEntities(GROUP_BARRIER).fold(false, (acc, e2){
         var similarY = false;
         var t2 = _transformMapper.get(e2);
-        if (e2.active && t2 != null) {
+        if (t2 != null) {
           var deltaY = (p.y - t2.position3d.y);
           similarY = (deltaY < 0.4 && deltaY > -0.4);
         }
@@ -290,23 +290,35 @@ class System_BarrierHandler extends EntityProcessingSystem {
     var transform = _transformMapper.get(entity);
     var p = transform.position3d;
     if (barrier.kind ==  Barrier.K_UNDEF) {
-      setCyclePos(barrier.cyclePos, barrier, p);
+      setCyclePos(barrier, p, barrier.cyclePos);
     }
     if (p.y <= recycleY) {
-      var newCyclePos = (barrier.cyclePos + barrier.cycleMax);
-      if (newCyclePos >=   barrier.barriers.length) {
-        p.z = -50.0;
-        entity.disable();
-      } else {
-        setCyclePos(newCyclePos, barrier, p);
-      }
+      nextPos(barrier, p, entity);
     }
   }
 
-  void setCyclePos(newCyclePos, barrier, p) {
+  void nextPos(barrier, p, entity) {
+    var newCyclePos = (barrier.cyclePos + barrier.cycleMax);
+    if (newCyclePos >=   barrier.barriers.length) {
+      p.z = -50.0;
+      entity.disable();
+    } else {
+      if (!setCyclePos(barrier, p, newCyclePos)) {
+        nextPos(barrier, p, entity);
+      }
+    }
+  }
+  bool setCyclePos(barrier, p, newCyclePos) {
     var nfo = barrier.barriers[newCyclePos];
     barrier.cyclePos = newCyclePos;
     barrier.kind = nfo[1];
+    if (barrier.kind < 0) {
+      if ((world.time ~/ 100)% 3 == 0) {
+        // ignore this position
+        return false;
+      }
+      barrier.kind = -barrier.kind;
+    }
     p.y = nfo[0].toDouble();
     switch(barrier.kind) {
       case Barrier.K_H0 :
@@ -340,5 +352,6 @@ class System_BarrierHandler extends EntityProcessingSystem {
         p.z = 0.0;
         break;
     }
+    return true;
   }
 }
