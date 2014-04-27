@@ -23,7 +23,6 @@ import 'events.dart';
 
 part 'game/entities.dart';
 part 'game/system_controller.dart';
-part 'game/system_hud.dart';
 part 'game/system_renderer.dart';
 
 class Game {
@@ -41,7 +40,6 @@ class Game {
   var _status;
   Factory_Entities _entitiesFactory;
   var _renderSystem;
-  var _hudSystem;
 
   init() {
     _world = new World();
@@ -148,7 +146,6 @@ class Game {
         es.forEach((e) => e.addToWorld());
         _world.processEntityChanges();
         _renderSystem.reset();
-        _hudSystem.reset();
         _progressCtrl.end(3);
         _updateStatus(IGStatus.INITIALIZED);
         return true;
@@ -180,7 +177,6 @@ class Game {
 
   void _setupWorld(Element container) {
     _renderSystem = new System_Render(_gl, _assetManager);
-    _hudSystem = new System_Hud(container);
 
     //var collSpace = new collisions.Space_QuadtreeXY(new collisions.Checker_MvtAsPoly4(), new _EntityContactListener(new ComponentMapper<Collisions>(Collisions,_world)), grid : new collisions.QuadTreeXYAabb(-10.0, -10.0, 220.0, 220.0, 5));
     //_world.addManager(new PlayerManager());
@@ -195,7 +191,6 @@ class Game {
     _world.addSystem(new System_BarrierHandler());
     _world.addSystem(_renderSystem, passive: true);
     //if (audioManager != null) _world.addSystem(new System_Audio(audioManager, clipProvider : (x) => _assetManager[x], handleError: _handleError), passive : false);
-    _world.addSystem(_hudSystem, passive: true);
     _world.initialize();
   }
 
@@ -247,7 +242,6 @@ class Game {
     _gameLoop.onRender = (gameLoop){
       try {
         _renderSystem.process();
-        _hudSystem.process();
       } catch(e, s) {
         _handleError(e, s);
       }
