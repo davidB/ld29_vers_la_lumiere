@@ -39,9 +39,6 @@ class Factory_Entities {
 
      es.add(newCorridor());
 
-     var exitZone = newExitZone();
-     es.add(exitZone);
-     gm.add(exitZone, GROUP_EXITZONE);
 
      var barriers = assetpack['barriers'];
      var cycleMax = math.min(10, barriers.length);
@@ -50,6 +47,12 @@ class Factory_Entities {
        es.add(b);
        gm.add(b, GROUP_BARRIER);
      }
+
+     var lastBarrierY = barriers[barriers.length - 1][0];
+     var exitZone = newExitZone(math.max(100.0, lastBarrierY + 10.0));
+     es.add(exitZone);
+     gm.add(exitZone, GROUP_EXITZONE);
+
      return es;
    }
 
@@ -87,11 +90,11 @@ class Factory_Entities {
   ]);
 
   Entity newCorridor() => _world.createEntity([
-    renderFact.newCorridor(500.0)
+    renderFact.newCorridor()
   ]);
 
-  Entity newExitZone(){
-    var t = new Transform.w3d(new Vector3(0.0, 100.0, 0.0));
+  Entity newExitZone(y){
+    var t = new Transform.w3d(new Vector3(0.0, y, 0.0));
     return _world.createEntity([
       t
       ,renderFact.newExitZone(t.position3d)
@@ -248,7 +251,7 @@ float myao(in vec3 p, in vec3 n, float sca0){
     };
   }
 
-  RenderableDef newCorridor(length) {
+  RenderableDef newCorridor() {
     /// glsl: float sd_corridor(in vec3 p)
     sd_corridor() {
     return (l) => l.add('''
