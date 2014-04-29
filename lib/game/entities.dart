@@ -159,7 +159,7 @@ float myao(in vec3 p, in vec3 n, float sca0){
   }
   return clamp(1.0- 4.0*totao, 0.0, 1.0 );
 }
-  color myshade(color c, vec3 p, vec3 n, float t, vec3 rd) {
+  vec4 myshade(vec4 c, vec3 p, vec3 n, float t, vec3 rd) {
     vec3 light_direction = normalize( -rd );
     float n_dot_l = clamp( dot( n, light_direction ), 0.0, 1.0 ); 
     //vec3 diffuse = light_colour * n_dot_l;
@@ -270,9 +270,9 @@ float myao(in vec3 p, in vec3 n, float sca0){
 //        ..uniforms = 'uniform vec3 scroll;'
         ..de = "sd_corridor(p)"
         ..sds = [sd_corridor()]
-        ..mats = [r.mat_chessboardXY0(1.0, new Vector4(0.9,0.0,0.5,1.0), new Vector4(0.2,0.2,0.8,1.0)), _defaultShadeMats]
+        ..mats = [_defaultShadeMats]
         //..sh = _defaultShade(c: "mat_chessboardXY0(p)")
-        ..sh = _defaultShade(c: "vec4(0.3,0.3,0.3,1.0)")
+        ..sh = "vec4(0.3,0.3,0.3,1.0)"
 //        ..at = (ctx) {
 //          ctx.gl.uniform3fv(ctx.getUniformLocation("scroll"), scroll.storage);
 //        }
@@ -300,7 +300,7 @@ float myao(in vec3 p, in vec3 n, float sca0){
         ..sds = [r.sd_box]
         ..mats = [_defaultShadeMats]
         //..sh = _defaultShade(c : _vec4(new Vector4(1.0,1.0,1.0,1.0)))
-        ..sh = "return vec4(1.0,1.0,1.0,1.0);"
+        ..sh = "vec4(1.0,1.0,1.0,1.0)"
         ..at = (ctx) {
           ctx.gl.uniform3fv(ctx.getUniformLocation(utx), position.storage);
         }
@@ -328,7 +328,7 @@ float myao(in vec3 p, in vec3 n, float sca0){
         ..de = "sd_box(p - ${utx}, ${udim})"
         ..sds = [r.sd_box, twist]
         ..mats = [_defaultShadeMats]
-        ..sh = _defaultShade(c : "vec4(.5,.5,.5,1.0)")
+        ..sh = "vec4(.5,.5,.5,1.0)"
         ..at = (ctx) {
           ctx.gl.uniform3fv(ctx.getUniformLocation(utx), position.storage);
           ctx.gl.uniform3fv(ctx.getUniformLocation(udim), dim.storage);

@@ -64,6 +64,20 @@ class System_Render extends EntitySystem {
     _renderer.stepmax = stepmax;
     //_renderer.epsilon_de = 0.001;
     _renderer.bgcolor = "return vec3(0.0,0.0,0.0);";
+    _renderer.shadeAll = """
+//        vec3 p2 = p + o.x * rd;
+//        float t2 = t + o.x;
+//        n = n_de(o, p2);
+//        nf = faceforward(n, rd, n);
+        col = myshade(col, p, nf, t, rd);
+        //return vec4(vec3(1.0) - aoToColor(p, nf).rgb, 1.0);
+        //return vec4(aoToColor(p, nf).rgb, 1.0);
+//        return normalToColor(nf);
+        //return col * ao_de(p, nf);
+//return col;
+//        return vec4( vec3(1.0) - distToColor(t2, ${glf.SFNAME_NEAR}, ${glf.SFNAME_FAR}).rgb, 1.0); ;
+//        return distToColor(t2, ${glf.SFNAME_NEAR}, ${glf.SFNAME_FAR});
+        """;
     _renderer.updateShader();
   }
 

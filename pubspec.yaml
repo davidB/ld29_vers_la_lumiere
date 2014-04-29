@@ -13,15 +13,20 @@ dependencies:
   crypto: any
   dartemis: '>=0.6.0'
   dartemis_toolbox:
-    path: ../dartemis_toolbox
+    git: https://github.com/davidB/dartemis_toolbox.git
+    version: '0.6.0-dev'
   event_bus: '>=0.2.4'
   game_loop:
     git:
       ref: davidB
       url: https://github.com/davidB/game_loop.git
   glf:
-    path: ../glf
-  html_toolbox: '>=0.2.0'
+    git:
+      ref: ld29
+      url: https://github.com/davidB/glf.git
+  html_toolbox:
+    version: '>=0.3.0-dev'
+    git: https://github.com/davidB/html_toolbox.git
   intl: any
   js: any
   logging: any
@@ -35,3 +40,7 @@ dev_dependencies:
 dependency_overrides:
   html_toolbox:
     path: ../html_toolbox
+  glf:
+    path: ../glf
+  dartemis_toolbox:
+    path: ../dartemis_toolbox
